@@ -10,15 +10,18 @@
         <h3>re-enter password<input type="password" name="email_pass2" placeholder="re-enter password"></h3>
         <button type="submit" name="new_sub">Login</button>
     </form>
+    <a href = 'http://localhost:8080/Camagru/login.php'>Login-in</a>
 </body>
 </html>
 <?php
 $email1= trim($_POST['email_new']);
 $pass1 = trim($_POST['email_pass1']);
 $pass2 = trim($_POST['email_pass2']);
-include "search_dup.php";
-if (isset($_POST['new_sub']) && error_check_input("Empty",$email1,$pass1,$pass2) == 1)
+include "error_input_check.php";
+if (isset($_POST['new_sub']) && error_check_input("Empty",$email1,$pass1,$pass2) == -1)
 {
+    include "config/database.php";
+    include "config/setup.php";
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
     $sql9 = 'SELECT * FROM table1 WHERE email = ?';
     $stmt = $pdo->prepare($sql9);

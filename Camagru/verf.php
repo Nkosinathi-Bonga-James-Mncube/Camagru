@@ -16,7 +16,7 @@
     $found = $post->valid;
     if($found == '1')
     {
-        header("Location: http://localhost:8080/Camagru/valid.html");
+        header("Location: http://localhost:8080/Camagru/valid.php");
     }
 }
 

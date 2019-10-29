@@ -17,9 +17,11 @@
 if (isset($_POST['forgot_send']))
 {
   
+
     include "config/database.php";
     include "config/setup.php";
     $email_enter = $_POST['email_enter'];
+    echo($email_enter);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
     $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $sql8 = 'SELECT * FROM table1 WHERE email = ?';
@@ -33,7 +35,7 @@ if (isset($_POST['forgot_send']))
     }
     if ($email_enter == $email_found)
     {
-        include "smail/forgot_email.php";
+        include "forgot_email.php";
         echo ("Password reset email has been sent.Please check your email");
     }
     else
