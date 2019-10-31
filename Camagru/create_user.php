@@ -1,5 +1,14 @@
 <?php
 include "search_dup.php";
+include "remove.php";
+
+$enter_user = strip_info(trim($_POST['create_user']));
+//$enter_email = strip_info(trim($_POST['create_email']));
+//$enter_pass1 = strip_info(trim($_POST['create_pass1']));
+//echo($enter_user);
+//echo($enter_email);
+//echo($enter_pass1);
+
 $enter_user = trim($_POST['create_user']);
 $enter_email = trim($_POST['create_email']);
 $enter_pass1 = trim($_POST['create_pass1']);
