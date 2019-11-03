@@ -12,16 +12,15 @@
 </html>
 
 <?php
+session_start();
+$_SESSION['email'] = "nmncube@student.wethinkcode.co.za";
+$here = $_SESSION['email'];
 if (isset($_POST['submit']))
 {
-    //include "config/database.php";
-    //include "config/setup.php";
-    
-    //$target = "new22/image1");
-    //$file_path = "Camagur/new/".$
     $product_image = $_FILES['image1']['name'];
     $product_image_tmp = $_FILES['image1']['tmp_name'];
     $location = $_FILES['images1'][''];
+    echo($production_location);
     if (move_uploaded_file($product_image_tmp, "new22/$product_image"))
     {   
         echo ("Successfully uploaded");
@@ -30,33 +29,34 @@ if (isset($_POST['submit']))
     {
         echo("Not successful");
     }
-    // $product_image = $_FILES['product_image']['name'];
-    // $product_image_tmp = $_FILES['product_image']['tmp_name'];
-    // move_uploaded_file($product_image_tmp, "product_images/$product_image");
-
-
-    if (file_exists($target))
-    {
-        echo ("file present");
-    }
-    else
-    {
-        echo("doesnt exist");
-    }
 }
-/*try
-{
+
+try{
     include "config/database.php";
     include "config/setup.php";
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
-    $sql3 = $pdo->prepare("INSERT INTO table2 (userID,pic_location) VALUES (:userID,:pic_location)");
-    $sql3->execute(['userID'=>'9','pic_location'=>$file_path]);
+    $sql2 = "CREATE TABLE IF NOT EXISTS table2(
+        userID INT NOT NULL AUTO_INCREMENT,email VARCHAR(64),pic_location VARCHAR(64),PRIMARY KEY(userID)
+        );";
+    $pdo->exec($sql2);
+    $pdo =  NULL;
+}
+catch(PDOException $e1)
+{
+    echo $sql2 . "<br>" . $e1->getMessage();
+    $pdo =  NULL;
+} 
 
+try
+{
+    include "config/setup.php";
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
+    $sql3 = $pdo->prepare("INSERT INTO table2 (email,pic_location) VALUES (:email,:pic_location)");
+    $sql3->execute(['email'=>$here,'pic_location'=>"new22/$product_image"]);
 }
 catch(PDOException $e2)
 {
     echo $sql2 . "<br>" . $e2->getMessage();
     $pdo =  NULL;
 }
-}*/
+
 ?>
