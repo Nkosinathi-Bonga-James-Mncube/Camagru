@@ -5,6 +5,8 @@
             <br>
             <label>Select Image To Upload</label>
             <input type ="file" name = image1>
+            <br>
+            <br>
             <input type = "submit" name = "submit" value = "Upload image"> 
             </form>
     </body>
@@ -13,21 +15,21 @@
 
 <?php
 session_start();
+$product_image = NULL;
 $_SESSION['email'] = "nmncube@student.wethinkcode.co.za";
 $here = $_SESSION['email'];
 if (isset($_POST['submit']))
 {
     $product_image = $_FILES['image1']['name'];
     $product_image_tmp = $_FILES['image1']['tmp_name'];
-    $location = $_FILES['images1'][''];
-    echo($production_location);
+    //$location = $_FILES['images1'][''];
     if (move_uploaded_file($product_image_tmp, "new22/$product_image"))
     {   
         echo ("Successfully uploaded");
     }
     else   
     {
-        echo("Not successful");
+        echo("Please upload an image");
     }
 }
 

@@ -1,7 +1,8 @@
 <?php
-session_start();
+/*session_start();
 //$here = 'raharir391@imail8.net';
 $here = $_SESSION['email'];
+
 echo($here."<br>");
 include "config/database.php";
 include "config/setup.php";
@@ -13,7 +14,10 @@ $post = $stmt->fetchAll();
 
 foreach($post as $post)
 {
-    echo '<a href = "#">';
+    echo '<a href = "#">
+    <div style="background-image:url('.$post->pic_location.');"></div>
+    <p>This is a paragraph</p>
+    </a>';
 }
 /*$k = 1;
 while ($k <= 4)
