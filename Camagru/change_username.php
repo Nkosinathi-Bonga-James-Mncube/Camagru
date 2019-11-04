@@ -28,7 +28,6 @@ if (isset($_POST['new_user']))
     $stmt->execute([$old_user]);
     $post = $stmt->fetchAll();
     
-    //var_dump($post);
     foreach($post as $post)
     {
         $username_found = $post->username;

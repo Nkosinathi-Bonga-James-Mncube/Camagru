@@ -18,37 +18,16 @@
        
        foreach($post as $post)
        {
-           echo '<a href = "#">
+           $file_pic = pathinfo($post->pic_location);
+            echo '<a href = include "comments.php">
            <div style="background-image:url('.$post->pic_location.');"></div>
-           <p>This is a paragraph</p>
+           <p>'.$file_pic['filename'].'</p>
            </a>';
        }
-        echo '<a href = "#">
-        <div></div>
-        <p>test1</p>
-        </a>';
         ?>    
     </div>
 </section>
-<!--section class "gallery-links"-->
-<!--div class = "wrapper">
-<div  class = "gallery-container">
-<a href = "#">
-<div></div>
-<h1>temp<h1>
-<p>here is an image</p>
-</a>
-</div>
 
-<a href = "#">
-<div></div>
-<h1>temp<h1>
-<p>here is an image</p>
-</a>
-</div>
-
-</div>
-</section-->
 </body>
 </html>
 <?php

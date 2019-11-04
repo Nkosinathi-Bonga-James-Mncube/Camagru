@@ -18,6 +18,7 @@
 
 <?php
 include "error_input_check.php";
+//include "remove.php";
 if (isset($_POST['create_button']))
 {
     
@@ -26,10 +27,10 @@ if (isset($_POST['create_button']))
         $enter_pass1 = NULL;
         $enter_pass2= NULL;
      
-        $enter_user = trim($_POST['create_user']);
-        $enter_email = trim($_POST['create_email']);
-        $enter_pass1 = trim($_POST['create_pass1']);
-        $enter_pass2 = trim($_POST['create_pass2']);
+        $enter_user = htmlspecialchars(strip_tags(trim($_POST['create_user'])));
+        $enter_email = htmlspecialchars(strip_tags(trim($_POST['create_email'])));
+        $enter_pass1 = htmlspecialchars(strip_tags(trim($_POST['create_pass1'])));
+        $enter_pass2 = htmlspecialchars(strip_tags(trim($_POST['create_pass2'])));
     if (error_check_input($enter_user,$enter_email,$enter_pass1,$enter_pass2) == -1)
     {
         include "create_user.php";

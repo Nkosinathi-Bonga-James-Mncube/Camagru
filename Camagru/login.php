@@ -19,14 +19,14 @@ if (isset($_POST['login_sub']))
 {
     include "config/database.php";
     include "config/setup.php";
-    $login_user =$_POST['login_user'];
-    $login_pass =$_POST['login_pass'];
+    $login_user = htmlspecialchars(strip_tags(trim($_POST['login_user'])));
+    $login_pass = htmlspecialchars(strip_tags(trim($_POST['login_pass'])));
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
     $sql7 = 'SELECT * FROM table1 WHERE username = ?';
     $stmt = $pdo->prepare($sql7);
     $stmt->execute([$login_user]);
     $post = $stmt->fetchAll();
-    //var_dump($post);
+
     foreach($post as $post)
     {
         $p_found = $post->pass;

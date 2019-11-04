@@ -10,7 +10,6 @@ function search_dup($enter_email,$enter_user)
     $stmt = $pdo->prepare($sql4);
     $stmt->execute(['email'=>$enter_email,'username'=>$enter_user]);
     $post = $stmt->fetchAll();
-    var_dump($post);
     $e_found = NULL;
     $n_found = NULL;
     foreach($post as $post)

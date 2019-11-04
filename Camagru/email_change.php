@@ -14,9 +14,9 @@
 </body>
 </html>
 <?php
-$email1= trim($_POST['old_email']);
-$new_email1 = trim($_POST['new_email1']);
-$new_email2 = trim($_POST['new_email2']);
+$email1= htmlspecialchars(strip_tags(trim($_POST['old_email'])));
+$new_email1 = htmlspecialchars(strip_tags(trim($_POST['new_email1'])));
+$new_email2 = htmlspecialchars(strip_tags(trim($_POST['new_email2'])));
 
 if (isset($_POST['new_email']))
 {
@@ -28,7 +28,6 @@ if (isset($_POST['new_email']))
     $stmt->execute([$email1]);
     $post = $stmt->fetchAll();
     
-    //var_dump($post);
     foreach($post as $post)
     {
         $email_found2 = $post->email;

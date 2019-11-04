@@ -14,9 +14,9 @@
 </body>
 </html>
 <?php
-$email1= trim($_POST['email_new']);
-$pass1 = trim($_POST['email_pass1']);
-$pass2 = trim($_POST['email_pass2']);
+$email1= htmlspecialchars(strip_tags(trim($_POST['email_new'])));
+$pass1 = htmlspecialchars(strip_tags(trim($_POST['email_pass1'])));
+$pass2 = htmlspecialchars(strip_tags(trim($_POST['email_pass2'])));
 include "error_input_check.php";
 if (isset($_POST['new_sub']) && error_check_input("Empty",$email1,$pass1,$pass2) == -1)
 {

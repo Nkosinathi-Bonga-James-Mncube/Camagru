@@ -22,7 +22,6 @@ if (isset($_POST['submit']))
 {
     $product_image = $_FILES['image1']['name'];
     $product_image_tmp = $_FILES['image1']['tmp_name'];
-    //$location = $_FILES['images1'][''];
     if (move_uploaded_file($product_image_tmp, "new22/$product_image"))
     {   
         echo ("Successfully uploaded");
