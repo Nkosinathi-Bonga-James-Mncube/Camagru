@@ -14,6 +14,7 @@
 </body>
 </html>
 <?php
+session_start();
 $old_user= trim($_POST['old_user']);
 $new_user1 = trim($_POST['new_user1']);
 $new_user2 = trim($_POST['new_user2']);

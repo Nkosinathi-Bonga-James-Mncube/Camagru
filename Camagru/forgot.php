@@ -33,7 +33,7 @@ if (isset($_POST['forgot_send']))
         $email_found = $post->email;
         $vkey = $post->verf;
     }
-    if ($email_enter == $email_found)
+    if (($email_enter == $email_found) && !(($email_enter == NULL) && ($email_found == NULL)))
     {
         include "forgot_email.php";
         echo ("Password reset email has been sent.Please check your email");

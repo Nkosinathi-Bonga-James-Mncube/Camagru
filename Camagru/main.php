@@ -12,7 +12,7 @@ foreach($post as $post){
     $vkey_check = $post->verf;
     $_name_hold = $post->username;
 }
-$_SESSION['username'] =$_name_hold;
+$_SESSION['verf_no'] =$vkey_check;
 ?>
 <html>
     <head>
@@ -26,10 +26,11 @@ $_SESSION['username'] =$_name_hold;
         <li><a href="email_change.php">Change Email</a></li>
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="upload.php">Upload images</a></li>
+        <li><a href="grid.php">Gallery Edit page</a></li>
         
         </ul>
         <div >
-            <h1>Hello <?php echo($_SESSION['username'])?></h1>
+            <h1>Hello <?php echo($_SESSION['verf_no'])?></h1>
         </div>
     </nav>
     </body>

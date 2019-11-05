@@ -45,4 +45,24 @@
      }
  
  }
+ 
+ function check_image($p1,$input_image,$pic_loc)
+ {
+     if ($_FILES[$input_image]['size'] > 10485760)
+     {
+         echo ("Image is too big");
+         return (1);
+    }
+    if(!(pathinfo($p1,PATHINFO_EXTENSION) == 'jpg'|| pathinfo($p1,PATHINFO_EXTENSION) == 'png'|| pathinfo($p1,PATHINFO_EXTENSION) == 'bmp' || pathinfo($p1,PATHINFO_EXTENSION) == 'jpeg'))
+    {
+     echo ("Not a valid filetype. Please uplaod '.jpg','.jpeg', '.bmp' or '.bmp'");
+     return (1);
+    }
+    if (get_image($pic_loc) != NULL)
+    {
+        echo("Filename already exist.Please rename your image");
+        return (1);
+    }
+    return(-1);
+} 
 ?>
