@@ -22,6 +22,7 @@ if (isset($_POST['new_email']))
 {
     include "config/database.php";
     include "config/setup.php";
+    include "error_input_check.php";
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
     $sql10 = 'SELECT * FROM table1 WHERE email = ?';
     $stmt = $pdo->prepare($sql10);
@@ -33,7 +34,7 @@ if (isset($_POST['new_email']))
         $email_found2 = $post->email;
         $name_found = $post->username;
     }
-    if (($new_email1 == $new_email2) && ($email_found2 == $email1))
+    if ( (filter_var($new_email1,FILTER_VALIDATE_EMAIL)|| filter_var($new_email2,FILTER_VALIDATE_EMAIL))&& ($new_email1 == $new_email2) && ($email_found2 == $email1) && search_dup_new_name($new_email1,NULL) == NULL)
     {
         $sql2 ='UPDATE table1 SET email = :email WHERE username = :username';
         $stmt1 = $pdo->prepare($sql2);
@@ -45,6 +46,8 @@ if (isset($_POST['new_email']))
         echo("Possbile issues :". "<br>");
         echo ("1.New email address do not match. Please re-enter"."<br>");
         echo ("2.Old Email is incorrect/doesnt exist.Please re-enter"."<br>");
+        echo ("3.Email address has already been taken.Please re-enter"."<br>");
+        echo ("4.Email address is invaid format.Please re-enter"."<br>");
     }
 }
 

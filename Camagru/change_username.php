@@ -11,7 +11,7 @@ session_start();
         <h2>username<input type="text" name="old_user" placeholder="email"></h2>
         <h2>new username<input type="text" name="new_user1" placeholder="password"></h2>
         <h3>re-enter username<input type="text" name="new_user2" placeholder="re-enter password"></h3>
-        <button type="submit" name="new_user">Change email</button>
+        <button type="submit" name="new_user">Change username</button>
     </form>
     <nav>
         <ul>
@@ -29,6 +29,7 @@ if (isset($_POST['new_user']))
 {
     include "config/database.php";
     include "config/setup.php";
+    include "error_input_check.php";
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
     $sql11 = 'SELECT * FROM table1 WHERE username = ?';
     $stmt = $pdo->prepare($sql11);
@@ -40,7 +41,7 @@ if (isset($_POST['new_user']))
         $username_found = $post->username;
         $email_found = $post->email;
     }
-    if (($new_user1 == $new_user2) && ($username_found == $old_user))
+    if (($new_user1 == $new_user2) && ($username_found == $old_user) && search_dup_new_name(NULL,$new_user1) == NULL)
     {
         $sql2 ='UPDATE table1 SET username = :username WHERE email = :email';
         $stmt1 = $pdo->prepare($sql2);
@@ -52,5 +53,6 @@ if (isset($_POST['new_user']))
         echo("Possbile issues :". "<br>");
         echo ("1.New usernames do not match. Please re-enter"."<br>");
         echo ("2.Old username is incorrect/doesnt exist.Please re-enter"."<br>");
+        echo ("2.Username has already been taken.Please re-enter"."<br>");
     }
 }

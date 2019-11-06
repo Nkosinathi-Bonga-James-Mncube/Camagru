@@ -15,6 +15,7 @@ $pic_value = $_GET['p'];
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="upload.php">Upload images</a></li>
         <li><a href="grid.php">Gallery Edit page</a></li>
+        <li><a href="main.php">Back to main</a></li>
         </ul>
     </nav>
     <h1>Comments for <?php echo($pic_value)?></h1>

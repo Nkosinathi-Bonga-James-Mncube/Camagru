@@ -1,12 +1,14 @@
 <?php
 session_start();
+
 if(!isset($_SESSION['verf_no']))
 {
 
     include "config/database.php";
     include "config/setup.php";
-    $vkey = $_GET['vkey'];
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
+    include "get_name.php";
+    //$vkey = $_GET['vkey'];
+    /*$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
     $sql1 = 'SELECT * FROM table1 WHERE verf = ?';
     $stmt = $pdo->prepare($sql1);
     $stmt->execute([$vkey]);
@@ -15,8 +17,10 @@ if(!isset($_SESSION['verf_no']))
         $vkey_check = $post->verf;
         $_name_hold = $post->username;
     }
-    $_SESSION['verf_no'] = $vkey_check;
-    $_SESSION['username'] = $_name_hold;
+    $_SESSION['verf_no'] = $vkey_check;*/
+    $_SESSION['verf_no'] = $_GET['vkey'];
+    $_SESSION['username'] = get_name($vkey_check);
+    echo($_SESSION['verf_no']);
 }
 ?>
 <html>
@@ -36,7 +40,7 @@ if(!isset($_SESSION['verf_no']))
         
         </ul>
         <div >
-            <h1>Hello <?php echo($_SESSION['username'])?></h1>
+            <h1>Hello <?php include "get_name.php"; echo(get_name($_SESSION['verf_no']))?>!</h1>
         </div>
     </nav>
     </body>

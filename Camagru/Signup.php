@@ -33,6 +33,7 @@ if (isset($_POST['create_button']))
         $enter_pass2 = htmlspecialchars(strip_tags(trim($_POST['create_pass2'])));
     if (error_check_input($enter_user,$enter_email,$enter_pass1,$enter_pass2) == -1)
     {
+        //echo "including create_user.php <br/>";
         include "create_user.php";
     }
 }

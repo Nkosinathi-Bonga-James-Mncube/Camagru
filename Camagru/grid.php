@@ -14,6 +14,7 @@ session_start();
         <li><a href="email_change.php">Change Email</a></li>
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="upload.php">Upload images</a></li>
+        <li><a href="main.php">Back to main</a></li>
         </ul>
         <div >
             <h1><u>Gallery Section</u></h1>
@@ -25,7 +26,7 @@ session_start();
        include "config/database.php";
        include "config/setup.php";
        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
-       $sql = 'SELECT * FROM table2 WHERE email = ?';
+       $sql = 'SELECT * FROM table2 WHERE verf_code = ?';
        $stmt = $pdo->prepare($sql);
        $stmt->execute([$_SESSION['verf_no']]);
        $post = $stmt->fetchAll();

@@ -63,7 +63,7 @@ if (isset($_POST['submit']))
         include "config/database.php";
         include "config/setup.php";
         $sql2 = "CREATE TABLE IF NOT EXISTS table2(
-            userID INT NOT NULL AUTO_INCREMENT,email VARCHAR(64),pic_location VARCHAR(64),PRIMARY KEY(userID)
+            userID INT NOT NULL AUTO_INCREMENT,verf_code VARCHAR(64),TIME,pic_location VARCHAR(64),PRIMARY KEY(userID)
             );";
         $pdo->exec($sql2);
         //$pdo =  NULL;
@@ -78,8 +78,8 @@ if (isset($_POST['submit']))
     {
         include "config/setup.php";
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
-        $sql3 = $pdo->prepare("INSERT INTO table2 (email,pic_location) VALUES (:email,:pic_location)");
-        $sql3->execute(['email'=>$_SESSION['verf_no'],'pic_location'=> $pic_loc]);
+        $sql3 = $pdo->prepare("INSERT INTO table2 (verf_code,pic_location) VALUES (:verf_code,:pic_location)");
+        $sql3->execute(['verf_code'=>$_SESSION['verf_no'],'pic_location'=> $pic_loc]);
     }
     catch(PDOException $e2)
     {
