@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 <head>
     <link rel = "stylesheet" href="style.css">
@@ -11,16 +14,14 @@
         <li><a href="email_change.php">Change Email</a></li>
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="upload.php">Upload images</a></li>
-        <li><a href="grid.php">Gallery Edit page</a></li>
         </ul>
         <div >
-            <h1>Hello User!</h1>
+            <h1><u>Gallery Section</u></h1>
         </div>
     </nav>
 <section class="container">
     <div class="gallery-container">
         <?php
-        session_start();
        include "config/database.php";
        include "config/setup.php";
        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);

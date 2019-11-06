@@ -34,10 +34,6 @@ if (isset($_POST['create_button']))
     if (error_check_input($enter_user,$enter_email,$enter_pass1,$enter_pass2) == -1)
     {
         include "create_user.php";
-        //echo ("working");
-        //header("url=verf_mail.php");
-        //header('Location: create_user.php');
-        //header("url=create_user.php");
     }
 }
 

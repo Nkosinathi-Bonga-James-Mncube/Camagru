@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+session_start();
+
+?>
 <html>
 <head>
 </head>
@@ -10,11 +13,14 @@
         <h3>re-enter username<input type="text" name="new_user2" placeholder="re-enter password"></h3>
         <button type="submit" name="new_user">Change email</button>
     </form>
-    <a href = 'http://localhost:8080/Camagru/main.php'>Back to main</a>
+    <nav>
+        <ul>
+        <li><a href="main.php">Back to main</a></li>
+        </ul>
+    </nav>
 </body>
 </html>
 <?php
-session_start();
 $old_user= trim($_POST['old_user']);
 $new_user1 = trim($_POST['new_user1']);
 $new_user2 = trim($_POST['new_user2']);
