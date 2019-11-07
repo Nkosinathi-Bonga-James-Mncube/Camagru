@@ -69,10 +69,14 @@
 function search_dup_new_name($enter_email,$enter_user)
 {
     
+    
     include "config/database.php";
-    include "config/setup.php";
+    include_once "config/connection.php";
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    //include "config/database.php";
+    //include "config/setup.php";
     //$pdo = new PDO($DB_DSN,$DB_USER,$DB_PASSWORD);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
+    //$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
     $sql4 = 'SELECT * FROM table1 WHERE email = :email OR username = :username';
     $stmt = $pdo->prepare($sql4);
     $stmt->execute(['email'=>$enter_email,'username'=>$enter_user]);
@@ -80,8 +84,12 @@ function search_dup_new_name($enter_email,$enter_user)
     $bfound =NULL;
     foreach($post as $post)
     {
-        $e_found = $post->email;
-        $n_found = $post->username;
+        
+        $e_found = $post['email'];
+        $n_found = $post['username'];
+
+        //$e_found = $post->email;
+        //$n_found = $post->username;
     }
     if ($enter_email == NULL && $enter_user == isset($n_found))
     {

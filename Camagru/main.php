@@ -4,9 +4,9 @@ session_start();
 if(!isset($_SESSION['verf_no']))
 {
 
-    include "config/database.php";
-    include "config/setup.php";
-    include "get_name.php";
+    //include "config/database.php";
+    //include "config/setup.php";
+    //include "get_name.php";
     //$vkey = $_GET['vkey'];
     /*$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
     $sql1 = 'SELECT * FROM table1 WHERE verf = ?';

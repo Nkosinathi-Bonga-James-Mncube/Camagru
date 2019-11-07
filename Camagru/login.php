@@ -17,11 +17,15 @@
 <?php
 if (isset($_POST['login_sub']))
 {
+    
     include "config/database.php";
-    include "config/setup.php";
+    include_once "config/connection.php";
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    //include "config/database.php";
+    //include "config/setup.php";
     $login_user = htmlspecialchars(strip_tags(trim($_POST['login_user'])));
     $login_pass = htmlspecialchars(strip_tags(trim($_POST['login_pass'])));
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
+    //$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
     $sql7 = 'SELECT * FROM table1 WHERE username = ?';
     $stmt = $pdo->prepare($sql7);
     $stmt->execute([$login_user]);
@@ -29,9 +33,13 @@ if (isset($_POST['login_sub']))
 
     foreach($post as $post)
     {
-        $p_found = $post->pass;
-        $is_valid = $post->valid;
-        $vkey = $post->verf;
+        $p_found = $post['pass'];
+        $is_valid = $post['valid'];
+        $vkey = $post['verf'];
+
+        //$p_found = $post->pass;
+        //$is_valid = $post->valid;
+        //$vkey = $post->verf;
     }
     if (!$p_found)
     {
@@ -41,7 +49,7 @@ if (isset($_POST['login_sub']))
     {
         if ($is_valid == 1)
         {
-            $test1 = "hello";
+            //$test1 = "hello";
             //echo ("valid user");n 
             header("Location: http://localhost:8080/Camagru/main.php?vkey=$vkey");
         

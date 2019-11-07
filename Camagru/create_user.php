@@ -10,21 +10,22 @@ $enter_pass1 = htmlspecialchars(strip_tags(trim($_POST['create_pass1'])));
 $bfound = NULL;
 $h_pass = password_hash($enter_pass1,PASSWORD_DEFAULT);
 $vkey = md5(time().$enter_user);
-echo ($enter_user. "<br>");
+//echo ($enter_user. "<br>");
 
 include_once "search_dup.php";
-
+include_once "config/database.php";
+include_once "config/connection.php";
 if (search_dup($enter_email,$enter_user) == NULL)
 {
-    echo "Search for dub. <br/>";
+    //echo "Search for dub. <br/>";
     try
     {
-        include_once "config/database.php";
-        include_once "config/connection.php";
+        // include_once "config/database.php";
+        // include_once "config/connection.php";
         
-        echo "DB_DSN = $DB_DSN <br/>";
-        echo "DB_USER = $DB_USER <br/>";
-        echo "DB_PASSWORD = $DB_PASSWORD <br/>";
+        //echo "DB_DSN = $DB_DSN <br/>";
+        //echo "DB_USER = $DB_USER <br/>";
+        //echo "DB_PASSWORD = $DB_PASSWORD <br/>";
         
         $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
        

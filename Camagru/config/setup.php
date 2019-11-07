@@ -2,9 +2,9 @@
 include "database.php";
 include "connection.php";
 
-ini_set('display_errors', 1); 
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1); 
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
 
 $servername = $DB_DSN;
 $username = $DB_USER;
