@@ -37,7 +37,7 @@ if ($_POST['submit'] && $_POST['comment'] && $_SESSION['verf_no'])
     $time = date("h:ia");
 
 
-    try{
+    /*try{
         include "config/database.php";
         include "config/setup.php";
         $sql2 = "CREATE TABLE IF NOT EXISTS table3(
@@ -50,7 +50,7 @@ if ($_POST['submit'] && $_POST['comment'] && $_SESSION['verf_no'])
     {
         echo $sql2 . "<br>" . $e1->getMessage();
         $pdo =  NULL;
-    } 
+    }*/ 
 
     /*try
     {

@@ -18,12 +18,17 @@ if (isset($_POST['forgot_send']))
 {
   
 
-    include "config/database.php";
-    include "config/setup.php";
+    //include "config/database.php";
+    //include "config/setup.php";
+    //$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
+    //$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    
     $email_enter = $_POST['email_enter'];
-    echo($email_enter);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    //echo($email_enter);
+    include "config/database.php";
+    include_once "config/connection.php";
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    
     $sql8 = 'SELECT * FROM table1 WHERE email = ?';
     $stmt = $pdo->prepare($sql8);
     $stmt->execute([$email_enter]);

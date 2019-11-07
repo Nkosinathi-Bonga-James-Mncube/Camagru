@@ -48,7 +48,8 @@
  
  function check_image($p1,$input_image,$pic_loc)
  {
-     if ($_FILES[$input_image]['size'] > 10485760)
+    //include "search_dup.php"; 
+    if ($_FILES[$input_image]['size'] > 10485760)
      {
          echo ("Image is too big");
          return (1);

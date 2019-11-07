@@ -58,39 +58,38 @@ if (isset($_POST['submit']))
             {
                 echo("Please upload an image");
             }
+            
 
-    try{
-        include "config/database.php";
-        include "config/setup.php";
-        $sql2 = "CREATE TABLE IF NOT EXISTS table2(
-            userID INT NOT NULL AUTO_INCREMENT,verf_code VARCHAR(64),TIME,pic_location VARCHAR(64),PRIMARY KEY(userID)
-            );";
-        $pdo->exec($sql2);
+        /*try{
+            include "config/database.php";
+            include "config/setup.php";
+            $sql2 = "CREATE TABLE IF NOT EXISTS table2(
+                userID INT NOT NULL AUTO_INCREMENT,verf_code VARCHAR(64),TIME,pic_location VARCHAR(64),PRIMARY KEY(userID)
+                );";
+            $pdo->exec($sql2);
         //$pdo =  NULL;
-    }
-    catch(PDOException $e1)
-    {
-        echo $sql2 . "<br>" . $e1->getMessage();
-        $pdo =  NULL;
-    } 
-    
-    try
-    {
-        include "config/setup.php";
-        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
-        $sql3 = $pdo->prepare("INSERT INTO table2 (verf_code,pic_location) VALUES (:verf_code,:pic_location)");
-        $sql3->execute(['verf_code'=>$_SESSION['verf_no'],'pic_location'=> $pic_loc]);
-    }
-    catch(PDOException $e2)
-    {
-        echo $sql2 . "<br>" . $e2->getMessage();
+        }
+        catch(PDOException $e1)
+        {
+            echo $sql2 . "<br>" . $e1->getMessage();
+            $pdo =  NULL;
+        }*/ 
+        try
+        {
+            include "config/database.php";
+            include_once "config/connection.php";
+            $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+            //include "config/setup.php";
+            //$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
+            $sql3 = $pdo->prepare("INSERT INTO images (verf_code,pic_location) VALUES (:verf_code,:pic_location)");
+            $sql3->execute(['verf_code'=>$_SESSION['verf_no'],'pic_location'=> $pic_loc]);
+        }
+        catch(PDOException $e2)
+        {
+            echo $sql2 . "<br>" . $e2->getMessage();
         //$pdo =  NULL;
-    }
-
-
-
+        }
 }
-
 }
 
 ?>

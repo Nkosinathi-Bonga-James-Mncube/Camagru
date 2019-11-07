@@ -43,9 +43,36 @@ try {
         userID INT NOT NULL AUTO_INCREMENT, username VARCHAR(64),email VARCHAR(64),pass VARCHAR(70),verf VARCHAR(70),valid INT(1),PRIMARY KEY(userID)
         );";
     $conn->exec($sql2);
-    echo "Table users successfully added. <br/>";   
+    echo "Table1 users successfully added. <br/>";   
 }
 catch (PDOException $ex) {
     echo "ERROR: could add table to database: " . $ex->getMessage(); 
 }
+
+try{
+    $sql3 = "CREATE TABLE IF NOT EXISTS comments(
+        userID INT NOT NULL AUTO_INCREMENT, pic_location VARCHAR(64),verf VARCHAR(64),PRIMARY KEY(userID)
+        );";
+    $conn->exec($sql3);
+    echo "Comments successfully added. <br/>"; 
+    //$pdo =  NULL;
+}
+catch(PDOException $e1)
+{
+    echo $sql3 . "<br>" . $e1->getMessage();
+    $pdo =  NULL;
+}
+ try{
+     $sql4 = "CREATE TABLE IF NOT EXISTS images(
+        userID INT NOT NULL AUTO_INCREMENT,verf_code VARCHAR(64),pic_location VARCHAR(64),PRIMARY KEY(userID)
+                );";
+                 
+            $conn->exec($sql4);
+            echo "images successfully added. <br/>";
+        }
+catch(PDOException $e4)
+{
+    echo $sql2 . "<br>" . $e4->getMessage();
+    $pdo =  NULL;
+}  
 ?>
