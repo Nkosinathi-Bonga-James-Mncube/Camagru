@@ -35,8 +35,10 @@ if (isset($_POST['new_sub']) && error_check_input("Empty",$email1,$pass1,$pass2)
     
     foreach($post as $post)
     {
-        $email_found = $post->email;
-        $vkey1 = $post->verf;
+        $email_found = $post['email'];
+        $vkey1 = $post['verf'];
+        //$email_found = $post->email;
+        //$vkey1 = $post->verf;
     }
     if (($pass1 == $pass2) && ($email_found == $email1) && ($vkey1 == $_GET['vkey']))
     {

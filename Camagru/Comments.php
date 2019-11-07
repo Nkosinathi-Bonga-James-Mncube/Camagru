@@ -29,8 +29,9 @@ $pic_value = $_GET['p'];
 <?php
     //echo ($_SESSION['verf_no']);
 //if ($_POST['submit'])
-if ($_POST['submit'] && $_POST['comment'] && $_SESSION['verf_no'])
+if (isset($_POST['submit']))
 {
+    echo("Hello");
     include "get_name.php";
     $comment = $_POST['comment'];
     $date = date("d-l-y");

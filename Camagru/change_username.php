@@ -21,9 +21,7 @@ session_start();
 </body>
 </html>
 <?php
-$old_user = htmlspecialchars(strip_tags(trim($_POST['old_user'])));
-$new_user1 = htmlspecialchars(strip_tags(trim($_POST['new_user1'])));
-$new_user2 = htmlspecialchars(strip_tags(trim($_POST['new_user2'])));
+
 
 //echo($old_user);
 //echo($new_user1); 
@@ -35,7 +33,9 @@ include "error_input_check.php";
 $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
 if (isset($_POST['new_user']))
 {
-   
+    $old_user = htmlspecialchars(strip_tags(trim($_POST['old_user'])));
+    $new_user1 = htmlspecialchars(strip_tags(trim($_POST['new_user1'])));
+    $new_user2 = htmlspecialchars(strip_tags(trim($_POST['new_user2'])));
     //include "config/database.php";
     //include "config/setup.php";
     //include "error_input_check.php";
@@ -62,8 +62,7 @@ if (isset($_POST['new_user']))
         //$username_found = $post->username;
         //$email_found = $post->email;
     }
-    echo($username_found);
-    
+   
     if (($new_user1 == $new_user2) && ($username_found == $old_user) && search_dup_new_name(NULL,$new_user1) == NULL)
     {   
         include "config/database.php";

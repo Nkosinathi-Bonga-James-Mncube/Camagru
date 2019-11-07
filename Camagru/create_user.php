@@ -1,8 +1,8 @@
 <?php
 
-ini_set('display_errors', 1); 
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1); 
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
 
 $enter_user = htmlspecialchars(strip_tags(trim($_POST['create_user'])));
 $enter_email = htmlspecialchars(strip_tags(trim($_POST['create_email'])));

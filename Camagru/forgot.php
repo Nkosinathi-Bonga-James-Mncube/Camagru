@@ -35,8 +35,10 @@ if (isset($_POST['forgot_send']))
     $post = $stmt->fetchAll();
     foreach($post as $post)
     {
-        $email_found = $post->email;
-        $vkey = $post->verf;
+        $email_found = $post['email'];
+        $vkey = $post['verf'];
+        //$email_found = $post->email;
+        //$vkey = $post->verf;
     }
     if (($email_enter == $email_found) && !(($email_enter == NULL) && ($email_found == NULL)))
     {

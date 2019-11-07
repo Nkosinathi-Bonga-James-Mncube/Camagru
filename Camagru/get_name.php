@@ -12,7 +12,7 @@
         $stmt = $pdo->prepare($sql11);
         $stmt->execute([$value]);
         $post = $stmt->fetchAll();
-        //var_dump($post);
+        var_dump($post);
         foreach($post as $post)
         {
             $n_found = $post['username'];
