@@ -3,7 +3,7 @@ session_start();
 ?>
 <html>
 <head>
-    <link rel = "stylesheet" href="style.css">
+    <link rel = "stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -31,7 +31,7 @@ session_start();
         $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
 
        //$sql = 'SELECT * FROM table2 WHERE verf_code = ?';
-       $sql = 'SELECT * FROM images WHERE verf_code = ?';
+       $sql = 'SELECT * FROM images WHERE verf_code = ?  ORDER BY created DESC';
        $stmt = $pdo->prepare($sql);
        $stmt->execute([$_SESSION['verf_no']]);
        $post = $stmt->fetchAll();

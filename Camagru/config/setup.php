@@ -64,7 +64,7 @@ catch(PDOException $e1)
 }
  try{
      $sql4 = "CREATE TABLE IF NOT EXISTS images(
-        userID INT NOT NULL AUTO_INCREMENT,verf_code VARCHAR(64),pic_location VARCHAR(64),PRIMARY KEY(userID)
+        userID INT NOT NULL AUTO_INCREMENT,verf_code VARCHAR(64),created DATETIME DEFAULT CURRENT_TIMESTAMP,pic_location VARCHAR(64),PRIMARY KEY(userID)
                 );";
                  
             $conn->exec($sql4);

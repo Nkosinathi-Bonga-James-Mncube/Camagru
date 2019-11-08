@@ -26,7 +26,7 @@ if(!isset($_SESSION['verf_no']))
     $_SESSION['verf_no'] = $vkey_check;
     //$_SESSION['verf_no'] = $_GET['vkey'];
       //$here = get_name($vkey_check);
-    echo($_SESSION['verf_no']);
+
 }
 ?>
 <html>
@@ -49,5 +49,17 @@ if(!isset($_SESSION['verf_no']))
             <h1>Hello!</h1>
         </div>
     </nav>
+    <video width="640" height="400" id="video" name = "vid1"></video>
+    <canvas id="canvas1" width="640" height="400" style= ""></canvas>
+    <div class = "output">
+        <img id = "photo">
+    </div> 
+    <form action="" method="post">
+    <button onclick= "takepicture()"id ="take" name = "image1">get image</button>
+    <script src="js/webcam.js"></script>
+    </form>
     </body>
 </html>
+<?php
+
+?>

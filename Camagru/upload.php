@@ -35,18 +35,7 @@ if (isset($_POST['submit']))
     $product_image = $_FILES['image1']['name'];
     $product_image_tmp = $_FILES['image1']['tmp_name'];
     $pic_loc = "new22/$product_image";
-    /**if ($_FILES['image1']['size'] > 10485760)
-    {
-        echo ("Image is too big");
-    }else if(!(pathinfo($product_image,PATHINFO_EXTENSION) == 'jpg'|| pathinfo($product_image,PATHINFO_EXTENSION) == 'png'|| pathinfo($product_image,PATHINFO_EXTENSION) == 'bmp' || pathinfo($product_image,PATHINFO_EXTENSION) == 'jpeg'))
-    {
-        echo ("Not a valid filetype. Please uplaod '.jpg','.jpeg', '.bmp' or '.bmp'");
-    }else if (get_image($pic_loc) != NULL)
-    {
-        echo("Filename already exist.Please rename your image");
-    }
-    else
-    {**/
+
         include "error_input_check.php";
         if (check_image($product_image,'image1',$pic_loc) == -1)
         {
@@ -58,22 +47,6 @@ if (isset($_POST['submit']))
             {
                 echo("Please upload an image");
             }
-            
-
-        /*try{
-            include "config/database.php";
-            include "config/setup.php";
-            $sql2 = "CREATE TABLE IF NOT EXISTS table2(
-                userID INT NOT NULL AUTO_INCREMENT,verf_code VARCHAR(64),TIME,pic_location VARCHAR(64),PRIMARY KEY(userID)
-                );";
-            $pdo->exec($sql2);
-        //$pdo =  NULL;
-        }
-        catch(PDOException $e1)
-        {
-            echo $sql2 . "<br>" . $e1->getMessage();
-            $pdo =  NULL;
-        }*/ 
         try
         {
             include "config/database.php";
