@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "likes.php";
 $pic_value = $_GET['p'];
 ?>
 <!DOCTYPE html>
@@ -17,25 +18,42 @@ $pic_value = $_GET['p'];
         <li><a href="grid.php">Gallery Edit page</a></li>
         <li><a href="main.php">Back to main</a></li>
         </ul>
-    </nav>
+</nav>
+
     <h1>Comments for <?php echo($pic_value)?></h1>
-    <form action="" method="post">
-    Enter you comment here : <br><textarea rows = "10" cols = "30" name = "comment"> </textarea> <br/>
-    <br>
-    <input type = "submit" name = "submit"><br/>
+    
+    <form action="" method="post">  
+    Comments: <br><textarea rows = "10" cols = "70" name = "comment"> <?php echo(get_comments()."<br>")?></textarea> <br/>
     </form>
+    <form action="" method="post">  
+    Enter you comment here : <br><textarea rows = "5" cols = "70" name = "comment"> <?php echo(get_comments())?>"<br>"</textarea> <br/>
+    <br>
+    <input type = "submit" name = "Comment_section">
+    <form action = "" method ="post">
+    <button type = "submit" id = "button1" name = "button1"><?php echo(get_likes(). " likes from you")?></button>
+    </form>
+
+    </form>
+    
 </body>
 </html>
 <?php
-    //echo ($_SESSION['verf_no']);
-//if ($_POST['submit'])
-if (isset($_POST['submit']))
+if (isset($_POST['button1']))
 {
-    echo("Hello");
-    include "get_name.php";
+    get_update();
+}
+if (isset($_POST['Comment_section']))
+{
+    get_insert();
+    //get_comments();
+}
+
+    /*include "get_name.php";
     $comment = $_POST['comment'];
     $date = date("d-l-y");
     $time = date("h:ia");
+    include "likes.php";
+    echo get_likes();*/
 
 
     /*try{
@@ -71,5 +89,5 @@ if (isset($_POST['submit']))
     $hold = fopen("comments.php", "a");
     fwrite($hold,"<b>".$name."($date)</b>:<br/>".$comment. "<br/>");
     fclose($hold);*/
-}
+
 ?>

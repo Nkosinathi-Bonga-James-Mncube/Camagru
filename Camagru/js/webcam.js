@@ -1,4 +1,6 @@
+const video = document.getElementById("video");
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+const button = document.getElementById("button");
 
 if (navigator.getUserMedia){
    navigator.getUserMedia({
@@ -16,28 +18,38 @@ if (navigator.getUserMedia){
 else{
    console.log("getUserMedia not supported");
 }
-var video = document.getElementById('video');
-var canvas = document.getElementById('canvas1');
-var context= canvas.getContext('2d'); 
-var data  = canvas.toDataURL('image/png');
-var photo = photo.getElementById('photo');  
-function takepicture()
-{
-   
-   if (width && height)
-   {
-      canvas.width = width;
-      canvas.height = height;
-      context.drawImage(video,0,0,width,height);
 
-      var data = canvas.toDataURL('image.png');
-      photo.setAttribute('src',data);  
-   }else{
-      clearphoto();
-   }
-}
-//ajax  
-//decode from 
-//how to make an image from 64
-//image from String
-//function that convert 64 to data string 
+button.addEventListener("click", function(){
+   //alert("button click");
+   
+   /*Reference work from mnchabeleng-jhb-c5r9s10 
+   const canvas = document.getElementById("canvas");
+   const context = canvas.getContext("2d");
+   const output_img = document.getElementById("output_img");
+
+   canvas.width = video.videoWidth;
+   canvas.height = video.videoHeight;
+   context.drawImage(video, 0, 0);
+   let image_url = canvas.toDataURL();
+   output_img.src = image_url;
+
+   http = new XMLHttpRequest();
+   http.onreadystatechange = function(){
+      if (http.readyState === 4 && http.status === 200)
+      {
+         console.log(this.responseText);
+      }
+      if (http.status === 404)
+      {
+        console.log("file/resource not found");
+      }
+    };
+   let data = {data_url: image_url};
+   let json_data = JSON.stringify(data);
+   http.open("POST", "php/store_camera_image.php", true);
+   http.setRequestHeader( "Content-type", "application/json" );
+   http.send(json_data);
+   *Reference work from mnchabeleng-jhb-c5r9s10 
+   */
+   
+});

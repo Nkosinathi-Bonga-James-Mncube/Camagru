@@ -62,11 +62,12 @@ if (isset($_POST['submit']))
 
         try
         {
+            $p_name = pathinfo($product_image);
             include "config/database.php";
             include_once "config/connection.php";
             $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-            $sql4 = $pdo->prepare("INSERT INTO likes (verf_code,name_img) VALUES (:verf_code,:name_img)");
-            $sql4->execute(['verf_code'=>$_SESSION['verf_no'],'name_img'=>$_FILES['image1']['name']]);
+            $sql4 = $pdo->prepare("INSERT INTO likes (verf_code,likes,name_img) VALUES (:verf_code,:likes,:name_img)");
+            $sql4->execute(['verf_code'=>$_SESSION['verf_no'],'likes'=>'0','name_img'=>$p_name['filename']]);
         }
         catch(PDOException $e3)
         {

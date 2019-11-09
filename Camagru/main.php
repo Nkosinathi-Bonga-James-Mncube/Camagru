@@ -49,15 +49,11 @@ if(!isset($_SESSION['verf_no']))
             <h1>Hello!</h1>
         </div>
     </nav>
-    <video width="640" height="400" id="video" name = "vid1"></video>
-    <canvas id="canvas1" width="640" height="400" style= ""></canvas>
-    <div class = "output">
-        <img id = "photo">
-    </div> 
-    <form action="" method="post">
-    <button onclick= "takepicture()"id ="take" name = "image1">get image</button>
+    <video width="640" height="400" id="video"></video><br>
+    <canvas id="canvas" hidden></canvas><br>
+    <img id="output_img"><br>
+    <button id="button">capture image</button>
     <script src="js/webcam.js"></script>
-    </form>
     </body>
 </html>
 <?php

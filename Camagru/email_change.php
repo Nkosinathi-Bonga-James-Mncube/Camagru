@@ -58,7 +58,7 @@ if (isset($_POST['new_email']))
         
         $sql2 ='UPDATE table1 SET email = :email WHERE username = :username';
         $stmt1 = $pdo->prepare($sql2);
-        var_dump($pdo);
+        //var_dump($pdo);
         $stmt1->execute(['email'=>$new_email1,'username' => $name_found]);
         echo ("Email changed");
     }
