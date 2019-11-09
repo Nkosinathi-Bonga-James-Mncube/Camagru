@@ -36,6 +36,7 @@ if (isset($_POST['new_user']))
     $old_user = htmlspecialchars(strip_tags(trim($_POST['old_user'])));
     $new_user1 = htmlspecialchars(strip_tags(trim($_POST['new_user1'])));
     $new_user2 = htmlspecialchars(strip_tags(trim($_POST['new_user2'])));
+    $username_found = NULL;
     //include "config/database.php";
     //include "config/setup.php";
     //include "error_input_check.php";
@@ -51,8 +52,6 @@ if (isset($_POST['new_user']))
     $stmt = $pdo->prepare($sql1);
     $stmt->execute([$old_user]);
     $post = $stmt->fetchAll();
-    //var_dump($post);
-    
     foreach($post as $post)
     {
         

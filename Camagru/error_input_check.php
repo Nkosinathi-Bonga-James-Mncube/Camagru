@@ -83,7 +83,6 @@ function search_dup_new_name($enter_email,$enter_user)
     $stmt->execute(['email'=>$enter_email,'username'=>$enter_user]);
     $post = $stmt->fetchAll();
     $bfound =NULL;
-    var_dump($post);
     foreach($post as $post)
     {
         

@@ -23,6 +23,7 @@ if (isset($_POST['login_sub']))
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
     //include "config/database.php";
     //include "config/setup.php";
+    $p_found =NULL;
     $login_user = htmlspecialchars(strip_tags(trim($_POST['login_user'])));
     $login_pass = htmlspecialchars(strip_tags(trim($_POST['login_pass'])));
     //$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);

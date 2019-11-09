@@ -24,6 +24,7 @@ if (isset($_POST['forgot_send']))
     //$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     
     $email_enter = $_POST['email_enter'];
+    $email_found = NULL;
     //echo($email_enter);
     include "config/database.php";
     include_once "config/connection.php";

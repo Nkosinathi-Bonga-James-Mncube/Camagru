@@ -17,7 +17,6 @@ include_once "config/connection.php";
   $stmt = $pdo->prepare($sql6);
   $stmt->execute([$value]);
   $post = $stmt->fetchAll();
-  //var_dump($post);
   foreach($post as $post)
   {
     //echo ("done'");
