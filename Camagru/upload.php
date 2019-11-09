@@ -52,15 +52,25 @@ if (isset($_POST['submit']))
             include "config/database.php";
             include_once "config/connection.php";
             $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-            //include "config/setup.php";
-            //$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
-            $sql3 = $pdo->prepare("INSERT INTO images (verf_code,pic_location) VALUES (:verf_code,:pic_location)");
-            $sql3->execute(['verf_code'=>$_SESSION['verf_no'],'pic_location'=> $pic_loc]);
+            $sql3 = $pdo->prepare("INSERT INTO images (verf_code,name_img,pic_location) VALUES (:verf_code,:name_img,:pic_location)");
+            $sql3->execute(['verf_code'=>$_SESSION['verf_no'],'name_img'=>$_FILES['image1']['name'],'pic_location'=> $pic_loc]);
         }
         catch(PDOException $e2)
         {
             echo $sql2 . "<br>" . $e2->getMessage();
-        //$pdo =  NULL;
+        }
+
+        try
+        {
+            include "config/database.php";
+            include_once "config/connection.php";
+            $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+            $sql4 = $pdo->prepare("INSERT INTO likes (verf_code,name_img) VALUES (:verf_code,:name_img)");
+            $sql4->execute(['verf_code'=>$_SESSION['verf_no'],'name_img'=>$_FILES['image1']['name']]);
+        }
+        catch(PDOException $e3)
+        {
+            echo $sql2 . "<br>" . $e3->getMessage();
         }
 }
 }
