@@ -17,7 +17,7 @@ session_start();
         <li><a href="main.php">Back to main</a></li>
         </ul>
         <div >
-            <h1><u>Gallery Section</u></h1>
+            <h1><u>Public Gallery Section</u></h1>
         </div>
     </nav>
 <section class="container">

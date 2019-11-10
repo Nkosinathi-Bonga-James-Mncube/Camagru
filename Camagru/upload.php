@@ -10,7 +10,7 @@ session_start();
         <li><a href="forgot.php">Change Password</a></li>
         <li><a href="email_change.php">Change Email</a></li>
         <li><a href="change_username.php">Change Username</a></li>
-        <li><a href="grid.php">Gallery Edit page</a></li>
+        <li><a href="grid.php">Public Gallery page</a></li>
         <li><a href="main.php">Back to main</a></li>
         </ul>
     </nav>
@@ -31,6 +31,7 @@ $product_image = NULL;
 if (isset($_POST['submit']))
 {
     include "search_dup_img.php";
+    include "likes.php";
     $product_image = $_FILES['image1']['name'];
     $product_image_tmp = $_FILES['image1']['tmp_name'];
     $pic_loc = "new22/$product_image";
@@ -58,20 +59,23 @@ if (isset($_POST['submit']))
         {
             echo $sql2 . "<br>" . $e2->getMessage();
         }
-
+        
+        if (get_verf() == NULL && get_images() == NULL && get_likes_flag() == 0)
+        {
         try
         {
             $p_name = pathinfo($product_image);
             include "config/database.php";
             include_once "config/connection.php";
             $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-            $sql4 = $pdo->prepare("INSERT INTO likes (verf_code,likes,name_img) VALUES (:verf_code,:likes,:name_img)");
-            $sql4->execute(['verf_code'=>$_SESSION['verf_no'],'likes'=>'0','name_img'=>$p_name['filename']]);
+            $sql4 = $pdo->prepare("INSERT INTO likes (likes,verf_code,name_img) VALUES (:likes,:verf_code,:name_img)");
+            $sql4->execute(['likes'=>'0','verf_code'=>'0','name_img'=>$p_name['filename']]);
         }
         catch(PDOException $e3)
         {
             echo $sql2 . "<br>" . $e3->getMessage();
         }
+    }
 }
 }
 

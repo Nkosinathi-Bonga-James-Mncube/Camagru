@@ -31,7 +31,7 @@ if(!isset($_SESSION['verf_no']))
         <li><a href="email_change.php">Change Email</a></li>
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="upload.php">Upload images</a></li>
-        <li><a href="grid.php">Gallery Edit page</a></li>
+        <li><a href="grid.php">Public Gallery Edit page</a></li>
         <li><a href="logout.php">Log-out</a></li>
         
         </ul>

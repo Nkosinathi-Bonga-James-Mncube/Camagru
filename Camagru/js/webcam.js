@@ -20,10 +20,8 @@ else{
 }
 
 button.addEventListener("click", function(){
-   //alert("button click");
-   
-   /*Reference work from mnchabeleng-jhb-c5r9s10 
-   const canvas = document.getElementById("canvas");
+   alert("button click");
+   /*const canvas = document.getElementById("canvas");
    const context = canvas.getContext("2d");
    const output_img = document.getElementById("output_img");
 
@@ -48,8 +46,5 @@ button.addEventListener("click", function(){
    let json_data = JSON.stringify(data);
    http.open("POST", "php/store_camera_image.php", true);
    http.setRequestHeader( "Content-type", "application/json" );
-   http.send(json_data);
-   *Reference work from mnchabeleng-jhb-c5r9s10 
-   */
-   
+   http.send(json_data);*/
 });
