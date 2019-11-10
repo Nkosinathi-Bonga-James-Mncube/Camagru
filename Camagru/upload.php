@@ -27,7 +27,6 @@ session_start();
 </html>
 
 <?php
-//session_start();
 $product_image = NULL;
 if (isset($_POST['submit']))
 {

@@ -23,16 +23,10 @@ if (isset($_POST['new_email']))
     $new_email1 = htmlspecialchars(strip_tags(trim($_POST['new_email1'])));
     $new_email2 = htmlspecialchars(strip_tags(trim($_POST['new_email2'])));
     
-    
-    //include "config/database.php";
-    //include "config/setup.php";
     include "config/database.php";
     include_once "config/connection.php";
     
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-    
-    //include "error_input_check.php";
-    //$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
     $sql10 = 'SELECT * FROM table1 WHERE email = ?';
     $stmt = $pdo->prepare($sql10);
     $stmt->execute([$email1]);
@@ -43,15 +37,10 @@ if (isset($_POST['new_email']))
     {
         $email_found2 = $post['email'];
         $name_found = $post['username'];
-
-        //$email_found2 = $post->email;
-        //$name_found = $post->username;
     }
     include "error_input_check.php";
     if (filter_var($new_email1,FILTER_VALIDATE_EMAIL) && ($new_email1 == $new_email2) && (isset($email_found2) == $email1) && search_dup_new_name($new_email1,NULL) == NULL)
     {
-        //filter_var($new_email1,FILTER_VALIDATE_EMAIL)
-        
         include "config/database.php";
         include_once "config/connection.php";
         $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);

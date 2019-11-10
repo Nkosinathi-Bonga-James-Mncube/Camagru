@@ -3,9 +3,6 @@
 function get_likes()
 {
     $value = $_GET['p'];
-    //echo($value. "<br>");
-    //echo($_SESSION['verf_no']."<br>");
-    //echo($value);
     include "config/database.php";
     include_once "config/connection.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
@@ -47,8 +44,8 @@ function get_insert()
         $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
         if ($_POST['comment'] != NULL)
         {
-            $sql3 = $pdo->prepare("INSERT INTO comments(comments,verf_no) VALUES (:comments,:verf_no)");
-            $sql3->execute(['comments'=>htmlspecialchars(strip_tags(trim($_POST['comment']))),'verf_no'=>$_SESSION['verf_no']]);
+            $sql3 = $pdo->prepare("INSERT INTO comments(comments,flag,verf_no) VALUES (:comments,:flag,:verf_no)");
+            $sql3->execute(['comments'=>htmlspecialchars(strip_tags(trim($_POST['comment']))),'flag'=>'1','verf_no'=>$_SESSION['verf_no']]);
         }
     }
     catch(PDOException $e2)
@@ -65,14 +62,15 @@ function get_comments()
     include_once "config/connection.php";
     include "get_name.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-    $sql5 = 'SELECT * FROM comments WHERE verf_no = :verf_no';
+    $sql5 = 'SELECT * FROM comments WHERE flag = :flag';
     $stmt = $pdo->prepare($sql5);
-    $stmt->execute(['verf_no'=>$_SESSION['verf_no']]);
+    $stmt->execute(['flag'=>'1']);
     $post= $stmt->fetchAll();
     foreach($post as $post)
     {
         $text_input = $post['comments'];
-        $name = trim(get_name($_SESSION['verf_no']));
+        $p_name = $post['verf_no'];
+        $name = trim(get_name($p_name));
         $date = date("H:iA",strtotime($post['created']));
         if ($text_input == NULL)
         {

@@ -31,7 +31,7 @@ $pic_value = $_GET['p'];
     <form action = "" method="post">
     <button type = "submit" name = "Comment_section">Add comment</button>
     <form action = "" method ="post">
-    <button type = "submit" id = "button1" name = "button1"><?php echo(get_likes(). " likes from you")?></button>
+    <button type = "submit" id = "button1" name = "button1"><?php echo(get_likes(). " likes")?></button>
     <button type = "submit" name = "Delete">Delete image</button>
     
     </form>

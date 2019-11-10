@@ -37,16 +37,6 @@ if (isset($_POST['new_user']))
     $new_user1 = htmlspecialchars(strip_tags(trim($_POST['new_user1'])));
     $new_user2 = htmlspecialchars(strip_tags(trim($_POST['new_user2'])));
     $username_found = NULL;
-    //include "config/database.php";
-    //include "config/setup.php";
-    //include "error_input_check.php";
-    //$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
-
-    //echo "DB_DSN = $DB_DSN <br/>";
-    //echo "DB_USER = $DB_USER <br/>";
-    //echo "DB_PASSWORD = $DB_PASSWORD <br/>";
-    //echo "DB_NAME = $DB_NAME <br/>";
-    //echo("USER :$old_user <br/>");
 
     $sql1 = 'SELECT * FROM table1 WHERE username = ?';
     $stmt = $pdo->prepare($sql1);
@@ -57,9 +47,6 @@ if (isset($_POST['new_user']))
         
         $username_found = $post['username'];
         $email_found = $post['email'];
-
-        //$username_found = $post->username;
-        //$email_found = $post->email;
     }
    
     if (($new_user1 == $new_user2) && ($username_found == $old_user) && search_dup_new_name(NULL,$new_user1) == NULL)

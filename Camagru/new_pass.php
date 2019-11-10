@@ -20,10 +20,6 @@ $pass2 = htmlspecialchars(strip_tags(trim($_POST['email_pass2'])));
 include "error_input_check.php";
 if (isset($_POST['new_sub']) && error_check_input("Empty",$email1,$pass1,$pass2) == -1)
 {
-    //include "config/database.php";
-    //include "config/setup.php";
-    //$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
-    
     include "config/database.php";
     include_once "config/connection.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
@@ -37,8 +33,6 @@ if (isset($_POST['new_sub']) && error_check_input("Empty",$email1,$pass1,$pass2)
     {
         $email_found = $post['email'];
         $vkey1 = $post['verf'];
-        //$email_found = $post->email;
-        //$vkey1 = $post->verf;
     }
     if (($pass1 == $pass2) && ($email_found == $email1) && ($vkey1 == $_GET['vkey']))
     {

@@ -51,7 +51,7 @@ catch (PDOException $ex) {
 
 try{
     $sql3 = "CREATE TABLE IF NOT EXISTS comments(
-        userID INT NOT NULL AUTO_INCREMENT, comments VARCHAR(255),created DATETIME DEFAULT CURRENT_TIMESTAMP,verf_no VARCHAR(64),PRIMARY KEY(userID)
+        userID INT NOT NULL AUTO_INCREMENT, comments VARCHAR(255),flag int(11),created DATETIME DEFAULT CURRENT_TIMESTAMP,verf_no VARCHAR(64),PRIMARY KEY(userID)
         );";
     $conn->exec($sql3);
     echo "Comments successfully added. <br/>"; 
