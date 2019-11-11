@@ -10,7 +10,7 @@ session_start();
         <li><a href="forgot.php">Change Password</a></li>
         <li><a href="email_change.php">Change Email</a></li>
         <li><a href="change_username.php">Change Username</a></li>
-        <li><a href="grid.php">Public Gallery page</a></li>
+        <li><a href="grid.php">Gallery page</a></li>
         <li><a href="main.php">Back to main</a></li>
         </ul>
     </nav>
@@ -41,6 +41,7 @@ if (isset($_POST['submit']))
         {
             if (move_uploaded_file($product_image_tmp, "new22/$product_image"))
             {
+   
                 echo ("Successfully uploaded");
             }
             else
@@ -51,9 +52,10 @@ if (isset($_POST['submit']))
         {
             include "config/database.php";
             include_once "config/connection.php";
+            $p_name = pathinfo($product_image);
             $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
             $sql3 = $pdo->prepare("INSERT INTO images (verf_code,name_img,pic_location) VALUES (:verf_code,:name_img,:pic_location)");
-            $sql3->execute(['verf_code'=>$_SESSION['verf_no'],'name_img'=>$_FILES['image1']['name'],'pic_location'=> $pic_loc]);
+            $sql3->execute(['verf_code'=>$_SESSION['verf_no'],'name_img'=>$p_name['filename'],'pic_location'=> $pic_loc]);
         }
         catch(PDOException $e2)
         {

@@ -8,6 +8,7 @@
         <h3>username<input type="text" name="login_user" placeholder="username"></h3>
         <h2>password<input type="password" name="login_pass" placeholder="password"></h2>
         <button type="submit" name="login_sub">Login</button>
+        <button type="submit" name="gallery_link">View Gallery</button>
     </form>
     <a href = 'http://localhost:8080/Camagru/Signup.php'>Sign-up</a>
     <br>
@@ -57,5 +58,8 @@ if (isset($_POST['login_sub']))
         echo ("Incorrect.Please check username and password");
     }
 }
-
+if (isset($_POST['gallery_link']))
+{
+    header("Location:http://localhost:8080/Camagru/P_gallery.php");
+}
 ?>

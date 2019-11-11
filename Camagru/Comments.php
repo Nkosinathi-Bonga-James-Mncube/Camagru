@@ -15,7 +15,7 @@ $pic_value = $_GET['p'];
         <li><a href="email_change.php">Change Email</a></li>
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="upload.php">Upload images</a></li>
-        <li><a href="grid.php">Public Gallery page</a></li>
+        <li><a href="grid.php">Gallery page</a></li>
         <li><a href="main.php">Back to main</a></li>
         </ul>
 </nav>
@@ -54,11 +54,15 @@ if (isset($_POST['button1']))
 }
 if (isset($_POST['Comment_section']))
 {
+    
     get_insert();
+    get_email();
 }
 
 if (isset($_POST['Delete']))
 {
+
     echo("Delete is working");
+    get_delete();
 }
 ?>
