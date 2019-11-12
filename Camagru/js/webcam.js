@@ -1,6 +1,8 @@
 const video = document.getElementById("video");
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 const button = document.getElementById("button");
+const save = document.getElementById("save");
+document.getElementById("save").style.visibility="hidden";
 
 if (navigator.getUserMedia){
    navigator.getUserMedia({
@@ -21,6 +23,7 @@ else{
 
 button.addEventListener("click", function(){
    //alert("button click");
+   document.getElementById("save").style.visibility="visible";
    const canvas = document.getElementById("canvas");
    const context = canvas.getContext("2d");
    const output_img = document.getElementById("output_img");
@@ -42,9 +45,11 @@ button.addEventListener("click", function(){
         console.log("file/resource not found");
       }
     };
-   let data = {data_url: image_url};
-   let json_data = JSON.stringify(data);
-   http.open("POST", "php/store_camera_image.php", true);
-   http.setRequestHeader( "Content-type", "application/json" );
-   http.send(json_data);
+    save.addEventListener("click", function(){
+      let data = {data_url: image_url};
+      let json_data = JSON.stringify(data);
+      http.open("POST", "php/store_camera_image.php", true);
+      http.setRequestHeader( "Content-type", "application/json" );
+      http.send(json_data);
+   });
 });

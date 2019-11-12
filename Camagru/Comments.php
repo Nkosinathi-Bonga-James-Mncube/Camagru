@@ -32,7 +32,7 @@ $pic_value = $_GET['p'];
     <button type = "submit" name = "Comment_section">Add comment</button>
     <form action = "" method ="post">
     <button type = "submit" id = "button1" name = "button1"><?php echo(get_likes(). " likes")?></button>
-    <button type = "submit" name = "Delete">Delete image</button>
+    <button type = "submit" name= "Delete">Delete image</button>
     
     </form>
 
@@ -56,13 +56,13 @@ if (isset($_POST['Comment_section']))
 {
     
     get_insert();
-    get_email();
+    //get_email();
 }
 
 if (isset($_POST['Delete']))
 {
 
-    echo("Delete is working");
+    //echo("Delete is working");
     get_delete();
 }
 ?>

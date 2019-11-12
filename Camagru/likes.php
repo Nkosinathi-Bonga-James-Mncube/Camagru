@@ -103,7 +103,7 @@ function get_update()
         $stmt1->execute(['verf_code'=>$_SESSION['verf_no'],'flag'=>'1','likes' =>$like_no,'name_img' => $_GET['p']]);
     }
   
-   // header("Refresh:0");
+   header("Refresh:0");
 }
 
 function get_insert()
@@ -124,7 +124,7 @@ function get_insert()
         echo $sql2 . "<br>" . $e2->getMessage();
         $pdo =  NULL;
     }
-    //header("Refresh:0");
+    header("Refresh:0");
 }
 
 function get_comments()
@@ -166,7 +166,7 @@ function get_delete()
     $stmt->execute(['name_img'=>$_GET['p'], 'verf_code'=>$_SESSION['verf_no']]);
     header("Location: http://localhost:8080/Camagru/grid.php");
 }
-function get_email()
+/*function get_email()
 {
     //echo(get_com_verf());
     //echo($email = get_com_verf());
@@ -196,5 +196,5 @@ function get_email()
     {
         echo ("There has been an issue sending your email. Please try again");
     }
-}
+}*/
 ?>

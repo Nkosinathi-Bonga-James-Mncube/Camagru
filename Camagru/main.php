@@ -17,7 +17,6 @@ if(!isset($_SESSION['verf_no']))
         $_name_hold = $post['username'];
     }
     $_SESSION['verf_no'] = $vkey_check;
-    echo($_SESSION['verf_no']);
 }
 ?>
 <html>
