@@ -29,10 +29,14 @@ $pic_value = $_GET['p'];
     Enter you comment here : <br><textarea style = "resize:none" rows = "1" cols = "40"  name = "comment"></textarea> <br/>
     <br>
     <form action = "" method="post">
+    
+    
+    
     <button type = "submit" name = "Comment_section">Add comment</button>
     <form action = "" method ="post">
-    <button type = "submit" id = "button1" name = "button1"><?php echo(get_likes(). " likes")?></button>
+    <button type = "submit" id = "likes" name = "likes"><?php echo(get_likes(). " likes")?></button>
     <button type = "submit" name= "Delete">Delete image</button>
+    <script src= "js/hide_note.js"><scritp>
     
     </form>
 
@@ -41,28 +45,24 @@ $pic_value = $_GET['p'];
 </body>
 </html>
 <?php
-if (isset($_POST['button1']))
-{
-    include "likes.php";
-    if (get_verf() != $_SESSION['verf_no'])
-    {
 
-        
-    }
-    else
-    get_update();
+
+if (isset($_POST['likes']))
+{
+    get_update($send_value);
 }
+
 if (isset($_POST['Comment_section']))
 {
-    
+ //echo "hello";
+    //echo(get_note());
+    //echo (get_note_flag());
+    //get_note_flag();
     get_insert();
-    //get_email();
 }
 
 if (isset($_POST['Delete']))
 {
-
-    //echo("Delete is working");
     get_delete();
 }
 ?>

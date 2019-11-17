@@ -6,21 +6,34 @@ function get_likes()
     include "config/database.php";
     include_once "config/connection.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-    $sql = 'SELECT * FROM likes WHERE name_img = :name_img';
+    $sql = 'SELECT * FROM likes WHERE name_img = :name_img AND verf_code = :verf_code';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['name_img'=>$value]);
+    $stmt->execute(['name_img'=>$value, 'verf_code'=>$_SESSION['verf_no']]);
     $post= $stmt->fetchAll();
+    //var_dump($post);
     foreach($post as $post)
     {
         $n_l = $post['likes'];
     }
+    if (!$n_l)
+    {
+        $n_l = 0;
+
+        if (get_verf() == NULL)
+        {
+            include "config/database.php";
+            include_once "config/connection.php";
+            $pdo = DB_Connection($DB_DSN,$DB_NAME,$DB_USER,$DB_PASSWORD);
+            $sql = $pdo->prepare("INSERT INTO likes(name_img,verf_code,flag,likes) VALUES (:name_img,:verf_code,:flag,:likes)");
+            $sql->execute(['name_img'=>$_GET['p'],'verf_code'=>$_SESSION['verf_no'],'flag'=>'0','likes'=>'0']);
+        }
+    }
+        
+
     return($n_l);
 }
-function get_com_verf()
-{
-    
-    //echo($_GET['p']);
-    //echo("im here");
+function get_com_verf()//Email
+  {  
     include "config/database.php";
     include_once "config/connection.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
@@ -32,78 +45,94 @@ function get_com_verf()
     {
         $flag_f = $post['verf_code'];
     }
-    include "config/database.php";
-    include_once "config/connection.php";
-    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-    $sql2 = 'SELECT * FROM table1 WHERE verf = :verf';
-    $stmt1 = $pdo->prepare($sql2);
-    $stmt1->execute(['verf'=>$flag_f]);
-    $post= $stmt1->fetchAll();
-    foreach($post as $post)
+    if ($flag_f != $_SESSION['verf_no'])
     {
-        $email= $post['email'];
+        include "config/database.php";
+        include_once "config/connection.php";
+        $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+        $sql2 = 'SELECT * FROM table1 WHERE verf = :verf';
+        $stmt1 = $pdo->prepare($sql2);
+        $stmt1->execute(['verf'=>$flag_f]);
+        $post= $stmt1->fetchAll();
+        foreach($post as $post)
+        {
+            $email= $post['email'];
+        }
     }
-    echo($email);
     return($email);
 }
 
-function get_verf()
+function get_verf()//for likes!
 {
     $value = $_GET['p'];
     include "config/database.php";
     include_once "config/connection.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-    $sql = 'SELECT * FROM likes WHERE verf_code = :verf_code';
+    $sql = 'SELECT * FROM likes WHERE verf_code = :verf_code AND name_img = :name_img';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['verf_code'=>$_SESSION['verf_no']]);
+    $stmt->execute(['verf_code'=>$_SESSION['verf_no'] , 'name_img'=>$_GET['p']]);
     $post= $stmt->fetchAll();
+    //var_dump($post);
     foreach($post as $post)
     {
-        $verf_l = $post['verf_code'];
+        $verf_l = $post['flag'];
     }
     return($verf_l);
 }
 
-function get_images()
+function get_email_note()//notification
 {
-    $value = $_GET['p'];
     include "config/database.php";
     include_once "config/connection.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-    $sql = 'SELECT * FROM likes WHERE name_img = :name_img';
+    $sql = 'SELECT * FROM images WHERE name_img = :name_img';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['name_img'=>$_GET['name_img']]);
+    $stmt->execute(['name_img'=>$_GET['p']]);
     $post= $stmt->fetchAll();
-    var_dump();
+    //var_dump($post);
     foreach($post as $post)
     {
-        $image_l = $post['name_img'];
+        $v_image = $post['verf_code'];
     }
-    return($image_l);
+
+    include "config/database.php";
+    include_once "config/connection.php";
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    $sql = 'SELECT * FROM table1 WHERE verf = :verf';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['verf'=>$v_image]);
+    $post= $stmt->fetchAll();
+    foreach($post as $post)
+    {
+        $note = $post['note'];
+    }
+    return($note);
 }
 
-function get_update()
+function get_update($send_value)//likes
 {
     include "config/database.php";
     include_once "config/connection.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
- 
-    $like_no = get_likes();
-    //$check_flag = get_likes_flag();
-    //echo(get_verf());
-    $like_no = $like_no + 1;
-    $p_name = $_GET['p'];
-    //if (get_likes() == 0)
 
-    if (get_likes_flag() == 0 && get_verf() != 0)
-    {
-        echo(get_likes_flag());
-        $sql2 ='UPDATE likes SET verf_code = :verf_code,flag = :flag,likes = :likes WHERE name_img = :name_img';
+        $sql2 ='UPDATE likes SET flag = :flag,likes = :likes WHERE name_img = :name_img AND verf_code= :verf_code';
         $stmt1 = $pdo->prepare($sql2);
-        $stmt1->execute(['verf_code'=>$_SESSION['verf_no'],'flag'=>'1','likes' =>$like_no,'name_img' => $_GET['p']]);
-    }
+        
+        if (get_verf() == 0)
+        {
+            $stmt1->execute(['flag'=>'1','likes' =>'1','name_img' => $_GET['p'],'verf_code'=>$_SESSION['verf_no']]);
+            //if ($send_value == 1)
+            if (get_email_note() == 1)    
+            {
+                    email_likes();
+            }
+        }
+        else
+        {
+            $stmt1->execute(['flag'=>'0','likes' =>'0','name_img' => $_GET['p'],'verf_code'=>$_SESSION['verf_no']]);
+        }
   
-   header("Refresh:0");
+    header("Refresh:0");
 }
 
 function get_insert()
@@ -115,8 +144,15 @@ function get_insert()
         $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
         if ($_POST['comment'] != NULL)
         {
+            $msg = htmlspecialchars(strip_tags(trim($_POST['comment'])));
             $sql3 = $pdo->prepare("INSERT INTO comments(comments,name_img,flag,verf_no) VALUES (:comments,:name_img,:flag,:verf_no)");
-            $sql3->execute(['comments'=>htmlspecialchars(strip_tags(trim($_POST['comment']))),'flag'=>'1','name_img'=>$_GET['p'],'verf_no'=>$_SESSION['verf_no']]);
+            $sql3->execute(['comments'=>$msg,'flag'=>'1','name_img'=>$_GET['p'],'verf_no'=>$_SESSION['verf_no']]);
+            //if (get_note_flag())
+            if (get_email_note() == 1)
+            {
+                email_comments($msg);
+            }
+            
         }
     }
     catch(PDOException $e2)
@@ -154,7 +190,7 @@ function get_comments()
         }
     }
 }
-function get_delete()
+function get_delete()//delete function
 {
         //echo($_GET['p']);
     //echo("im here");
@@ -166,35 +202,71 @@ function get_delete()
     $stmt->execute(['name_img'=>$_GET['p'], 'verf_code'=>$_SESSION['verf_no']]);
     header("Location: http://localhost:8080/Camagru/grid.php");
 }
-/*function get_email()
+function email_comments($msg)
 {
-    //echo(get_com_verf());
-    //echo($email = get_com_verf());
-    //echo ("im here");
-    //include "get_name.php";
-    //echo("im here");
+
     $email = get_com_verf();
     $name = get_name($_SESSION['verf_no']);
- 
-   // $image = get_image();
-    //$to = $email;
-    //$subject = "Notiifcation of comment";
-    //$txt = "$name has made a comment on $image image. Login more details<a href = 'http://localhost:8080/Camagru/login.php?'>Login in</a>";
-  
-
     $to = $email;
     $subject = "Notifcation of comment";
-    $txt = "$name has made a comment on your $image image. Login to get more details<a href = 'http://localhost:8080/Camagru/login.php?'>Login in</a>";
+    $txt = "$name has made a comment on your $image image<br>-------------<br>Message : $msg <br>-----------------<br>To see other messages, click here to head back to our site : <a href = 'http://localhost:8080/Camagru/login.php?'>Login in</a>";
     $headers = "From:nonreply@localhost:8080 \r\n";
     $headers .= "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    if (mail($to,$subject,$txt,$headers))
+    mail($to,$subject,$txt,$headers);
+}
+
+function note_flag($status)
+{
+    include "config/database.php";
+    include_once "config/connection.php";
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+
+    $sql2 ='UPDATE table1 SET note = :note WHERE verf = :verf';
+    $stmt1 = $pdo->prepare($sql2);
+    if ($status == false)
     {
-        echo ("Verfication email has been sent.Please check your email");
+            $stmt1->execute(['note'=>'0','verf' => $_SESSION['verf_no']]);
     }
     else
     {
-        echo ("There has been an issue sending your email. Please try again");
+        $stmt1->execute(['note'=>'1','verf' => $_SESSION['verf_no']]);
     }
-}*/
+}
+
+function get_note_flag()
+{
+    include "config/database.php";
+    include_once "config/connection.php";
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    $sql = 'SELECT * FROM table1 WHERE verf = :verf';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['verf'=>$_SESSION['verf_no']]);
+    $post= $stmt->fetchAll();
+    //var_dump($post);
+    foreach($post as $post)
+    {
+        $flag = $post['note'];
+    }
+
+    return($flag);
+}
+
+
+function email_likes()
+{
+    $email = get_com_verf();
+    echo("The email is ".$memail. "<br>");
+    $name = get_name($_SESSION['verf_no']);
+    $image = $_GET['p'];
+
+    $to = $email;
+    $subject = "Notification of Likes";
+    $txt = "$name has liked your $image image<br>-------------<br>To see other liked images, click here to head back to our site : <a href = 'http://localhost:8080/Camagru/login.php?'>Login in</a>";
+    $headers = "From:nonreply@localhost:8080 \r\n";
+    $headers .= "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    mail($to,$subject,$txt,$headers);
+}
+
 ?>

@@ -20,8 +20,8 @@ if (search_dup($enter_email,$enter_user) == NULL)
     {
 
         $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-        $sql3 = $pdo->prepare("INSERT INTO table1(username,email,pass,verf,valid) VALUES (:username,:email,:pass,:verf,:valid)");
-        $sql3->execute(['username'=>$enter_user,'email'=>$enter_email,'pass'=>$h_pass,'verf'=>$vkey,'valid'=>'0']);
+        $sql3 = $pdo->prepare("INSERT INTO table1(username,email,pass,verf,note,valid) VALUES (:username,:email,:pass,:verf,:note,:valid)");
+        $sql3->execute(['username'=>$enter_user,'email'=>$enter_email,'pass'=>$h_pass,'verf'=>$vkey,'note'=>'0','valid'=>'0']);
         include "send_verf.php";
     }
     catch(PDOException $e2)

@@ -40,7 +40,7 @@ else {
 
 try {
     $sql2 = "CREATE TABLE IF NOT EXISTS table1(
-        userID INT NOT NULL AUTO_INCREMENT, username VARCHAR(64),email VARCHAR(64),pass VARCHAR(70),verf VARCHAR(70),valid INT(1),PRIMARY KEY(userID)
+        userID INT NOT NULL AUTO_INCREMENT, username VARCHAR(64),email VARCHAR(64),pass VARCHAR(70),verf VARCHAR(70),note INT(11),valid INT(1),PRIMARY KEY(userID)
         );";
     $conn->exec($sql2);
     echo "Table1 users successfully added. <br/>";   

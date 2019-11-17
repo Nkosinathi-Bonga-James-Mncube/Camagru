@@ -10,7 +10,8 @@
         <h3>re-enter email<input type="text" name="new_email2" placeholder="re-enter password"></h3>
         <button type="submit" name="new_email">Change email</button>
     </form>
-    <a href = 'http://localhost:8080/Camagru/login.php'>Login-in</a>
+    <li><a href="main.php">Back to main</a></li>
+    <li><a href="logout.php">Log-out</a></li>
 </body>
 </html>
 <?php

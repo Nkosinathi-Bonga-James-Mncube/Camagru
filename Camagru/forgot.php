@@ -10,6 +10,7 @@
             <button type="submit" name="forgot_send">Send</button>
         </form>
         <a href = 'http://localhost:8080/Camagru/login.php'>Login-in</a>
+        
 </body>
 </html>
 <?php

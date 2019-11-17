@@ -44,7 +44,8 @@ if(!isset($_SESSION['verf_no']))
     <canvas id="canvas" hidden></canvas><br>
     <img id="output_img"><br>
     <button id="button">capture image</button>
-    <script src="js/webcam.js"></script>
+    <button id="save">save</button>
+    <script src="js/main.js"></script>
     </body>
 </html>
 <?php
