@@ -46,6 +46,9 @@ if(!isset($_SESSION['verf_no']))
     <button id="button">capture image</button>
     <button id="save">save</button>
     <script src="js/main.js"></script>
+    <a href = "#"><img src = "stickers/mario.png" alt = "mario" style = "width: 50px ;height: 50px"></a>
+    <a href = "#"><img src = "stickers/pokemon.png" alt = "pokemon" style = "width: 50px ;height: 50px"></a>
+    <a href = "#"><img src = "stickers/smile.png" alt = "smile" style = "width: 50px ;height: 50px"></a>
     </body>
 </html>
 <?php
