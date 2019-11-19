@@ -109,7 +109,7 @@ function get_email_note()//notification
     return($note);
 }
 
-function get_update($send_value)//likes
+function get_update()//likes
 {
     include "config/database.php";
     include_once "config/connection.php";

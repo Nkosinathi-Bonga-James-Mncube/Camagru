@@ -49,7 +49,7 @@ $pic_value = $_GET['p'];
 
 if (isset($_POST['likes']))
 {
-    get_update($send_value);
+    get_update();
 }
 
 if (isset($_POST['Comment_section']))

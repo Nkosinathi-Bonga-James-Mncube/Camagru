@@ -46,11 +46,29 @@ if(!isset($_SESSION['verf_no']))
     <button id="button">capture image</button>
     <button id="save">save</button>
     <script src="js/main.js"></script>
-    <a href = "#"><img src = "stickers/mario.png" alt = "mario" style = "width: 50px ;height: 50px"></a>
-    <a href = "#"><img src = "stickers/pokemon.png" alt = "pokemon" style = "width: 50px ;height: 50px"></a>
-    <a href = "#"><img src = "stickers/smile.png" alt = "smile" style = "width: 50px ;height: 50px"></a>
+    <form action = "" method = "post">
+    <button name= "stick_mario" type = "submit"><img src = "stickers/mario.png" alt = "mario" style = "width: 50px ;height: 50px"></button>
+    <button name ="pokemon"><img src = "stickers/pokemon.png" alt = "pokemon" style = "width: 50px ;height: 50px"></button>
+    <button name = "smile"><img src = "stickers/smile.png" alt = "smile" style = "width: 50px ;height: 50px"></button>
+    </form>
+   
+    
     </body>
 </html>
 <?php
+    include "stickers.php";
+    if (isset($_POST['stick_mario']))
+    {
+       get_mario(); 
+    }
 
+    if (isset($_POST['pokemon']))
+    {
+       get_pokemon(); 
+    }
+
+    if (isset($_POST['smile']))
+    {
+       get_smile(); 
+    }
 ?>

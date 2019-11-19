@@ -24,6 +24,8 @@ function insert($image_name, $session)
         $p_image = pathinfo($image_name);
         require "./../config/database.php";
         require_once "./../config/connection.php";
+        $_SESSION['image'] = "images/$image_name";
+        $_SESSION['name_image'] = $p_image['filename'];
         $p_name = pathinfo($product_image);
         $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
         $sql3 = $pdo->prepare("INSERT INTO images (verf_code,name_img,webcam,pic_location) VALUES (:verf_code,:name_img,:webcam,:pic_location)");
@@ -33,7 +35,6 @@ function insert($image_name, $session)
     {
         echo $sql2 . "<br>" . $e2->getMessage();
     }
-
 
 }
 ?>
