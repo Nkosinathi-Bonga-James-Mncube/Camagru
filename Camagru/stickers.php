@@ -15,6 +15,16 @@
           echo $sql2 . "<br>" . $e2->getMessage();
       }
   }
+  function get_image_database_delete($image)//delete function
+{
+    include "config/database.php";
+    include_once "config/connection.php";
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    $sql = 'DELETE FROM images WHERE pic_location = :pic_location';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['pic_location'=>$image]);
+    header("Location: http://localhost:8080/Camagru/grid.php");
+}
   
   function get_mario()
   {
@@ -31,6 +41,12 @@
       
         imagedestroy($d);
         imagedestroy($s);
+        $location = $_SESSION['image'];
+        if (file_exists($location))
+        {
+            unlink($location);
+            get_image_database_delete($location);
+        }
 }
 
 function get_pokemon()
@@ -47,6 +63,12 @@ function get_pokemon()
         pic_insert($store);
         imagedestroy($d);
         imagedestroy($s);
+        $location = $_SESSION['image'];
+        if (file_exists($location))
+        {
+            get_image_database_delete($location);
+            unlink($location);
+        }
 }
 function get_smile()
 {
@@ -62,5 +84,11 @@ function get_smile()
         pic_insert($store);
         imagedestroy($d);
         imagedestroy($s);
+        $location = $_SESSION['image'];
+        if (file_exists($location))
+        {
+            get_image_database_delete($location);
+            unlink($location);
+        }
 }
 ?>

@@ -38,6 +38,7 @@ if(!isset($_SESSION['verf_no']))
         </ul>
         <div >
             <h1>Hello!</h1>
+            
         </div>
     </nav>
     <video width="640" height="400" id="video"></video><br>
@@ -45,12 +46,13 @@ if(!isset($_SESSION['verf_no']))
     <img id="output_img"><br>
     <button id="button">capture image</button>
     <button id="save">save</button>
-    <script src="js/main.js"></script>
+    
     <form action = "" method = "post">
-    <button name= "stick_mario" type = "submit"><img src = "stickers/mario.png" alt = "mario" style = "width: 50px ;height: 50px"></button>
-    <button name ="pokemon"><img src = "stickers/pokemon.png" alt = "pokemon" style = "width: 50px ;height: 50px"></button>
-    <button name = "smile"><img src = "stickers/smile.png" alt = "smile" style = "width: 50px ;height: 50px"></button>
+    <button id = "mario"name= "stick_mario" type = "submit"><img src = "stickers/mario.png" alt = "mario" style = "width: 50px ;height: 50px"></button>
+    <button id = "pokemon" name ="pokemon"><img src = "stickers/pokemon.png" alt = "pokemon" style = "width: 50px ;height: 50px"></button>
+    <button id = "smile" name = "smile"><img src = "stickers/smile.png" alt = "smile" style = "width: 50px ;height: 50px"></button>
     </form>
+    <script src="js/main.js"></script>
    
     
     </body>
@@ -59,16 +61,19 @@ if(!isset($_SESSION['verf_no']))
     include "stickers.php";
     if (isset($_POST['stick_mario']))
     {
-       get_mario(); 
+       get_mario();
+       header("Location: http://localhost:8080/Camagru/grid.php"); 
     }
 
     if (isset($_POST['pokemon']))
     {
-       get_pokemon(); 
+       get_pokemon();
+       header("Location: http://localhost:8080/Camagru/grid.php"); 
     }
 
     if (isset($_POST['smile']))
     {
-       get_smile(); 
+       get_smile();
+       header("Location: http://localhost:8080/Camagru/grid.php"); 
     }
 ?>

@@ -2,6 +2,9 @@ const video = document.getElementById("video");
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 const button = document.getElementById("button");
 const save_button = document.getElementById("save");
+const mario = document.getElementById("mario");
+const pokemon = document.getElementById("pokemon");
+const smile = document.getElementById("smile");
 
 if (navigator.getUserMedia){
     navigator.getUserMedia({
@@ -21,6 +24,9 @@ if (navigator.getUserMedia){
 }
 
 save_button.style.visibility = "hidden";
+mario.style.visibility = "hidden";
+pokemon.style.visibility = "hidden";
+smile.style.visibility = "hidden";
 let image_url = null;
 
 button.addEventListener("click", function(){
@@ -38,6 +44,9 @@ button.addEventListener("click", function(){
 });
 
 save_button.addEventListener("click", function(){
+   mario.style.visibility = "visible";
+   pokemon.style.visibility = "visible";
+   smile.style.visibility = "visible";
     http = new XMLHttpRequest();
     http.onreadystatechange = function(){
        if (http.readyState === 4 && http.status === 200)
