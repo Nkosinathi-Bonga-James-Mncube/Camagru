@@ -11,6 +11,7 @@ function get_likes()
     $stmt->execute(['name_img'=>$value, 'verf_code'=>$_SESSION['verf_no']]);
     $post= $stmt->fetchAll();
     //var_dump($post);
+    $n_l = NULL;
     foreach($post as $post)
     {
         $n_l = $post['likes'];
@@ -64,15 +65,16 @@ function get_com_verf()//Email
 
 function get_verf()//for likes!
 {
-    $value = $_GET['p'];
+    $value = isset($_GET['p']);
     include "config/database.php";
     include_once "config/connection.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
     $sql = 'SELECT * FROM likes WHERE verf_code = :verf_code AND name_img = :name_img';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['verf_code'=>$_SESSION['verf_no'] , 'name_img'=>$_GET['p']]);
+    $stmt->execute(['verf_code'=>$_SESSION['verf_no'] , 'name_img'=>isset($_GET['p'])]);
     $post= $stmt->fetchAll();
     //var_dump($post);
+    $verf_l = NULL;
     foreach($post as $post)
     {
         $verf_l = $post['flag'];

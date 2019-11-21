@@ -15,7 +15,8 @@ session_start();
     </form>
     <nav>
         <ul>
-        <li><a href="main.php">Back to main</a></li>
+        <li><a href="main
+        .php">Back to main</a></li>
         </ul>
     </nav>
 </body>

@@ -62,7 +62,7 @@ if (isset($_POST['submit']))
             echo $sql2 . "<br>" . $e2->getMessage();
         }
         
-        if (get_verf() == NULL && get_images() == NULL && get_likes_flag() == 0)
+        if (get_verf() == NULL)
         {
         try
         {

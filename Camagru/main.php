@@ -2,11 +2,10 @@
 session_start();
 if(!isset($_SESSION['verf_no']))
 {
-
-    include "get_name.php";
     include "config/database.php";
     include_once "config/connection.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    $vkey = NULL;
     $vkey = $_GET['vkey'];
     $sql1 = 'SELECT * FROM table1 WHERE verf = ?';
     $stmt = $pdo->prepare($sql1);
@@ -37,7 +36,7 @@ if(!isset($_SESSION['verf_no']))
         
         </ul>
         <div >
-            <h1>Hello!</h1>
+            <h1>User profile for: <?php include "get_name.php";echo (get_name($_SESSION['verf_no']))?></h1>
             
         </div>
     </nav>
