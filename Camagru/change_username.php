@@ -15,18 +15,12 @@ session_start();
     </form>
     <nav>
         <ul>
-        <li><a href="main
-        .php">Back to main</a></li>
+        <li><a href="index.php">Back to main</a></li>
         </ul>
     </nav>
 </body>
 </html>
 <?php
-
-
-//echo($old_user);
-//echo($new_user1); 
-//echo($new_user2);
 include "config/database.php";
 include_once "config/connection.php";
 include "error_input_check.php";

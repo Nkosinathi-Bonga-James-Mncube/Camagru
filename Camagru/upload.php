@@ -11,7 +11,7 @@ session_start();
         <li><a href="email_change.php">Change Email</a></li>
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="grid.php">Gallery page</a></li>
-        <li><a href="main.php">Back to main</a></li>
+        <li><a href="index.php">Back to main</a></li>
         </ul>
     </nav>
             <form action = "upload.php" method = "post" enctype = "multipart/form-data">

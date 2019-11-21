@@ -16,7 +16,7 @@ $pic_value = $_GET['p'];
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="upload.php">Upload images</a></li>
         <li><a href="grid.php">Gallery page</a></li>
-        <li><a href="main.php">Back to main</a></li>
+        <li><a href="index.php">Back to main</a></li>
         </ul>
 </nav>
 
@@ -54,10 +54,6 @@ if (isset($_POST['likes']))
 
 if (isset($_POST['Comment_section']))
 {
- //echo "hello";
-    //echo(get_note());
-    //echo (get_note_flag());
-    //get_note_flag();
     get_insert();
 }
 

@@ -18,7 +18,7 @@ include "likes.php";
         <li><a href="email_change.php">Change Email</a></li>
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="upload.php">Upload images</a></li>
-        <li><a href="main.php">Back to main</a></li>
+        <li><a href="index.php">Back to main</a></li>
         <form action="" method = "post">
         <input type = "checkbox" name = "note" <?php if (get_note_flag() == 1) echo "checked=checked"; note_flag(get_note_flag())?>/>Receive email notification<br>
         <button type = "submit" name = "confirm">Confirm</button><br> 

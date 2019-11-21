@@ -45,7 +45,7 @@ if (isset($_POST['login_sub']))
     {
         if ($is_valid == 1)
         {
-            header("Location: http://localhost:8080/Camagru/main.php?vkey=$vkey");
+            header("Location: http://localhost:8080/Camagru/index.php?vkey=$vkey");
         
        }
       else

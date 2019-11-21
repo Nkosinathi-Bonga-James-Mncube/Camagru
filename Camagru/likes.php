@@ -10,7 +10,6 @@ function get_likes()
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['name_img'=>$value, 'verf_code'=>$_SESSION['verf_no']]);
     $post= $stmt->fetchAll();
-    //var_dump($post);
     $n_l = NULL;
     foreach($post as $post)
     {
@@ -73,7 +72,6 @@ function get_verf()//for likes!
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['verf_code'=>$_SESSION['verf_no'] , 'name_img'=>isset($_GET['p'])]);
     $post= $stmt->fetchAll();
-    //var_dump($post);
     $verf_l = NULL;
     foreach($post as $post)
     {
@@ -91,7 +89,7 @@ function get_email_note()//notification
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['name_img'=>$_GET['p']]);
     $post= $stmt->fetchAll();
-    //var_dump($post);
+
     foreach($post as $post)
     {
         $v_image = $post['verf_code'];
@@ -123,7 +121,6 @@ function get_update()//likes
         if (get_verf() == 0)
         {
             $stmt1->execute(['flag'=>'1','likes' =>'1','name_img' => $_GET['p'],'verf_code'=>$_SESSION['verf_no']]);
-            //if ($send_value == 1)
             if (get_email_note() == 1)    
             {
                     email_likes();
@@ -182,10 +179,6 @@ function get_comments()
         $p_name = $post['verf_no'];
         $name = trim(get_name($p_name));
         $date = date("H:iA",strtotime($post['created']));
-        if ($text_input == NULL)
-        {
-            echo("its empty");
-        }
         if(isset($text_input))
         {
             echo("$name"."[$date]".": ".trim($text_input)."\n");
@@ -194,8 +187,6 @@ function get_comments()
 }
 function get_delete()//delete function
 {
-        //echo($_GET['p']);
-    //echo("im here");
     include "config/database.php";
     include_once "config/connection.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
