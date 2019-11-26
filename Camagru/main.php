@@ -20,15 +20,16 @@ if(!isset($_SESSION['verf_no']))
 ?>
 <html>
     <head>
-    <link rel = "stylesheet" type = "text/css" href="style2/.css">
+    <link rel = "stylesheet" type = "text/css" href="css/tabs.css">
+    <link rel = "stylesheet" type = "text/css" href = "css/login.css">
     </head>
 
     <body>   
     <nav>
         <ul>
         
-        <li><a href="forgot.php">Change Password</a></li>
-        <li><a href="email_change.php">Change Email</a></li>
+        <li><a href="new_pass.php">Change Password</a></li>
+        <li><a href="new_email.php">Change Email</a></li>
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="upload.php">Upload images</a></li>
         <li><a href="grid.php">Gallery Edit page</a></li>

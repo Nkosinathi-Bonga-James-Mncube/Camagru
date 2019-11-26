@@ -26,32 +26,10 @@
     /*flex-flow: row column*/;
     justify-content: center;
     /*align-content:space-between;*/
-}
+}*/
 
 .gallery-container a:hover
 {
     opacity: 0.8;
 }
 
-/*.here{
-    flex : 0 1 100px;
-}*/
-/*align-items: flex-start;/*default sizing */
-/*.container
-{
-    width: 100%;
-    height: 500px;
-    background-color: gray;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    align-content: space-around;
-
-}*/
-/*grow shrink basis combined;*/
-/**.items
-{
-    background-color: red;
-    flex : 0 1 100px; 
-}**/

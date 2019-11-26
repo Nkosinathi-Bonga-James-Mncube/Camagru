@@ -231,6 +231,7 @@ function get_note_flag()
 {
     include "config/database.php";
     include_once "config/connection.php";
+    $flag = NULL;
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
     $sql = 'SELECT * FROM table1 WHERE verf = :verf';
     $stmt = $pdo->prepare($sql);

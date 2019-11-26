@@ -7,32 +7,32 @@ include "likes.php";
 ?>
 <html>
 <head>
-    <link rel = "stylesheet" href="css/style.css">
+    <link rel = "stylesheet" href="css/tabs.css">
+    <link rel = "stylesheet" type = "text/css" href = "css/login.css">
 </head>
 <body>
-
 <nav>
-        <ul>
-        <li><a href="logout.php">Log-out</a></li>
-        <li><a href="forgot.php">Change Password</a></li>
-        <li><a href="email_change.php">Change Email</a></li>
-        <li><a href="change_username.php">Change Username</a></li>
-        <li><a href="upload.php">Upload images</a></li>
-        <li><a href="index.php">Back to main</a></li>
+<ul>    
+<li><a href="main.php">Back to main</a></li>
+    <li><a href="new_pass.php">Change Password</a></li>
+    <li><a href="new_email.php">Change Email</a></li>
+    <li><a href="change_username.php">Change Username</a></li>
+    <li><a href="upload.php">Upload images</a></li>
+    <li><a href="logout.php">Log-out</a></li>
+</ul>
+</nav>
         <form action="" method = "post">
-        <input type = "checkbox" name = "note" <?php if (get_note_flag() == 1) echo "checked=checked"; note_flag(get_note_flag())?>/>Receive email notification<br>
-        <button type = "submit" name = "confirm">Confirm</button><br> 
+            <input type = "checkbox" name = "note" <?php if (get_note_flag() == 1) echo "checked=checked"; note_flag(get_note_flag())?>/>Receive email notification<br>
+            <button type = "submit" name = "confirm">Confirm</button><br> 
         </form>
-        </ul>
         <div >
             <h1><u>Public Gallery Section</u></h1>
             <form action = "" method = "post" >
-            <button name = "Prev">Return</button>
-            <button name = "Next">Next</button>
+                <button name = "Prev">Return</button>
+                <button name = "Next">Next</button>
             </form>
-            
         </div>
-    </nav>
+
 <section class="container">
     <div class="gallery-container">
         <?php
@@ -81,7 +81,7 @@ include "likes.php";
    {
        $file_pic = pathinfo($post['pic_location']);
         echo'<a href = http://localhost:8080/Camagru/comments.php?p='.$file_pic['filename'].'>
-       <div style="background-image:url('.$post['pic_location'].');"></div>
+       <div class = "img" style="background-image:url('.$post['pic_location'].');"></div>
        <p>'.$file_pic['filename'].'</p>
        </a>';
    }

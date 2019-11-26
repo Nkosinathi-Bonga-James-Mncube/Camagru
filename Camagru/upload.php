@@ -3,15 +3,19 @@ session_start();
 ?>
 <html>
 <head>
+    <link rel  = "stylesheet" type = "text/css" href = "css/tabs.css">
+    <link rel = "stylesheet" type = "text/css" href = "css/login.css">
+</head>
     <body>
     <nav>
         <ul>
-        <li><a href="logout.php">Log-out</a></li>
-        <li><a href="forgot.php">Change Password</a></li>
+        <li><a href="main.php">Back to main</a></li>
+        <li><a href="new_pass.php">Change Password</a></li>
         <li><a href="email_change.php">Change Email</a></li>
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="grid.php">Gallery page</a></li>
-        <li><a href="index.php">Back to main</a></li>
+        <li><a href="logout.php">Log-out</a></li>
+        
         </ul>
     </nav>
             <form action = "upload.php" method = "post" enctype = "multipart/form-data">
@@ -23,7 +27,8 @@ session_start();
             <input type = "submit" name = "submit" value = "Upload image"> 
             </form>
     </body>
-</head>
+
+    
 </html>
 
 <?php

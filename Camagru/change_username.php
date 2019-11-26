@@ -4,8 +4,22 @@ session_start();
 ?>
 <html>
 <head>
+    <link rel = "stylesheet" type = "text/css" href = "css/tabs.css">
+    <link rel = "stylesheet" type = "text/css" href = "css/login.css">
 </head>
 <body>
+<nav>
+<ul>
+
+<li><a href="main.php">Back to main</a></li>
+<li><a href="new_email.php">Change Email</a></li>
+<li><a href="upload.php">Upload images</a></li>
+<li><a href="grid.php">Gallery Edit page</a></li>
+<li><a href="logout.php">Log-out</a></li>
+
+
+</ul>
+</nav>
     <h1>Change Username</h1>
     <form action="" method="post">
         <h2>username<input type="text" name="old_user" placeholder="email"></h2>
@@ -13,11 +27,7 @@ session_start();
         <h3>re-enter username<input type="text" name="new_user2" placeholder="re-enter password"></h3>
         <button type="submit" name="new_user">Change username</button>
     </form>
-    <nav>
-        <ul>
-        <li><a href="index.php">Back to main</a></li>
-        </ul>
-    </nav>
+  
 </body>
 </html>
 <?php

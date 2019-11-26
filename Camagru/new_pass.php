@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel = "stylesheet" type= "text/css" href = "css/tabs.css">
 </head>
 <body>
+<nav>
+    <ul>
+    <li><a href="main.php">Back to main</a></li>
+    <li><a href="new_email.php">Change Email</a></li>
+    <li><a href="change_username.php">Change Username</a></li>
+    <li><a href="upload.php">Upload images</a></li>
+    <li><a href="grid.php">Gallery Edit page</a></li>
+
+    <li><a href="logout.php">Log-out</a></li>
+    </ul>
+    </nav>
     <h1>New Password</h1>
     <form action="" method="post">
         <h2>email<input type="text" name="email_new" placeholder="email"></h2>
@@ -10,7 +22,8 @@
         <h3>re-enter password<input type="password" name="email_pass2" placeholder="re-enter password"></h3>
         <button type="submit" name="new_sub">Login</button>
     </form>
-    <a href = 'http://localhost:8080/Camagru/login.php'>Login-in</a>
+  
+
 </body>
 </html>
 <?php

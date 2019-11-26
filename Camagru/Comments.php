@@ -6,6 +6,8 @@ $pic_value = $_GET['p'];
 <!DOCTYPE html>
 <html>
 <head>
+<link rel = "stylesheet" type = "text/css" href = "css/tabs.css">
+<link rel = "stylesheet" type = "text/css" href = "css/login.css">
 </head>
 <body>
 <nav>
@@ -16,7 +18,7 @@ $pic_value = $_GET['p'];
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="upload.php">Upload images</a></li>
         <li><a href="grid.php">Gallery page</a></li>
-        <li><a href="index.php">Back to main</a></li>
+        <li><a href="main.php">Back to main</a></li>
         </ul>
 </nav>
 

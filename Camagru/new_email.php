@@ -1,25 +1,33 @@
-
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel = "stylesheet" type= "text/css" href = "css/tabs.css">
+    <link rel = "stylesheet" type = "text/css" href = "css/login.css">
 </head>
 <body>
 <nav>
         <ul>
-        <li><a href = 'http://localhost:8080/Camagru/login.php'>Login-in</a></li>
+        <li><a href = 'http://localhost:8080/Camagru/main.php'>Back to main</a></li>
+        <li><a href="new_pass.php">Change Password</a></li>
+        <li><a href="change_username.php">Change Username</a></li>
+        <li><a href="upload.php">Upload images</a></li>
+        <li><a href="grid.php">Gallery Edit page</a></li>
+        <li><a href = 'http://localhost:8080/Camagru/login.php'>Logout</a></li>
+        
         </ul>
-        </nav>
+</nav>
     <h1>Please enter user email<h1>
         <form action="" method="post">
             <h5>email address<input type="text" name="email_enter" placeholder="email"></h5>
             <button type="submit" name="forgot_send">Send</button>
         </form>
-    
+   
         
 </body>
 </html>
 <?php
 include "forgot_email.php";
+
 if (isset($_POST['forgot_send']))
 { 
     $email_enter = $_POST['email_enter'];
@@ -39,7 +47,7 @@ if (isset($_POST['forgot_send']))
     }
     if (($email_enter == $email_found) && !(($email_enter == NULL) && ($email_found == NULL)))
     {
-        forgot_email($email_enter,$vkey);
+        new_email($email_enter,$vkey);
         echo ("Password reset email has been sent.Please check your email");
     }
     else

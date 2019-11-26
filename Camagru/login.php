@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel = "stylesheet" type = "text/css" href ="css/login.css">
 </head>
 <body>
     <h1>Login</h1>
@@ -45,7 +46,7 @@ if (isset($_POST['login_sub']))
     {
         if ($is_valid == 1)
         {
-            header("Location: http://localhost:8080/Camagru/index.php?vkey=$vkey");
+            header("Location: http://localhost:8080/Camagru/main.php?vkey=$vkey");
         
        }
       else
