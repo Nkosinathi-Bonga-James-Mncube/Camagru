@@ -12,7 +12,7 @@
         <li><a href="change_username.php">Change Username</a></li>
         <li><a href="upload.php">Upload images</a></li>
         <li><a href="grid.php">Gallery Edit page</a></li>
-        <li><a href = 'http://localhost:8080/Camagru/login.php'>Logout</a></li>
+        <li><a href = 'http://localhost:8080/Camagru/index.php'>Logout</a></li>
         
         </ul>
 </nav>

@@ -202,7 +202,7 @@ function email_comments($msg)
     $name = get_name($_SESSION['verf_no']);
     $to = $email;
     $subject = "Notifcation of comment";
-    $txt = "$name has made a comment on your $image image<br>-------------<br>Message : $msg <br>-----------------<br>To see other messages, click here to head back to our site : <a href = 'http://localhost:8080/Camagru/login.php?'>Login in</a>";
+    $txt = "$name has made a comment on your $image image<br>-------------<br>Message : $msg <br>-----------------<br>To see other messages, click here to head back to our site : <a href = 'http://localhost:8080/Camagru/index.php?'>Login in</a>";
     $headers = "From:nonreply@localhost:8080 \r\n";
     $headers .= "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
@@ -256,7 +256,7 @@ function email_likes()
 
     $to = $email;
     $subject = "Notification of Likes";
-    $txt = "$name has liked your $image image<br>-------------<br>To see other liked images, click here to head back to our site : <a href = 'http://localhost:8080/Camagru/login.php?'>Login in</a>";
+    $txt = "$name has liked your $image image<br>-------------<br>To see other liked images, click here to head back to our site : <a href = 'http://localhost:8080/Camagru/index.php?'>Login in</a>";
     $headers = "From:nonreply@localhost:8080 \r\n";
     $headers .= "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";

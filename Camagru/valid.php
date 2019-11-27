@@ -6,7 +6,7 @@
 <h1><u>Cogratulations, you are now registered!</u></h1>
 <nav>
         <ul>
-        <li><a href="login.php">Log-in</a></li>
+        <li><a href="index.php">Log-in</a></li>
         </ul>
 </nav>
 </body>

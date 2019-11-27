@@ -26,7 +26,7 @@ include "likes.php";
             <button type = "submit" name = "confirm">Confirm</button><br> 
         </form>
         <div >
-            <h1><u>Public Gallery Section</u></h1>
+            <h1><u>Gallery Section</u></h1>
             <form action = "" method = "post" >
                 <button name = "Prev">Return</button>
                 <button name = "Next">Next</button>

@@ -2,11 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel = "stylesheet" type="text/css" href = "css/login.css">
 </head>
 <body>
 <nav>
         <ul>
-        <li><a href = 'http://localhost:8080/Camagru/login.php'>Login-in</a></li>
+        <li><a href = 'http://localhost:8080/Camagru/index.php'>Login-in</a></li>
         </ul>
         </nav>
     <h1>Please enter user email<h1>

@@ -1,6 +1,7 @@
 <html>
 <head>
 <meta http-equiv="refresh">
+<link rel = "stylesheet" type = "text/css" href = "css/login.css">
 </head>
 <body>
 <form action="" method="post">
@@ -11,7 +12,7 @@
     <h5>re-enter password<input type="password" name="create_pass2" placeholder="re-enter password"></h5>
     <button type="submit" name="create_button">Create user</button>
 </form>
-<a href = 'http://localhost:8080/Camagru/login.php'>Login-in</a>
+<a href = 'http://localhost:8080/Camagru/index.php'>Login-in</a>
 <br>
 </body>
 </html>
