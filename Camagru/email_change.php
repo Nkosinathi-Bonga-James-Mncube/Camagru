@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel = "stylesheet" type = "text/css" href = "css/login.css">
+<link rel = "stylesheet" type = "text/css" href = "css/tabs.css">
 </head>
 <body>
 <nav>
     <ul>
-    <li><a href="logout.php">Log-out</a></li>
     <li><a href="main.php">Back to main</a></li>
+    <li><a href="change_username.php">Change Username</a></li>
+    <li><a href="new_pass.php">Change Password</a></li>
+    <li><a href="upload.php">Upload images</a></li>
+    <li><a href="grid.php">Gallery Edit page</a></li>
+    <li><a href="logout.php">Log-out</a></li>
     </ul>
     </nav>
     <h1>New Email address</h1>

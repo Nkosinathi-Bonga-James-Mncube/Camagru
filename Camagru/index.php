@@ -51,7 +51,7 @@ if (isset($_POST['login_sub']))
        }
       else
         {
-            echo ("Please check verification email//send link again");
+            echo ("Please check verification email");
         }
     }
     else if ($p_found)
