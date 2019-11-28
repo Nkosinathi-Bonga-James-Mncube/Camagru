@@ -1,3 +1,9 @@
+<?php
+if (!$_SESSION['verf_no'])
+{
+    header("Location: localhost:8080/Camagru/index.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>

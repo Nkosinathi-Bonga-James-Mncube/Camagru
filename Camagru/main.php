@@ -17,6 +17,10 @@ if(!isset($_SESSION['verf_no']))
     }
     $_SESSION['verf_no'] = $vkey_check;
 }
+if (!$_SESSION['verf_no'])
+{
+    header("Location: localhost:8080/Camagru/index.php");
+}
 ?>
 <html>
     <head>

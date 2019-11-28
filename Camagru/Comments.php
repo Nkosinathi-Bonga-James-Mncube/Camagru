@@ -2,6 +2,10 @@
 session_start();
 include "likes.php";
 $pic_value = $_GET['p'];
+if (!$_SESSION['verf_no'])
+{
+    header("Location: localhost:8080/Camagru/index.php");
+}
 ?>
 <!DOCTYPE html>
 <html>

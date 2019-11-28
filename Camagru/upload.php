@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!$_SESSION['verf_no'])
+{
+    header("Location: localhost:8080/Camagru/index.php");
+}
 ?>
 <html>
 <head>
