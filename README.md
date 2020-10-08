@@ -25,5 +25,3 @@ The requirements of the project are :
 
   4) Be able to place sticker on images after taken 
   
-
--This html,javascript,css and php.
