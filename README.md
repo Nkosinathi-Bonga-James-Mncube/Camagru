@@ -19,7 +19,7 @@ The requirements of the project are :
   
   2) Images are able to be uploaded to website(Required to create validation functions to check format and size restrictions)
   
-  2) Public gallery of images should be viewable(Only registered users are able to like and comment on pictures)
+  2) Pagination Public gallery of images should be viewable(Only registered users are able to like and comment on pictures)
 
   3) Be able to upload images with a webcam 
 
