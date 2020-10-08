@@ -1,17 +1,17 @@
 # Camagru
 
-What is Camagru?
+# What is Camagru?
 
 - Re-create a simple web-based instagram clone.
 
-Technologies used:
+# Technologies used:
  - Html
  - Mysql
  - Javascript
  - PHP
 
 
-The requirements of the project are :
+# The requirements of the project are :
 
   
   
