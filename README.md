@@ -17,6 +17,8 @@
   
   - Create Registration page,Update detail page,and Forget password page(required to create validation functions on input as well as create function to strip html tags and prevent sql injection)
   
+  - Passwords should be hashed
+  
   - Be able to upload images with a webcam or from directory(Required to create validation functions to check format and size restrictions)
   
   - Be able to place stickers after images are uploaded 
