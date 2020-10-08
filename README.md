@@ -23,7 +23,7 @@
   
   - Be able to place stickers after images are uploaded 
   
-  - Pagination Public gallery of images should be viewable(Only registered users are able to like and comment on pictures)
+  - Pagination for public gallery of images should be viewable(Only registered users are able to like and comment on pictures)
 
   
 
