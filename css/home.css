@@ -61,8 +61,9 @@ li {
 #footer{
     position: absolute;
     bottom: 20px;
-    right: 10px;
+    text-align: right
 }
+
 .overlay h1 {
     font-size: 65px;
     letter-spacing: 0px;
@@ -96,7 +97,7 @@ a:active{
     color: inherit;
 }
 div.t1{
-     display:inline-block;
+    display:inline-block;
     /* 
      display:inline-block;position: absolute; */
     /* size: 2px */
@@ -111,4 +112,121 @@ div.t1{
 }
 .profile_img{
     border-radius: 50%;
+}
+.profile_img:hover{
+    box-shadow: 0px 0px 5px #fff;
+
+}
+
+.img_gallery{
+    width: 250px;
+    height: 200px;
+    border-radius: 25px;
+}
+.img_gallery:hover{
+    box-shadow: 0px 0px 5px #fff;
+
+}
+
+.badge {
+    position: absolute;
+    top: -95px;
+    right: -2px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }
+[data-msg]{
+    position: relative;
+    cursor: default;
+
+}
+[data-msg]::after{
+    position: absolute;
+    width: 140px;
+    left: 55px;
+    bottom: 600%;
+    text-align: center;
+    box-sizing: border-box;
+    color: white;
+    background:black;
+    padding: 6px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 12px;
+    content: attr(data-msg);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(200px);
+    transition: opacity 0.3s,transform 0.2s; 
+}
+
+[data-msg]:hover::after{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+
+}
+#private_heading{
+    position: absolute;
+    top:120px
+}
+
+
+
+
+
+
+
+
+
+#back_button{
+    position: relative;
+    bottom: -4px;
+    left: 2px
+    /* left: 200px; */
+}
+#user-input-select{
+    position: relative;
+    bottom: -10px;
+    
+}
+#user-image-buttons{
+    position: relative;
+    bottom: -104px;
+}
+#comment-image{
+    position: absolute;
+    /* display: outside; */
+    height: 40%;
+    width: 40%;
+    border-radius: 25px;
+    top: 270px;
+}
+#image-heading{
+    position: absolute;
+    top:120px
+}
+#image-detail-button{
+
+    position: absolute;
+    top: 700px;
+}
+
+/* #comment-row{ */
+    /* position: absolute; */
+    /* bottom: -90px; */
+    /* right: 20px */
+    /* text-align: center; */
+/* } */
+#flex1{
+    position: absolute;
+    top: 800px;
+    /* bottom: ; */
+    /* text-align: right; */
+}
+#comment{
+    color: black;
 }

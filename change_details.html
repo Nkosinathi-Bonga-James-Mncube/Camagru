@@ -27,16 +27,39 @@
             <li><a href="/logout.html"class="page_links"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
         </ul>
         <h2>Remember: Email first then re-direct to this page</h2>
+        <div class="t1">
+            <div class="alert alert-danger alert px-2 py-1" role="alert">
+                Firstname is incorrect! Please try again.
+            </div>
+        </div>
+        <div class="t1">
+            <div class="alert alert-danger alert px-2 py-1" role="alert">
+                Lastname is incorrect! Please try again.
+            </div>
+        </div>
+        <div class="t1">
+            <div class="alert alert-danger alert px-2 py-1" role="alert">
+               Username is invalid! Please try again.
+            </div>
+        </div>
+        <div class="t1">
+            <div class="alert alert-danger alert px-2 py-1" role="alert">
+                Password do not match! Please try again.
+            </div>
+        </div>
+        <i class="fa fa-spinner fa-pulse"></i>
         <p>Please enter details to change</p>
         Firstname:<input>
         Lastname:<input>
         Username:<input>
+        Password:<input>
+        Re-enter password:<input>
 
-        <div class="button-group-select">
+        <div id="user-input-select">
             <button class="btn btn-primary" >Send</button>
             <button class="btn btn-primary" onclick='location.href="/home.html"'>Back</button>
         </div>
-        <footer >Camagru 2019</footer>
+        <footer id="footer">Camagru 2019</footer>
     </div>
 </div>
 </body>

@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- bootstrap -->
     
-    <!-- google fonts + bootstrap -->
+    <!-- google fonts + bootstrap + font-awesome-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- google fonts + bootstrap -->
+    <!-- google fonts + bootstrap + font-awesome-->
 
     <link rel="stylesheet" href="css/home.css"> 
 </head>
@@ -19,25 +19,90 @@
     
     <div class="home_page">
         <div class="overlay">
-        <h1>Private Gallery</h1>
-        <ul id="nav">
-            <li><a href="/home.html" class="page_links"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-            <li><a href="/change_details.html" class="page_links"><i class="fa fa-address-card-o" aria-hidden="true"></i> Change details</a></li>
-            <li><a href="/forgot.html" class="page_links"><i class="fa fa-key" aria-hidden="true"></i> Forgot password</a></li>
-            <li><a href="/about.html" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
-            <li><a href="/logout.html"class="page_links"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
-        </ul>
-        <p>What has everybody been getting up to?</p>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            <h1 id="private_heading">Private Gallery</h1>
+            <ul id="nav">
+                <li><a href="/home.html" class="page_links"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                <li><a href="/change_details.html" class="page_links"><i class="fa fa-address-card-o" aria-hidden="true"></i> Change details</a></li>
+                <li><a href="/forgot.html" class="page_links"><i class="fa fa-key" aria-hidden="true"></i> Forgot password</a></li>
+                <li><a href="/about.html" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
+                <li><a href="/logout.html"class="page_links"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
             </ul>
-          </nav>
-        <footer>Camagru 2019</footer>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <span data-msg="You have new messages">
+                        <img  class="img_gallery" onclick ="location.href='/image_details.html'" src="./static/test1.jpg">
+                        <span class="badge">3</span>
+                        </span>
+                        <!-- <span class="tooltiptext">You have 3 new messages</span> -->
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <span data-msg="You have new messages">
+                            <img  class="img_gallery" src="./static/test2.jpeg">
+                            <span class="badge">3</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <span data-msg="You have new messages">
+                            <img  class="img_gallery" src="./static/test3.jpeg">
+                            <span class="badge">3</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <span data-msg="You have new messages">
+                        <img  class="img_gallery" src="./static/test1.jpg">
+                        <span class="badge">3</span>
+                    </span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <span data-msg="You have new messages">
+                        <img  class="img_gallery" src="./static/test2.jpeg">
+                        <span class="badge">3</span>
+                    </span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <span data-msg="You have new messages">
+                        <img  class="img_gallery" src="./static/test3.jpeg">
+                        <span class="badge">3</span>
+                    </span>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <!-- <img  src="./static/test1.jpg"> -->
+            <!-- <img  src="./static/test3.jpeg"> -->
+            <!-- <img  src="./static/test2.jpeg"> -->
+            <!-- <img  src="./static/test2.jpeg"> -->
+            
+            
+            <div id="user-image-buttons">
+                <button class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Upload an image</button>
+                <button class="btn btn-primary"><i class="fa fa-camera" aria-hidden="true"></i> Take photo image</button>
+            </div>
+            
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+          
+            
+         
+        <footer id="footer">Camagru 2019</footer>
     </div>
 </div>
 </body>
