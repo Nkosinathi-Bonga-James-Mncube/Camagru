@@ -19,7 +19,7 @@
     
     <div class="home_page">
         <div class="overlay">
-            <h1 id="private_heading">Private Gallery</h1>
+            <h1 id="page_heading">Private Gallery</h1>
             <ul id="nav">
                 <li><a href="/home.html" class="page_links"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                 <li><a href="/change_details.html" class="page_links"><i class="fa fa-address-card-o" aria-hidden="true"></i> Change details</a></li>
@@ -81,14 +81,14 @@
             </div>
             
             
-            
-            <!-- <img  src="./static/test1.jpg"> -->
-            <!-- <img  src="./static/test3.jpeg"> -->
-            <!-- <img  src="./static/test2.jpeg"> -->
-            <!-- <img  src="./static/test2.jpeg"> -->
-            
-            
+            <div id="upload-message" class="alert alert-success" role="alert">
+                Image has been uploaded!
+            </div>
+            <div id="upload-message" class="alert alert-danger alert" role="alert">
+                Image is invalid! <br>Supported file types : .jpeg .bmp <br> Supported resolution : 1000 x 1000
+            </div>
             <div id="user-image-buttons">
+                <i class="fa fa-spinner fa-pulse"></i>
                 <button class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Upload an image</button>
                 <button class="btn btn-primary"><i class="fa fa-camera" aria-hidden="true"></i> Take photo image</button>
             </div>
@@ -99,9 +99,6 @@
                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                 </ul>
             </nav>
-          
-            
-         
         <footer id="footer">Camagru 2019</footer>
     </div>
 </div>

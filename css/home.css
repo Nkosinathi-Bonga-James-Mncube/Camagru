@@ -169,19 +169,10 @@ div.t1{
     transform: translateY(0);
 
 }
-#private_heading{
+#page_heading{
     position: absolute;
     top:120px
 }
-
-
-
-
-
-
-
-
-
 #back_button{
     position: relative;
     bottom: -4px;
@@ -224,9 +215,34 @@ div.t1{
 #flex1{
     position: absolute;
     top: 800px;
+    /* left: 620px */
     /* bottom: ; */
-    /* text-align: right; */
+    text-align: center;
 }
 #comment{
     color: black;
+}
+#flex2{
+    position: absolute;
+    top: 350px;
+    right: 40px
+}
+
+#upload-message{
+    position: absolute;
+    top: 150px;
+    right: 200px;
+}
+
+div.user-comment-post {
+    position: relative;
+    word-wrap: break-word;
+    width: 600px; 
+    border: 1px solid white;
+    padding: 20px;
+}
+
+#user-comment-buttons{
+    position: relative;
+    top: 4px
 }

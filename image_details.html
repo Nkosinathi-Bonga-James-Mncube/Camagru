@@ -39,20 +39,34 @@
             <img id="comment-image" src="./static/test1.jpg">    
             <button id="image-detail-button"class="btn btn-primary" onclick='location.href="/private_gallery.html"'>Back</button>
 
-
+            <div id="upload-message" class="alert alert-success" role="alert">
+                Message posted!
+            </div>
+            <div id="upload-message" class="alert alert-success" role="alert">
+                Message edited!
+            </div>
+            <div id="upload-message" class="alert alert-success" role="alert">
+                Message deleted!
+            </div>
             <div id="flex1" class="d-flex flex-column bd-highlight mb-3">
+                <h2>Comments</h2>
                 <div class="p-2 bd-highlight">
                     <u>User1</u><br><br>
                     <img width=50px height="50px" style="border-radius: 25px;" src="./static/test1.jpg">
-                    <div class="text-nowrap bd-highlight" style="word-wrap:break-word;width: 20em;" >
+                    <div class="user-comment-post">
                         dadasdasdsadasdadasdasdasdasdasdasdasd
                         dadadasdasdadadadadadasdasdadadasdsadasd
                         adasdsadasdsadasaaaaaaaaaaasssssssssssssssssssssssssssssssssssssssssssssss
                     </div>
-                    <br><br><button class="btn btn-primary">Delete</button>
-                    <button class="btn btn-primary">Edit</button><br><br>
-                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Likes this picture<br>
-                    <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>Dislike this picture<p id="date_output" style="font-size: 15px;"> </p>
+                    <p id="date_output" style="font-size: 15px;"></p>   
+                    <div id="user-comment-buttons">
+                        <br><br><button class="btn btn-outline-success">Edit post</button>
+                        <button class="btn btn-outline-danger">Delete post</button><br><br>
+                        <a href="#" onclick="alert('Liked picture example')"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Likes this picture</a><br>
+                        <a href="#" onclick="alert('Dislike picture example')"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> Dislike this picture</a>     
+                    </div>
+                    
+            
                     <hr style="background-color: white;">
                     
                 </div>
@@ -115,7 +129,7 @@
         function get_date() {
             // alert('Helllo World!')
             ouput = document.getElementById('date_output').innerHTML = "Uploaded on : " + "[enter date]"
-            ouput=document.getElementById('date_output').innerHTML= new Date().toDateString()
+            ouput=document.getElementById('date_output').innerHTML= "Posted on : " + new Date().toDateString()
         }
     </script>
 </body>
