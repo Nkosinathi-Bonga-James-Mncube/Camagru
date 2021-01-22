@@ -1,0 +1,248 @@
+h1{
+    font-family: 'Lobster', cursive;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+.background{
+    height: 100vh;
+    max-width: 100vw;
+    position: relative;
+    background-size: cover;
+    background-position: 50% 50%; 
+    background-image: url('../static/index.jpeg');
+    overflow-y:auto;
+}
+
+.home_page{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-size: cover;
+    background-position: 50% 50%;   
+    background-image: url('../static/welcome.jpeg');
+    overflow-y:auto;
+}
+
+.overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow-y:auto;
+  }
+li a {
+  display: block;
+  color: white;
+  text-align: left;
+  padding: 15px 17px;
+  text-decoration: none;
+  
+ }
+li {
+    float: left;
+    border-right: 2px solid #e7e7e8;
+    list-style-type: none;
+}
+#nav{
+    position: absolute;
+    top: 50px;
+    right: 70px;
+}
+#footer{
+    position: absolute;
+    bottom: 20px;
+    text-align: right
+}
+
+.overlay h1 {
+    font-size: 65px;
+    letter-spacing: 0px;
+    margin: 0 0 5px;
+}
+
+.overlay p {
+    margin: 0;
+    font-size: 28px;
+  }
+
+.page_links::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background:white;
+    transition: width .3s;
+
+}
+.page_links:hover::after{
+    width: 100%;
+    transition: width .2s;
+}
+a:hover{
+    text-decoration: none;
+    color: inherit;
+}
+a:active{
+    text-decoration: none;
+    color: inherit;
+}
+div.t1{
+    display:inline-block;
+    /* 
+     display:inline-block;position: absolute; */
+    /* size: 2px */
+    /* width: 50%; */
+    /* left: 120px; */
+}
+#footer{
+    /* position: relative; */
+    bottom: 10px;
+    width: 100%;
+    overflow-y:auto;
+}
+.profile_img{
+    border-radius: 50%;
+}
+.profile_img:hover{
+    box-shadow: 0px 0px 5px #fff;
+
+}
+
+.img_gallery{
+    width: 250px;
+    height: 200px;
+    border-radius: 25px;
+}
+.img_gallery:hover{
+    box-shadow: 0px 0px 5px #fff;
+
+}
+
+.badge {
+    position: absolute;
+    top: -95px;
+    right: -2px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }
+[data-msg]{
+    position: relative;
+    cursor: default;
+
+}
+[data-msg]::after{
+    position: absolute;
+    width: 140px;
+    left: 55px;
+    bottom: 600%;
+    text-align: center;
+    box-sizing: border-box;
+    color: white;
+    background:black;
+    padding: 6px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 12px;
+    content: attr(data-msg);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(200px);
+    transition: opacity 0.3s,transform 0.2s; 
+}
+
+[data-msg]:hover::after{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+
+}
+#page_heading{
+    position: absolute;
+    top:120px
+}
+#back_button{
+    position: relative;
+    bottom: -4px;
+    left: 2px
+    /* left: 200px; */
+}
+#user-input-select{
+    position: relative;
+    bottom: -10px;
+    
+}
+#user-image-buttons{
+    position: relative;
+    bottom: -104px;
+}
+#comment-image{
+    position: absolute;
+    /* display: outside; */
+    height: 40%;
+    width: 40%;
+    border-radius: 25px;
+    top: 270px;
+}
+#image-heading{
+    position: absolute;
+    top:120px
+}
+#image-detail-button{
+
+    position: absolute;
+    top: 700px;
+}
+
+/* #comment-row{ */
+    /* position: absolute; */
+    /* bottom: -90px; */
+    /* right: 20px */
+    /* text-align: center; */
+/* } */
+#flex1{
+    position: absolute;
+    top: 800px;
+    /* left: 620px */
+    /* bottom: ; */
+    text-align: center;
+}
+#comment{
+    color: black;
+}
+#flex2{
+    position: absolute;
+    top: 350px;
+    right: 40px
+}
+
+#upload-message{
+    position: absolute;
+    top: 150px;
+    right: 200px;
+}
+
+div.user-comment-post {
+    position: relative;
+    word-wrap: break-word;
+    width: 600px; 
+    border: 1px solid white;
+    padding: 20px;
+}
+
+#user-comment-buttons{
+    position: relative;
+    top: 4px
+}
