@@ -26,14 +26,14 @@ comment on pictures)
 
 ------
 # Table of contents
- - [Requriment](#requirements)
  - [How it works](#how-it-works)
  - [Installation](#installation)
- - [How to run program](#how-to-run-program)
+ - [How to run the program](#how-to-run-the-program)
  - [Troubleshoot](#troubleshoot)
 ------
 # How it works
-# Installation (For Ubuntu)
+# Installation
+### For Ubuntu
 
 1. Install XAMPP : https://www.apachefriends.org/download.html
 2. Navigate to location `/opt/lampp/`
@@ -71,7 +71,7 @@ sudo /opt/lampp/manager-linux.run
 
 <img width=75% height=75% src=https://user-images.githubusercontent.com/50704452/105494995-42438a00-5cc4-11eb-911c-26463165bdb4.png>
 
-# How to run program
+# How to run the program
 1. To setup database and tables enter into the browser : `http://127.0.0.1:8080/Camagru/SETA_Camagru/config/setup.php`, you should see the following:
 
 
