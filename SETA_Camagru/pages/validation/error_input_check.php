@@ -18,7 +18,7 @@ function error_check_input($enter_user,$enter_email,$enter_pass1,$enter_pass2)
         echo ('Password are not identical');
         return (2);
     }
-    else if (strlen ($enter_pass1) < 8)
+    else if (strlen ($enter_pass1) >= 8)
     {
         echo ('Password must be 8 characters or greater'."<br>");
         return(3);
@@ -70,8 +70,6 @@ function check_image($p1,$input_image,$pic_loc)
 
 function search_dup_new_name($enter_email,$enter_user)
 {
-    
-    
     include "config/database.php";
     include_once "config/connection.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);

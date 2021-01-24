@@ -4,7 +4,7 @@
     <title>Register</title>
     <!-- bootstrap -->
     <!-- <meta charset="utf-8"> -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- bootstrap -->
 
     <!-- google fonts + bootstrap + font-awesome -->
@@ -14,7 +14,7 @@
     <!-- google fonts + bootstrap + font-awesome -->
 
     <!-- my style sheet -->
-    <!-- <link rel="stylesheet" href="../css/home.css"> -->
+    <link rel="stylesheet" href="../css/home.css">
     <!-- my style sheet -->
 </head>
 <body>
@@ -23,7 +23,7 @@
         <h1>Register</h1>
         <ul id="nav">
             <li><a href="public_gallery.html" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> Public Gallery</a></li>
-            <li><a href="forgot.html" class="page_links"><i class="fa fa-key" aria-hidden="true"></i> Forgot password</a></li>
+            <li><a href="forgot.php" class="page_links"><i class="fa fa-key" aria-hidden="true"></i> Forgot password</a></li>
             <li><a href="about.html" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
         </ul>
         <div class="t1">
@@ -82,13 +82,11 @@
             <div class="form-group">
                 Re-enter password<input class="form-inline"name="create_pass2" type="password" placeholder="Re-enter password">
             </div>
-            <button type="submit" class="btn btn-primary" name="create_button">Enter</button>
-            <button type="button" onclick='location.href="../"' class="btn btn-primary">Back</button>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary" name="create_button">Enter</button>
+                <button type="button" onclick='location.href="../"' class="btn btn-primary">Back</button>
+            </div>
         </form>
-        
-                
-                
-        
         <footer id="footer">Camagru 2019</footer>
     </div>
 </div>
@@ -96,34 +94,10 @@
 </body>
 </html> 
 <?php
-include "validation/error_input_check.php";
-if (isset($_POST['create_button']))
-{
-    
-    
-    
-    $enter_user = NULL;
-    $enter_email = NULL;
-    $enter_pass1 = NULL;
-    $enter_pass2= NULL;
-
-    $enter_user = htmlspecialchars(strip_tags(trim($_POST['create_user'])));
-    $enter_email = htmlspecialchars(strip_tags(trim($_POST['create_email'])));
-    $enter_pass1 = htmlspecialchars(strip_tags(trim($_POST['create_pass1'])));
-    $enter_pass2 = htmlspecialchars(strip_tags(trim($_POST['create_pass2'])));
-    $value1=error_check_input($enter_user,$enter_email,$enter_pass1,$enter_pass2);
-    if($value1 == -1)
-    {
-        include "database/create_user.php";
-    }
-}
+include "./validation/register_verf.php";
 ?>
 <script>
     var error_msg_value = '<?= $value1?>'
-    // if (error_msg_value == -1)
-    // {
-        // document.getElementById('registration-icon1').className = "fa fa-spinner fa-pulse"
-    // }
     if (error_msg_value == 1)
     {
         document.getElementById('error_msg1').className = "alert alert-danger alert px-2 py-1";
