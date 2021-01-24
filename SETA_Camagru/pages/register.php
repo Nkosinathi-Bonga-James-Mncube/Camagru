@@ -24,7 +24,7 @@
         <ul id="nav">
             <li><a href="public_gallery.html" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> Public Gallery</a></li>
             <li><a href="forgot.php" class="page_links"><i class="fa fa-key" aria-hidden="true"></i> Forgot password</a></li>
-            <li><a href="about.html" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
+            <li><a href="about.php" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
         </ul>
         <div class="t1">
             <div id="error_msg1" class="d-none alert alert-danger alert px-2 py-1" role="alert">

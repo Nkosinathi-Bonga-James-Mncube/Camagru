@@ -32,10 +32,10 @@
             </button>
             <li><a href="private_gallery.php" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> My Gallery</a></li>
             <li><a href="change_details.php" class="page_links"><i class="fa fa-address-card-o" aria-hidden="true"></i> Change details</a></li>
-            <li><a href="forgot.php" class="page_links"><i class="fa fa-key" aria-hidden="true"></i> Forgot password</a></li>
-            <li><a href="about.html" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
+            <li><a href="about.php" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
             <li><a href="logout.php"class="page_links"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
         </ul>
+        <img width="200px"  class="profile_img" height="200px" src="../static/default_image.png"></img>
         <div class="alert alert-success" role="alert">
             Personal details have been updated!
         </div>

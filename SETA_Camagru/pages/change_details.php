@@ -27,7 +27,7 @@ user_verf();
         <ul id="nav">
             <li><a href="home.php" class="page_links"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
             <li><a href="private_gallery.php" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> My Gallery</a></li>
-            <li><a href="about.html" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
+            <li><a href="about.php" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
             <li><a href="logout.php"class="page_links"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
         </ul>
         <h2>Remember: Email first then re-direct to this page</h2>
@@ -38,7 +38,7 @@ user_verf();
                 </div>
                 <div class="alert alert-success px-2 py-1" role="alert">
                     Profile picture successfully uploaded !
-                  </div>
+                </div>
             </div>
             <div class="t1">
                 <div class="alert alert-danger alert px-2 py-1" role="alert">

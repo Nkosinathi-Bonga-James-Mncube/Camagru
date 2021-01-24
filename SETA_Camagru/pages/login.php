@@ -11,8 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   <!-- google fonts + bootstrap + font-awesome -->
-   
+    <!-- google fonts + bootstrap + font-awesome -->
     <!-- my style sheet -->
     <link rel="stylesheet" href="../css/home.css">
     <!-- my style sheet -->
@@ -23,7 +22,8 @@
         <h1>Login</h1>
         <ul id="nav">
             <li><a href="public_gallery.html" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> Public Gallery</a></li>
-            <li><a href="about.html" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
+            <li><a href="forgot.php" class="page_links"><i class="fa fa-key" aria-hidden="true"></i> Forgot password</a></li>
+            <li><a href="about.php" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
         </ul>
         <div id="login-msg1" class="d-none alert alert-danger" role="alert">
                 Email address is not found
@@ -64,5 +64,6 @@ if (isset($_POST['login_submit']))
     $login_results=login($_POST['login_email'],$_POST['login_pass']);
 }
 ?>
+<script type="text/javascript">var results;</script>
 <script type="text/javascript">var results = "<?= $login_results?>";</script>
 <script src="../js/login.js" type="text/javascript"></script>
