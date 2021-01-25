@@ -29,6 +29,7 @@ comment on pictures)
  - [How it works](#how-it-works)
  - [Installation](#installation)
  - [How to run the program](#how-to-run-the-program)
+ - [Screenshots](#screenshots)
  - [Troubleshoot](#troubleshoot)
 ------
 # How it works
@@ -83,6 +84,11 @@ sudo /opt/lampp/manager-linux.run
 
 3. To view changes in the database enter in the browser : `http://127.0.0.1:8080/phpmyadmin/` , select `camagru_database`
 
+# Screenshots
+<details>
+<summary>index.php (Click here)</summary>
+<img src=https://user-images.githubusercontent.com/50704452/105496313-fabdfd80-5cc5-11eb-9782-a48def4a7284.png>
+</details>
 
 # Troubleshoot
   
