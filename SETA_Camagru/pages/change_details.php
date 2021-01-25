@@ -17,7 +17,9 @@ user_verf();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- google fonts + bootstrap -->
     
-    <link rel="stylesheet" href="../css/home.css"> 
+    <!-- my style sheet -->
+    <link rel="stylesheet" href="../css/home.css">
+    <!-- my style sheet --> 
 </head>
 <body>
     
@@ -33,37 +35,51 @@ user_verf();
         <h2>Remember: Email first then re-direct to this page</h2>
         <div id="flex2"class="d-flex flex-column">
             <div class="t1">
-                <div class="alert alert-danger alert px-2 py-1" role="alert">
-                    Firstname is incorrect! Please try again.
-                </div>
-                <div class="alert alert-success px-2 py-1" role="alert">
+                <div class="d-none alert alert-success px-2 py-1" role="alert">
                     Profile picture successfully uploaded !
                 </div>
             </div>
             <div class="t1">
-                <div class="alert alert-danger alert px-2 py-1" role="alert">
-                    Lastname is incorrect! Please try again.
-                </div>
-            </div>
-            <div class="t1">
-                <div class="alert alert-danger alert px-2 py-1" role="alert">
+                <div class="d-none alert alert-danger alert px-2 py-1" role="alert">
                     Username is invalid! Please try again.
                 </div>
             </div>
             <div class="t1">
-                <div class="alert alert-danger alert px-2 py-1" role="alert">
+                <div id="change-msg1"class="d-none alert alert-danger alert px-2 py-1" role="alert">
                     Password do not match! Please try again.
                 </div>
             </div>
             <div class="t1">
-                <div class="alert alert-danger alert px-2 py-1" role="alert">
+                <div id="change-msg2"class="d-none alert alert-danger alert px-2 py-1" role="alert">
+                Password must be 8 characters(with no spaces) or greater! Please try again.
+                </div>
+            </div>
+            <div class="t1">
+                <div id="change-msg3" class="d-none alert alert-danger alert px-2 py-1" role="alert">
+                    Weak password. <br> Please make sure passsword has: <br>
+                    - At least one uppercase<br>
+                    - At least one lowercase<br>
+                    - At least one special character<br>
+                </div>
+            </div>
+            <div class="t1">
+                <div id="change-msg4" class="d-none alert alert-danger alert px-2 py-1" role="alert">
+                    There are space in password! Please remove them.
+                </div>
+            </div>
+            <div class="t1">
+                <div id="change-msg5" class="d-none alert alert-danger alert px-2 py-1" role="alert">
+                    Email address is not found!Please check email is correct.
+                </div>
+            </div>
+            <div class="t1">
+                <div class="d-none alert alert-danger alert px-2 py-1" role="alert">
                     Profile picture is not valid.<br>Supported formats : .jpeg .bmp .<br>Supported resolution : 1000 x 1000 <br>Please try again.
                 </div>
             </div>
         </div>
-        <i class="fa fa-spinner fa-pulse"></i>
         <p>Please enter details to change</p>
-        <div id="upload-dialog" class="input-group mb-3 w-25 p-3">
+        <!-- <div id="upload-dialog" class="input-group mb-3 w-25 p-3">
             <div class="custom-file">
                 <input type="file" class="custom-file-input" id="inputGroupFile02">
                 <label class="custom-file-label" for="inputGroupFile02">Please add profile picture</label>
@@ -71,19 +87,32 @@ user_verf();
             <div class="input-group-append">
                 <span class="input-group-text" id="">Upload</span>
             </div>
+        </div> -->
+        <form method="POST">
+        <div class="form-group">
+            Email address:<input name="email1" class="form-inline" placeholder="Please enter email address">
         </div>
-        Firstname:<input placeholder="Please enter Firstname">
-        Lastname:<input placeholder="Please enter Lastname">
-        Username:<input placeholder="Please enter Username">
-        Password:<input placeholder="Please enter Password">
-        Re-enter password:<input placeholder="Re-enter Password">
-
-        <div id="user-input-select">
-            <button class="btn btn-primary" >Send</button>
-            <button class="btn btn-primary" onclick='location.href="home.php"'>Back</button>
+        <div class="form-group">
+            Password:<input type="password" name="pass1" class="form-inline" placeholder="Please enter Password">
         </div>
+        <div class="form-group">
+            Re-enter password:<input type="password" name="pass2" class="form-inline" placeholder="Re-enter Password">
+        </div>
+        <div class="form-group text-center">
+                <button name="change_submit"type="submit" class="btn btn-primary" >Send</button>
+                <button type="button" class="btn btn-primary" onclick='location.href="home.php"'>Back</button>
+        </div>
+        </form>
         <footer id="footer">Camagru 2019</footer>
     </div>
 </div>
 </body>
-</html> 
+</html>
+<?php 
+    include "./validation/error_input_check.php";
+    // $new_pass_result=NULL;
+    $new_pass_result=new_password();
+?>
+<script type="text/javascript">var results;</script>
+<script type="text/javascript">var results = "<?= $new_pass_result?>";</script>
+<script src="../js/change_details.js" type="text/javascript"></script>

@@ -18,9 +18,9 @@ function error_check_input($enter_user,$enter_email,$enter_pass1,$enter_pass2)
         echo ('Password are not identical');
         return (2);
     }
-    else if (strlen ($enter_pass1) >= 8)
+    else if (strlen($enter_pass1)<8)
     {
-        echo ('Password must be 8 characters or greater'."<br>");
+        echo ('Password must be 8 characters(with no spaces) or greater'."<br>");
         return(3);
     }
     else if (preg_match('/\s/',$enter_user) || preg_match('/\s/',$enter_email)|| preg_match('/\s/',$enter_pass1))
@@ -94,5 +94,100 @@ function search_dup_new_name($enter_email,$enter_user)
 
     }
     return ($bfound);
+}
+function new_password()
+{
+    // echo realpath(".././config/database.php");
+    // echo realpath(".././config/connection.php");
+    if(isset($_POST['change_submit']))
+    {
+        
+
+        $email= NULL;
+        $email=htmlspecialchars(strip_tags(trim($_POST['email1'])));
+        $enter_pass1=htmlspecialchars(strip_tags(trim($_POST['pass1'])));
+        $enter_pass2=htmlspecialchars(strip_tags(trim($_POST['pass2'])));
+
+        $up = preg_match('@[A-Z]@',$enter_pass1);
+        $lo = preg_match('@[a-z]@',$enter_pass1);
+        $sp = preg_match('@[^\w]@',$enter_pass1);
+
+        $email_check_results=changes_check_email($email);
+
+        if ($email_check_results == 6)
+        {
+            return (6);
+        }
+        if ($enter_pass1 == NULL && $enter_pass2 == NULL && $email_check_results == NULL)
+        {
+            return; 
+        }
+        if($enter_pass1 != $enter_pass2)
+        {
+            echo ('Password are not identical');
+            return (2);
+        }
+        else if (strlen($enter_pass1)<8)
+        {
+            echo ('<br>Password must be 8 characters(with no spaces) or greater'."<br>");
+            return (3);
+        }
+        else if (preg_match('/\s/',$enter_pass1))
+        {
+            echo ("There are space in username". "<br>");
+            return (4);
+        }
+        else if (!$up |!$lo|!$sp)
+        {
+            echo ("Weak password.Please make sure passsword has:"."<br>");
+            echo ("> At least one uppercase"."<br>");
+            echo ("> At least one lowercase"."<br>");
+            echo ("> At least one special character"."<br>");
+            return(5);
+        }
+        else if ($email_check_results == "found")
+        {
+            include ".././config/database.php";
+            include_once ".././config/connection.php";
+
+            $h_pass = password_hash($enter_pass1,PASSWORD_DEFAULT);
+            $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+            $sql2 ='UPDATE table1 SET pass = :pass WHERE email = :email';
+            $stmt1 = $pdo->prepare($sql2);
+            $stmt1->execute(['pass'=>$h_pass,'email' => $email]);
+            return(-1);
+        }
+        else if (($email_check_results == "found") && ($enter_pass1 == NULL))
+        {
+            echo "Please enter password  + re-enter field";
+        }
+    }
+}
+function changes_check_email($email)
+{
+    include ".././config/database.php";
+    include_once ".././config/connection.php";
+
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    $email_found = NULL;
+    $sql9 = 'SELECT * FROM table1 WHERE email = ?';
+    $stmt = $pdo->prepare($sql9);
+    $stmt->execute([$email]);
+    $post = $stmt->fetchAll();
+    
+    foreach($post as $post)
+    {
+        $email_found = $post['email'];
+    }
+    if ($email_found != $email)
+    {
+        echo "\nEmail is not found!Please check email is correct.";
+        return (6);
+    }
+    if (($email_found == $email) && ($email != NULL))
+    {
+        echo "Email is found";
+        return "found";
+    }
 }
 ?>

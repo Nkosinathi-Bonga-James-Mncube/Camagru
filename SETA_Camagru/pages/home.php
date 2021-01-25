@@ -31,16 +31,17 @@
                 Notifications <span class="badge badge-light">4</span>
             </button>
             <li><a href="private_gallery.php" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> My Gallery</a></li>
-            <li><a href="change_details.php" class="page_links"><i class="fa fa-address-card-o" aria-hidden="true"></i> Change details</a></li>
+            <li><a href="forgot_private.php" class="page_links"><i class="fa fa-address-card-o" aria-hidden="true"></i> Change details</a></li>
             <li><a href="about.php" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
             <li><a href="logout.php"class="page_links"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
         </ul>
         <img width="200px"  class="profile_img" height="200px" src="../static/default_image.png"></img>
-        <div class="alert alert-success" role="alert">
-            Personal details have been updated!
-        </div>
-        <div class="alert alert-success" role="alert">
+        
+        <div id="home-msg1" class="d-none alert alert-success" role="alert">
             Password has been updated!
+        </div>
+        <div id="home-msg2" class="d-none alert alert-success" role="alert">
+            Personal details have been updated!
         </div>
         <footer id="footer">Camagru 2019</footer>
     </div>
