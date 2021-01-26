@@ -52,6 +52,10 @@ $DB_PASSWORD = '';
 $DB_NAME = "camagru_database";
 ?>
 ```
+6. Change the properties of `/upload_save_img`
+```
+sudo chmod 777 upload_save_img/
+```
 6. Install sendemail
 ```
   sudo apt-get install sendmail
@@ -86,8 +90,32 @@ sudo /opt/lampp/manager-linux.run
 
 # Screenshots
 <details>
-<summary>index.php (Click here)</summary>
+<summary>index.php ( Click here )</summary>
 <img src=https://user-images.githubusercontent.com/50704452/105496313-fabdfd80-5cc5-11eb-9782-a48def4a7284.png>
+</details>
+
+<details>
+<summary>home.php ( Click here )</summary>
+<img src=https://user-images.githubusercontent.com/50704452/105751254-6e723b80-5f4e-11eb-9c47-c2f2a6f54ed5.png>
+</details>
+<details>
+<summary>about.php ( Click here )</summary>
+<img src=https://user-images.githubusercontent.com/50704452/105751526-cc068800-5f4e-11eb-8744-6041b64b515b.png>
+</details>
+
+<details>
+<summary>forgot.php ( Click here )</summary>
+<img src=https://user-images.githubusercontent.com/50704452/105751679-096b1580-5f4f-11eb-959f-a190db60711c.png>
+</details>
+
+<details>
+<summary>logout.php ( Click here )</summary>
+<img src=https://user-images.githubusercontent.com/50704452/105751894-4800d000-5f4f-11eb-8d19-9f55d1c64e77.png>
+</details>
+
+<details>
+<summary>register.php ( Click here )</summary>
+<img src=https://user-images.githubusercontent.com/50704452/105752511-10465800-5f50-11eb-96e2-d3db5d694a13.png>
 </details>
 
 # Troubleshoot
