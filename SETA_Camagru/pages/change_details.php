@@ -32,7 +32,7 @@ user_verf();
             <li><a href="about.php" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
             <li><a href="logout.php"class="page_links"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
         </ul>
-        <h2>Remember: Email first then re-direct to this page</h2>
+        <!-- <h2>Remember: Email first then re-direct to this page</h2> -->
         <div id="flex2"class="d-flex flex-column">
             <div class="t1">
                 <div class="d-none alert alert-success px-2 py-1" role="alert">

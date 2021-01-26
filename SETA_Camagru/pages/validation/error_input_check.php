@@ -190,4 +190,58 @@ function changes_check_email($email)
         return "found";
     }
 }
-?>
+
+function upload_images()
+{
+    // echo "upload_images working!";
+    // echo realpath("./upload_images_copies");
+    if (isset($_POST['image_submit']))
+    {
+        $upload_image = $_FILES['upload_image']['name'];
+        $upload_tmp = $_FILES['upload_image']['tmp_name'];
+        $upload_location = "uploaded_save_img/$upload_image";
+        $result=image_validation($upload_image,'upload_image',$upload_location);
+        if ($result == -1)
+        {
+            if(move_uploaded_file($upload_tmp, "uploaded_save_img/$upload_image"))
+            {
+                include ".././config/database.php";
+                include_once ".././config/connection.php";
+                
+                $upload_image_name = pathinfo($upload_image);
+                $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+                $sql3 = $pdo->prepare("INSERT INTO images (verf_code,name_img,pic_location) VALUES (:verf_code,:name_img,:pic_location)");
+                $sql3->execute(['verf_code'=>$_SESSION['verf_no'],'name_img'=>$upload_image_name['filename'],'pic_location'=> $upload_location]);
+                return(-1);
+            }
+            else
+            {
+                echo ("Issue with moving");
+                return(2);
+            }
+        }
+        return $result;
+
+    }
+}
+function image_validation($upload_image,$upload_file,$upload_location)
+{
+    include "search_dup.php";
+
+    if ($_FILES[$upload_file]['size'] > 10485760)
+    {
+        return (1);
+    }
+    if(!(pathinfo($upload_image,PATHINFO_EXTENSION) == 'jpg'|| pathinfo($upload_image,PATHINFO_EXTENSION) == 'png'|| pathinfo($upload_image,PATHINFO_EXTENSION) == 'bmp' || pathinfo($upload_image,PATHINFO_EXTENSION) == 'jpeg'))
+    {
+    return (2);
+    }
+    if (search_dup_images($upload_location) != NULL)
+    {
+        return (3);
+    }
+    else{
+        return(-1);
+    }
+}
+?>  

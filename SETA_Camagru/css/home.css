@@ -246,3 +246,6 @@ div.user-comment-post {
     position: relative;
     top: 4px
 }
+.image-grid img {
+    margin-bottom: 1rem;
+}
