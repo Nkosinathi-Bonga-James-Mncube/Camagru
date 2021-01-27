@@ -14,5 +14,13 @@ if (results == '3')
 
 if (results == '-1')
 {
+    // window.location.href="./private_gallery.php";
     document.getElementById('upload-msg4').className = "alert alert-success px-2 py-1";
+    var hold =  setInterval(redirect_page, 1500);
+}
+
+function redirect_page()
+{
+    window.location.href="./private_gallery.php";
+    // document.getElementById('upload-msg4').className = "alert alert-success px-2 py-1";
 }

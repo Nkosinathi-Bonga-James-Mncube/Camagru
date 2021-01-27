@@ -38,7 +38,6 @@
             </ul>
             <img id="comment-image" src="../static/test1.jpg">    
             <button id="image-detail-button"class="btn btn-primary" onclick='location.href="private_gallery.php"'>Back</button>
-
             <div id="upload-message" class="alert alert-success" role="alert">
                 Message posted!
             </div>

@@ -199,11 +199,15 @@ function upload_images()
     {
         $upload_image = $_FILES['upload_image']['name'];
         $upload_tmp = $_FILES['upload_image']['tmp_name'];
-        $upload_location = "uploaded_save_img/$upload_image";
-        $result=image_validation($upload_image,'upload_image',$upload_location);
+        $extension = (pathinfo($upload_image,PATHINFO_EXTENSION));
+        $rand_num = rand(0,100000);
+        $upload_rename = 'Upload_'.date('Y_m_d_').$rand_num.'.'.$extension;
+        
+        $upload_location = "uploaded_save_img/$upload_rename";
+        $result=image_validation($upload_rename,'upload_image',$upload_location);
         if ($result == -1)
         {
-            if(move_uploaded_file($upload_tmp, "uploaded_save_img/$upload_image"))
+            if(move_uploaded_file($upload_tmp, "uploaded_save_img/$upload_rename"))
             {
                 include ".././config/database.php";
                 include_once ".././config/connection.php";
@@ -212,6 +216,7 @@ function upload_images()
                 $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
                 $sql3 = $pdo->prepare("INSERT INTO images (verf_code,name_img,pic_location) VALUES (:verf_code,:name_img,:pic_location)");
                 $sql3->execute(['verf_code'=>$_SESSION['verf_no'],'name_img'=>$upload_image_name['filename'],'pic_location'=> $upload_location]);
+                $upload_image= NULL;
                 return(-1);
             }
             else

@@ -25,7 +25,7 @@
         <h1>Forgot Password</h1>
         <ul id="nav">
         <li id="login_tag"><a href="../index.html" class="page_links"><i class="fa fa-sign-in" aria-hidden="true"></i> Login / Register</a></li>
-        <li id="public_tag"><a href="public_gallery.html" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> Public Gallery</a></li>
+        <li id="public_tag"><a href="public_gallery.php" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> Public Gallery</a></li>
         <li><a href="about.php" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
         </ul>
         <div id="forgot msg1" class="d-none alert alert-success" role="alert">

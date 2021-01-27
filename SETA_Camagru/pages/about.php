@@ -29,7 +29,7 @@ $is_login=session_check();
         <h1>About</h1>
         <ul id="nav">
             <li id="login_tag"><a href="../index.html" class="page_links"><i class="fa fa-sign-in" aria-hidden="true"></i> Login / Register</a></li>
-            <li id="public_tag"><a href="public_gallery.html" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> Public Gallery</a></li>
+            <li id="public_tag"><a href="public_gallery.php" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> Public Gallery</a></li>
             <li id="home_tag"><a href="home.php" class="page_links"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
             <li id="private_tag"><a href="private_gallery.php" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> My Gallery</a></li>
             <li id="change_tag"><a href="change_details.php" class="page_links"><i class="fa fa-address-card-o" aria-hidden="true"></i> Change details</a></li>
