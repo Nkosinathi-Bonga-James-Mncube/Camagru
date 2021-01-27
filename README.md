@@ -56,13 +56,13 @@ $DB_NAME = "camagru_database";
 ```
 sudo chmod 777 upload_save_img/
 ```
-6. Install sendemail
+7. Install sendemail
 ```
   sudo apt-get install sendmail
 ```
 
 
-7. Lauch XAMPP
+8. Lauch XAMPP
 - for 32bits system
 ```
 sudo /opt/lampp/manager-linux.run
@@ -71,7 +71,7 @@ sudo /opt/lampp/manager-linux.run
 ```
   sudo /opt/lampp/manager-linux-x64.run
 ```
-8. Open the 'Manage Servers' and start both 'MYSQL Database' and 'Apache Webserver' servers. 
+9. Open the 'Manage Servers' and start both 'MYSQL Database' and 'Apache Webserver' servers. 
 > N.B for the Apache webserver in 'Configure' make sure you on 8080 port.
 
 <img width=75% height=75% src=https://user-images.githubusercontent.com/50704452/105494995-42438a00-5cc4-11eb-911c-26463165bdb4.png>
