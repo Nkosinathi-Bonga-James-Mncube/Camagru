@@ -1,6 +1,8 @@
 <?php
 include ("./validation/login_verf.php");
+include ("./notification/notification.php");
 user_verf();
+// $notifications=get_all_likes();
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,7 +68,7 @@ user_verf();
                     </div>
                 </form>
                 <div class="text-center ">
-                    <button class="btn btn-primary " onclick="alert('button clicked')"><i class="fa fa-camera" aria-hidden="true"></i> Take a photo </button>
+                    <button class="btn btn-primary " onclick="location.href='camera.php'"><i class="fa fa-camera" aria-hidden="true"></i> Take a photo </button>
                 </div>
             <div>     
         <footer id="footer">Camagru 2019</footer>
@@ -79,5 +81,6 @@ user_verf();
     $upload_results=upload_images()
 ?>
 <script type="text/javascript">var results;</script>
+<script type="text/javascript">var results2 = "<?= $notifications?>";</script>
 <script type="text/javascript">var results = "<?= $upload_results?>";</script>
 <script src="../js/private_gallery.js" type="text/javascript"></script>

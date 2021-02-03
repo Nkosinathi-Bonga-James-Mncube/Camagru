@@ -49,8 +49,12 @@ function private_display_images()
         <div class="thumbnail">
         <span data-msg="You have new messages">
         <img class="img_gallery" src='.$post['pic_location'].'>
-        <div class="text-wrap text-center" style="width: 13rem;">'.$post['name_img'].'</div>
-        <span class="badge">3</span>
+        <div class="text-wrap text-center" style="width: 13rem;">'.$post['name_img'].'</div>';
+        if (notification_tag($post['name_img']))
+        {
+            echo '<span class="badge">'.notification_tag($post['name_img']).'</span>';
+        }
+        echo' 
         </span>
         </div>
         </div> 
@@ -103,12 +107,37 @@ function public_display_images()
         <div class="thumbnail">
         <span data-msg="You have new messages">
         <img class="img_gallery" src='.$stmt['pic_location'].'>
-        <div class="text-wrap text-center" style="width: 13rem;">'.$stmt['name_img'].'</div>
-        <span class="badge">3</span>
+        <div class="text-wrap text-center" style="width: 13rem;">'.$stmt['name_img'].'</div>';
+
+       echo' <span class="badge">3</span>
         </span>
         </div>
         </div> 
         </a>';
     }
+    
 }
+
+function display_image()
+{
+    include ".././config/database.php";
+    include_once ".././config/connection.php";
+
+    $results=$_GET['i'];
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    $stmt = $pdo->prepare('SELECT * FROM images WHERE verf_code = :verf_code');
+    $stmt->execute(['verf_code'=>$_SESSION['verf_no']]);
+    $post = $stmt->fetchAll();
+    $pic_name=NULL;
+    
+    foreach($post as $post)
+    {
+        $results =pathinfo($post['pic_location']);
+        if ($results['basename'] == $post['re_name_img']);
+            $pic_name=$post['pic_location'];
+    }
+    echo'<img id="comment-image" src="'.$pic_name.'">';
+    }
+
+
 ?>

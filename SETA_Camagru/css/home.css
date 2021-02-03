@@ -131,44 +131,13 @@ div.t1{
 .badge {
     position: absolute;
     top: -95px;
-    right: -2px;
-    padding: 5px 10px;
+    right: -4px;
+    padding: 13px 10px;
     border-radius: 50%;
     background-color: red;
     color: white;
     text-align: center;
   }
-[data-msg]{
-    position: relative;
-    cursor: default;
-
-}
-[data-msg]::after{
-    position: absolute;
-    width: 140px;
-    left: 55px;
-    bottom: 600%;
-    text-align: center;
-    box-sizing: border-box;
-    color: white;
-    background:black;
-    padding: 6px;
-    font-size: 0.9em;
-    font-weight: bold;
-    border-radius: 12px;
-    content: attr(data-msg);
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(200px);
-    transition: opacity 0.3s,transform 0.2s; 
-}
-
-[data-msg]:hover::after{
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-
-}
 #page_heading{
     position: absolute;
     top:120px
@@ -244,8 +213,17 @@ div.user-comment-post {
 
 #user-comment-buttons{
     position: relative;
-    top: 4px
+    top: 4px;
 }
 .image-grid img {
     margin-bottom: 1rem;
 }
+/* #comment_div {
+    position: absolute;
+    bottom: -900px;
+   } */
+   p#comment_div {
+    position: absolute;
+    top: 500px;
+   }
+   

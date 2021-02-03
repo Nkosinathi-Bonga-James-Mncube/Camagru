@@ -1,6 +1,8 @@
 <?php
     include ("./validation/login_verf.php");
+    include ("./notification/notification.php");
     $username=user_verf();
+    $notifications=get_all_likes();
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +20,7 @@
     <!-- google fonts + bootstrap -->
 
 <!-- my style sheet -->
-    <link rel="stylesheet" href="../css/home.css"> 
+    <!-- <link rel="stylesheet" href="../css/home.css">  -->
 <!-- my style sheet -->
 </head>
 <body>
@@ -27,8 +29,8 @@
         <div class="overlay">
         <h1>Welcome back! <h1 id="user_name"></h1></h1>
         <ul id="nav">
-            <button type="button" class="btn btn-outline-secondary">
-                Notifications <span class="badge badge-light">4</span>
+            <button id="notfication_home" type="button" onclick='location.href="private_gallery.php"' class="d-none btn btn-outline-secondary">
+                Notifications <span class="badge badge-light">New</span>
             </button>
             <li><a href="private_gallery.php" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> My Gallery</a></li>
             <li><a href="forgot_private.php" class="page_links"><i class="fa fa-address-card-o" aria-hidden="true"></i> Change details</a></li>
@@ -48,8 +50,14 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">var result2 = "<?= $notifications?>";</script>
 <script type="text/javascript">var results = "<?= $username?>";</script>
 <script src="../js/home.js" type="text/javascript"></script>
 
-
+<?php 
+// include ("./notification/notification.php");
+// get_note_flag();
+// note_flag(get_all_likes());
+// get_images();
+?>
 

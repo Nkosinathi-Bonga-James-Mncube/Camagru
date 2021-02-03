@@ -7,3 +7,7 @@ if (change_pass_status == 'true')
 {
     document.getElementById('home-msg1').className = "alert alert-success";
 }
+if (result2 != 0)
+{   
+    document.getElementById('notfication_home').className = "btn btn-outline-secondary";
+}

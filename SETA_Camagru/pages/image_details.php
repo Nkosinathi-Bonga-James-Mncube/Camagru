@@ -1,6 +1,11 @@
+<?php
+include ("./validation/login_verf.php");
+
+user_verf();
+include ("./likes/likes.php");
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Images Details</title>
     <!-- bootstrap -->
@@ -16,10 +21,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- google fonts + bootstrap + font-awesome -->
 
+<!-- my style sheet -->
     <link rel="stylesheet" href="../css/home.css">
+<!-- my style sheet -->
 </head>
 
-<body onload="get_date();">
+<body>
 
     <div class="home_page">
         <div class="overlay">
@@ -36,101 +43,48 @@
                 <li><a href="logout.php" class="page_links"><i class="fa fa-sign-out"
                             aria-hidden="true"></i>Logout</a></li>
             </ul>
-            <img id="comment-image" src="../static/test1.jpg">    
+            <?php 
+                include "./pagenation/pagenation.php";
+                display_image();
+            ?>
+            <!-- <img id="comment-image" src="
+            find_image_location($_GET['i'])
+            ">  -->
+            <!-- <img id="comment-image" src="../static/test1.jpg">     -->
             <button id="image-detail-button"class="btn btn-primary" onclick='location.href="private_gallery.php"'>Back</button>
-            <div id="upload-message" class="alert alert-success" role="alert">
-                Message posted!
-            </div>
-            <div id="upload-message" class="alert alert-success" role="alert">
-                Message edited!
-            </div>
-            <div id="upload-message" class="alert alert-success" role="alert">
-                Message deleted!
-            </div>
-            <div id="flex1" class="d-flex flex-column bd-highlight mb-3">
-                <h2>Comments</h2>
-                <div class="p-2 bd-highlight">
-                    <u>User1</u><br><br>
-                    <img width=50px height="50px" style="border-radius: 25px;" src="../static/test1.jpg">
-                    <div class="user-comment-post">
-                        dadasdasdsadasdadasdasdasdasdasdasdasd
-                        dadadasdasdadadadadadasdasdadadasdsadasd
-                        adasdsadasdsadasaaaaaaaaaaasssssssssssssssssssssssssssssssssssssssssssssss
+
+
+
+        <div id="flex1" class="d-flex flex-column bd-highlight mb-3">
+        <p>
+            <?php get_likes();?>
+        <p>
+        <h2>Comments</h2>
+        <form id="comment_div" method="POST" style="position: abolute;top: 800px;">
+                    <div class="form-group">
+                    <!-- <label for="Textarea1">Please enter comment</label>    -->
+                    <textarea   id="comment_div" name="text_value"></textarea>
                     </div>
-                    <p id="date_output" style="font-size: 15px;"></p>   
-                    <div id="user-comment-buttons">
-                        <br><br><button class="btn btn-outline-success">Edit post</button>
-                        <button class="btn btn-outline-danger">Delete post</button><br><br>
-                        <a href="#" onclick="alert('Liked picture example')"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Likes this picture</a><br>
-                        <a href="#" onclick="alert('Dislike picture example')"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> Dislike this picture</a>     
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary" name="comment_submit">Submit</button>
                     </div>
-                    
-            
-                    <hr style="background-color: white;">
-                    
-                </div>
-                <div class="p-2 bd-highlight">Flex item 2</div>
-                <div class="p-2 bd-highlight">Flex item 3</div>
-                <div class="p-2 bd-highlight">Flex item 1</div>
-                <div class="p-2 bd-highlight">Flex item 2</div>
-                <div class="p-2 bd-highlight">Flex item 3</div>
-                <div class="p-2 bd-highlight">Flex item 1</div>
-                <div class="p-2 bd-highlight">Flex item 2</div>
-                <div class="p-2 bd-highlight">Flex item 3</div>
-                
-            </div>
+                </form>
+                <form  action="<?php echo $_SERVER['REQUEST_URI']?>" method ="POST">
+                    <div class="form-group">
+                    <button type = "submit" id = "likes" class="btn btn-primary" name = "likes"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i><?php echo(" likes")?></button>
+                    <button type = "submit" id = "likes" class="btn btn-primary" name = "unlikes"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i><?php echo(" unlike")?></button>
+                    </div>
+                </form>
 
-            <!-- <div id="comment-row" class="container"> -->
-                <!-- <div class="row"> -->
-                    <!-- <div class="w-100"></div> -->
-                    <!-- <div class="col">Icon</div> -->
-                    <!-- <div class="col">Text</div> -->
-                    <!-- <div class="col">Like</div> -->
-                    <!-- <div class="col">Dislike</div> -->
-                    <!-- <div class="w-100"></div> -->
-                    <!-- <div class="col">Icon</div> -->
-                    <!-- <div class="col">Text</div> -->
-                    <!-- <div class="col">Like</div> -->
-                    <!-- <div class="col">Dislike</div> -->
-                    <!-- <div class="w-100"></div> -->
-                    <!-- <div class="col">Icon</div> -->
-                    <!-- <div class="col">Text</div> -->
-                    <!-- <div class="col">Like</div> -->
-                    <!-- <div class="col">Dislike</div> -->
-                    <!-- <div class="w-100"></div> -->
-                    <!-- <div class="col">Icon</div> -->
-                    <!-- <div class="col">Text</div> -->
-                    <!-- <div class="col">Like</div> -->
-                    <!-- <div class="col">Dislike</div> -->
-                    <!-- <div class="w-100"></div> -->
-                    <!-- <div class="col">Icon</div> -->
-                    <!-- <div class="col">Text</div> -->
-                    <!-- <div class="col">Like</div> -->
-                    <!-- <div class="col">Dislike</div> -->
-                    <!-- <div class="w-100"></div> -->
-                    <!-- <div class="col">Icon</div> -->
-                    <!-- <div class="col">Text</div> -->
-                    <!-- <div class="col">Like</div> -->
-                    <!-- <div class="col">Dislike</div> -->
-                <!-- </div> -->
-            <!-- </div> -->
-
+        <?php 
+            include "./validation/error_input_check.php";
+            comment_input();
+            get_edit();
+            like_pressed();
             
-            
-            
-            
-            
-
-            <footer id="footer">Camagru 2019</footer>
+            ?>
+        </div>  
         </div>
-    </div>
-    <script>
-        function get_date() {
-            // alert('Helllo World!')
-            ouput = document.getElementById('date_output').innerHTML = "Uploaded on : " + "[enter date]"
-            ouput=document.getElementById('date_output').innerHTML= "Posted on : " + new Date().toDateString()
-        }
-    </script>
+    </div>  
 </body>
 
-</html>

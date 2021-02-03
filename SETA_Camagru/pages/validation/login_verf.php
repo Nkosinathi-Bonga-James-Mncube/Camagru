@@ -144,4 +144,5 @@ function search_user_forgot_pass()
             return $result;
         }
 }
+
 ?>

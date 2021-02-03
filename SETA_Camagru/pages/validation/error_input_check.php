@@ -214,8 +214,8 @@ function upload_images()
                 
                 $upload_image_name = pathinfo($upload_image);
                 $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-                $sql3 = $pdo->prepare("INSERT INTO images (verf_code,name_img,pic_location) VALUES (:verf_code,:name_img,:pic_location)");
-                $sql3->execute(['verf_code'=>$_SESSION['verf_no'],'name_img'=>$upload_image_name['filename'],'pic_location'=> $upload_location]);
+                $sql3 = $pdo->prepare("INSERT INTO images (verf_code,name_img,re_name_img,pic_location) VALUES (:verf_code,:name_img,:re_name_img,:pic_location)");
+                $sql3->execute(['verf_code'=>$_SESSION['verf_no'],'name_img'=>$upload_image_name['filename'],'re_name_img'=>$upload_rename,'pic_location'=> $upload_location]);
                 $upload_image= NULL;
                 return(-1);
             }
@@ -249,4 +249,123 @@ function image_validation($upload_image,$upload_file,$upload_location)
         return(-1);
     }
 }
+function comment_input()
+{
+    // include "login_verf.php";
+    
+    include ".././config/database.php";
+    include_once ".././config/connection.php";
+    
+    if(isset($_POST['comment_submit']))
+    {
+        $result=$_POST['text_value'];
+        if ($result != NULL)
+        {
+            insert_comment($result);
+            exit(header("Location: http://localhost:8080/Camagru/SETA_Camagru/pages/image_details.php?i={$_GET['i']}"));
+        }
+    }
+
+    $image = $_GET['i'];
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    $sql5 = 'SELECT * FROM comments WHERE flag = :flag AND name_img = :name_img ORDER BY created DESC';
+    $stmt = $pdo->prepare($sql5);
+    $stmt->execute(['flag'=>'1' , 'name_img'=>$_GET['i']]);
+    $post= $stmt->fetchAll();
+    foreach($post as $post)
+    {
+        $name = get_name($post['verf_no']);
+
+                // echo $post['comments'];
+        echo '
+                <div class="p-2 bd-highlight">
+                <u>'.$name.'</u><br><br>
+                <img width=50px height="50px" style="border-radius: 25px;" src="../static/test1.jpg">
+                <div class="user-comment-post">'.$post['comments'].'</div>
+                <p style="font-size: 15px;">Posted on :'.$post['created'].' </p>
+                <p id="date_output" style="font-size: 15px;"></p>
+                <div id="user-comment-buttons">
+                <form method="POST">
+                <button type="submit" id=' . $post['userID'] . ' class="btn btn-outline-danger form-group" name="comment_delete" onclick="'.get_delete($post['userID']).'">Delete post</button><br><br>
+                </form>
+                </div>
+                <hr style="background-color: white;">';
+    }
+
+            
+            // print_r($post);
+            // foreach($post as $post)
+            // {
+            //     echo $text_input = $post['comments'];
+        
+            // // print_r($text_input);
+            //     echo '
+            //     <div class="p-2 bd-highlight">
+            //     <u>User1</u><br><br>
+            //     <img width=50px height="50px" style="border-radius: 25px;" src="../static/test1.jpg">
+            //     <div class="user-comment-post">'.$text_input.'</div>
+            //     <p id="date_output" style="font-size: 15px;"></p>
+            //     <div id="user-comment-buttons">
+            //     <br><br><button class="btn btn-outline-success">Edit post</button>
+            //     <button class="btn btn-outline-danger">Delete post</button><br><br>
+            //     <a href="#" onclick="alert("Liked picture example")"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Likes this picture</a><br>
+            //     <a href="#" onclick="alert("Dislike picture example")"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> Dislike this picture</a>     
+            //     </div>
+            //     <hr style="background-color: white;"> 
+            //     ';
+            // }
+            
+
+
+}
+
+function insert_comment($result)
+{
+    include ".././config/database.php";
+    include_once ".././config/connection.php";
+
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    $msg = $result;
+    $sql3 = $pdo->prepare("INSERT INTO comments(comments,name_img,flag,verf_no) VALUES (:comments,:name_img,:flag,:verf_no)") ;
+    $sql3->execute(['comments'=>$msg,'flag'=>'1','name_img'=>$_GET['i'],'verf_no'=>$_SESSION['verf_no']]);
+            //if (get_note_flag())
+        // if (get_email_note() == 1)
+        // {
+        //     email_comments($msg);
+        // }    
+}
+function get_delete($value)
+{
+
+    if(isset($_POST['comment_delete']))
+    {
+        include ".././config/database.php";
+        include_once ".././config/connection.php";
+        $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+        $sql = 'DELETE FROM comments WHERE userID = :userID AND verf_no = :verf_no';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['userID'=>$value, 'verf_no'=>$_SESSION['verf_no']]);
+        exit(header("Location: http://localhost:8080/Camagru/SETA_Camagru/pages/image_details.php?i={$_GET['i']}"));   
+    }
+}
+function get_edit()
+{
+    // echo "delete working";
+    if(isset($_POST['comment_edit']))
+    {
+        echo "Edit pressed";
+    }
+    else
+    {
+        return;
+    }
+    // include "config/database.php";
+    // include_once "config/connection.php";
+    // $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    // $sql = 'DELETE FROM images WHERE name_img = :name_img AND verf_code = :verf_code';
+    // $stmt = $pdo->prepare($sql);
+    // $stmt->execute(['name_img'=>$_GET['p'], 'verf_code'=>$_SESSION['verf_no']]);
+    // header("Location: http://localhost:8080/Camagru/grid.php");
+}
+
 ?>  
