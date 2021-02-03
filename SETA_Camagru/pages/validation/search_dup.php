@@ -5,7 +5,6 @@ function search_dup($enter_email,$enter_user)
     include_once ".././config/connection.php";
     
     try {
-        // echo realpath('.././config/database.php');
         $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
         $bfound = NULL;
 

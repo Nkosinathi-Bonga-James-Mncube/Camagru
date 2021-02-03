@@ -20,7 +20,7 @@
     <!-- google fonts + bootstrap -->
 
 <!-- my style sheet -->
-    <!-- <link rel="stylesheet" href="../css/home.css">  -->
+    <link rel="stylesheet" href="../css/home.css"> 
 <!-- my style sheet -->
 </head>
 <body>
@@ -53,11 +53,3 @@
 <script type="text/javascript">var result2 = "<?= $notifications?>";</script>
 <script type="text/javascript">var results = "<?= $username?>";</script>
 <script src="../js/home.js" type="text/javascript"></script>
-
-<?php 
-// include ("./notification/notification.php");
-// get_note_flag();
-// note_flag(get_all_likes());
-// get_images();
-?>
-

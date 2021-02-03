@@ -11,16 +11,15 @@ user_verf();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- google fonts + bootstrap + font-awesome-->
 
-    <!-- <link rel="stylesheet" href="../css/home.css">  -->
+    <!-- my style sheet -->
+    <link rel="stylesheet" href="../css/home.css">
+    <!-- my style sheet -->
 </head>
 <body>
 <div class="home_page">
 <div class="overlay">
 <h1 id="page_heading">Camara</h1>
 <ul id="nav">
-            <button type="button" class="btn btn-outline-secondary">
-                Notifications <span class="badge badge-light">4</span>
-            </button>
             <li><a href="private_gallery.php" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i> My Gallery</a></li>
             <li><a href="forgot_private.php" class="page_links"><i class="fa fa-address-card-o" aria-hidden="true"></i> Change details</a></li>
             <li><a href="about.php" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
@@ -50,18 +49,16 @@ user_verf();
     if (isset($_POST['stick_mario']))
     {
         get_mario();
-    // header("Location: http://localhost:8080/Camagru/SETA_Camagru/pages/private_gallery.php");
     }
 
     if (isset($_POST['pokemon']))
     {
         get_pokemon();
-        // header("Location: http://localhost:8080/Camagru/SETA_Camagru/pages/private_gallery.php"); 
+
     }
 
     if (isset($_POST['smile']))
     {
         get_smile();
-    //    header("Location: http://localhost:8080/Camagru/SETA_Camagru/pages/private_gallery.php"); 
     }
 ?>

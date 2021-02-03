@@ -106,12 +106,6 @@ function session_check()
 }
 function search_user_forgot_pass()
 {
-        // echo realpath(".././config/database.php");
-        // echo "search_user_forgot_pass() works!";
-        // if (isset($_POST['forgot_submit']))
-        // {
-        //     echo $_POST['email_address'];
-        // }
         if (isset($_POST['forgot_submit']))
         { 
             $email_enter = $_POST['email_address'];

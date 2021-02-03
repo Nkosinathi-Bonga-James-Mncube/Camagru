@@ -40,17 +40,13 @@ function get_all_likes()
 {
     include ".././config/database.php";
     include_once ".././config/connection.php";
-    // include "./validation/login_verf.php";
-    // echo realpath("./validation/login_verf.php");
-
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
     $sql = 'SELECT * FROM Likes';
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $count=$stmt->rowCount();
-    // echo "<br>Total likes".$count."for user : ".get_name($_SESSION['verf_no'])."<br>"; 
     $post= $stmt->fetchAll();
-    $n_l = NULL;//maybe its this??
+    $n_l = NULL;
     $k = get_images();
     
     foreach($post as $post)
@@ -65,23 +61,11 @@ function get_all_likes()
         {
             if ($k['re_name_img'] == $post['name_img'])
             {
-                // echo "<br>Someone like ur pic<br>";
                 return($post['name_img']);
             }
-        }//here;
+        }
     }
-    // echo "<br>No new likes<br>";
     return(0);
-    // if ($n_l)
-    // {  
-    //     echo "<br>Someone like ur pic<br>";
-    //     return (false);
-    // }
-    // else
-    // {
-    //     echo "<br>No new likes<br>";
-    //     return (true);
-    // }
 }
 function find_image_location($pic_name)
 {
@@ -118,37 +102,18 @@ function notification_tag($value)
 {
     include ".././config/database.php";
     include_once ".././config/connection.php";
-    // include "./validation/login_verf.php";
-    // echo realpath("./validation/login_verf.php");
-
-    // $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-    // $sql = 'SELECT * FROM Likes';
-    // $stmt = $pdo->prepare($sql);
-    // $stmt->execute();
-    // $count=$stmt->rowCount();
-    // echo "<br>Total likes".$count."for user : ".get_name($_SESSION['verf_no'])."<br>"; 
-    // $post= $stmt->fetchAll();
-    // $n_l = NULL;//maybe its this??
-    $k = get_images();
-    
-    // foreach($post as $post)
-    // {
-        // $n_l = $post['likes'];
-        $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-        $n_found = NULL;
-        $sql11 = 'SELECT * FROM images WHERE verf_code = :verf_code';
-        $stmt = $pdo->prepare($sql11);
-        $stmt->execute(['verf_code' => $_SESSION['verf_no']]);
-        $k = $stmt->fetchAll();
-        foreach($k as $k)
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    $sql11_image = 'SELECT * FROM Likes WHERE name_img = :name_img';
+    $stmt_image = $pdo->prepare($sql11_image);
+    $x = pathinfo($value);
+    $stmt_image->execute(['name_img' => $x['filename']]);
+    $post2 = $stmt_image->fetchAll();
+    foreach ($post2 as $post2)
+    {
+        if ($post2['name_img'] == $x['filename'])
         {
-            if ($k['re_name_img'] == $value)
-            {
-                // echo "<br>Someone like ur pic<br>";
-                return('New');
-            }
-        }//here;
-    // }
-    // echo "<br>No new likes<br>";
+            return 'New';
+        }
+    }
 }
 ?>

@@ -17,7 +17,7 @@ function pic_insert($store)
     }
 }
 
-function get_image_database_delete($image)//delete function
+function get_image_database_delete($image)
 {
     require "../config/database.php";
     require_once "../config/connection.php";

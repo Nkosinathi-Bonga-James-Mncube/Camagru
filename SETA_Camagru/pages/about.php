@@ -12,11 +12,12 @@ $is_login=session_check();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- bootstrap -->
     
-    <!-- google fonts + bootstrap -->
+    <!-- google fonts + bootstrap + font-awesome-->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- google fonts + bootstrap -->
+    <!-- google fonts + bootstrap + font-awesome-->
+    
     <!-- my style sheet -->
     <link rel="stylesheet" href="../css/home.css">
     <!-- my style sheet -->

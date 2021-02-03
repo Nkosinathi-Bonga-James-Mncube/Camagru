@@ -40,5 +40,4 @@ function send_forgot_pass_mail($email_enter,$username,$vkey)
     return "failed";
 
 }
-
 ?>

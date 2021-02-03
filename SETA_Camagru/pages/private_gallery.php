@@ -2,7 +2,6 @@
 include ("./validation/login_verf.php");
 include ("./notification/notification.php");
 user_verf();
-// $notifications=get_all_likes();
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,6 +36,7 @@ user_verf();
                 <?php 
                     include "./pagenation/pagenation.php";
                     private_nav();
+                    // notification_tag('hwll');
                     private_display_images();
                 ?>
             </div>

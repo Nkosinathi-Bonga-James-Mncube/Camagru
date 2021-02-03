@@ -68,57 +68,78 @@ function check_image($p1,$input_image,$pic_loc)
     return(-1);
 } 
 
-function search_dup_new_name($enter_email,$enter_user)
+function search_dup_new_name($enter_user)
 {
-    include "config/database.php";
-    include_once "config/connection.php";
+    include ".././config/database.php";
+    include_once ".././config/connection.php";
+
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-    $sql4 = 'SELECT * FROM table1 WHERE email = :email OR username = :username';
+    $sql4 = 'SELECT * FROM table1 WHERE username = :username';
     $stmt = $pdo->prepare($sql4);
-    $stmt->execute(['email'=>$enter_email,'username'=>$enter_user]);
+    $stmt->execute(['username'=>$enter_user]);
     $post = $stmt->fetchAll();
     $bfound =NULL;
     foreach($post as $post)
     {
-        
-        $e_found = $post['email'];
         $n_found = $post['username'];
     }
-    if ($enter_email == NULL && $enter_user == isset($n_found))
+    if ($enter_user == isset($n_found))
     {
         $bfound ="Found";
-    }
-    else if ($enter_email == isset($e_found) && $enter_user == NULL)
-    {
-        $bfound ="Found";
-
     }
     return ($bfound);
 }
+function new_username($username)
+{
+    include ".././config/database.php";
+    include_once ".././config/connection.php";
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+ 
+    if(isset($_POST['change_submit']))
+    {
+        if (search_dup_new_name($username) == NULL)
+        {
+            $sql2 ='UPDATE table1 SET username = :username WHERE verf = :verf';
+            $stmt1 = $pdo->prepare($sql2);
+            $stmt1->execute(['verf'=>$_SESSION['verf_no'],'username' => $username]);
+            echo ("Username is changed");
+            return(7);
+        }
+        else
+        {   
+            echo "You are not a valid user.Plese change you own details";
+            return('fail');
+        }
+    }
+
+}
 function new_password()
 {
-    // echo realpath(".././config/database.php");
-    // echo realpath(".././config/connection.php");
     if(isset($_POST['change_submit']))
     {
         
-
         $email= NULL;
+        $username= NULL;
         $email=htmlspecialchars(strip_tags(trim($_POST['email1'])));
         $enter_pass1=htmlspecialchars(strip_tags(trim($_POST['pass1'])));
         $enter_pass2=htmlspecialchars(strip_tags(trim($_POST['pass2'])));
+        $username=htmlspecialchars(strip_tags(trim($_POST['user1'])));
 
         $up = preg_match('@[A-Z]@',$enter_pass1);
         $lo = preg_match('@[a-z]@',$enter_pass1);
         $sp = preg_match('@[^\w]@',$enter_pass1);
 
         $email_check_results=changes_check_email($email);
-
+        if ($username != NULL)
+        {
+            return new_username($username);
+        }
+        else
         if ($email_check_results == 6)
         {
             return (6);
         }
-        if ($enter_pass1 == NULL && $enter_pass2 == NULL && $email_check_results == NULL)
+        if ($enter_pass1 == NULL && $enter_pass2 == NULL && $email_check_results == NULL && $username == NULL)
         {
             return; 
         }
@@ -134,7 +155,7 @@ function new_password()
         }
         else if (preg_match('/\s/',$enter_pass1))
         {
-            echo ("There are space in username". "<br>");
+            echo ("There are space in password". "<br>");
             return (4);
         }
         else if (!$up |!$lo|!$sp)
@@ -193,8 +214,6 @@ function changes_check_email($email)
 
 function upload_images()
 {
-    // echo "upload_images working!";
-    // echo realpath("./upload_images_copies");
     if (isset($_POST['image_submit']))
     {
         $upload_image = $_FILES['upload_image']['name'];
@@ -251,7 +270,6 @@ function image_validation($upload_image,$upload_file,$upload_location)
 }
 function comment_input()
 {
-    // include "login_verf.php";
     
     include ".././config/database.php";
     include_once ".././config/connection.php";
@@ -275,8 +293,6 @@ function comment_input()
     foreach($post as $post)
     {
         $name = get_name($post['verf_no']);
-
-                // echo $post['comments'];
         echo '
                 <div class="p-2 bd-highlight">
                 <u>'.$name.'</u><br><br>
@@ -291,32 +307,6 @@ function comment_input()
                 </div>
                 <hr style="background-color: white;">';
     }
-
-            
-            // print_r($post);
-            // foreach($post as $post)
-            // {
-            //     echo $text_input = $post['comments'];
-        
-            // // print_r($text_input);
-            //     echo '
-            //     <div class="p-2 bd-highlight">
-            //     <u>User1</u><br><br>
-            //     <img width=50px height="50px" style="border-radius: 25px;" src="../static/test1.jpg">
-            //     <div class="user-comment-post">'.$text_input.'</div>
-            //     <p id="date_output" style="font-size: 15px;"></p>
-            //     <div id="user-comment-buttons">
-            //     <br><br><button class="btn btn-outline-success">Edit post</button>
-            //     <button class="btn btn-outline-danger">Delete post</button><br><br>
-            //     <a href="#" onclick="alert("Liked picture example")"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Likes this picture</a><br>
-            //     <a href="#" onclick="alert("Dislike picture example")"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> Dislike this picture</a>     
-            //     </div>
-            //     <hr style="background-color: white;"> 
-            //     ';
-            // }
-            
-
-
 }
 
 function insert_comment($result)
@@ -328,11 +318,6 @@ function insert_comment($result)
     $msg = $result;
     $sql3 = $pdo->prepare("INSERT INTO comments(comments,name_img,flag,verf_no) VALUES (:comments,:name_img,:flag,:verf_no)") ;
     $sql3->execute(['comments'=>$msg,'flag'=>'1','name_img'=>$_GET['i'],'verf_no'=>$_SESSION['verf_no']]);
-            //if (get_note_flag())
-        // if (get_email_note() == 1)
-        // {
-        //     email_comments($msg);
-        // }    
 }
 function get_delete($value)
 {
@@ -350,7 +335,6 @@ function get_delete($value)
 }
 function get_edit()
 {
-    // echo "delete working";
     if(isset($_POST['comment_edit']))
     {
         echo "Edit pressed";
@@ -359,13 +343,7 @@ function get_edit()
     {
         return;
     }
-    // include "config/database.php";
-    // include_once "config/connection.php";
-    // $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-    // $sql = 'DELETE FROM images WHERE name_img = :name_img AND verf_code = :verf_code';
-    // $stmt = $pdo->prepare($sql);
-    // $stmt->execute(['name_img'=>$_GET['p'], 'verf_code'=>$_SESSION['verf_no']]);
-    // header("Location: http://localhost:8080/Camagru/grid.php");
 }
+
 
 ?>  

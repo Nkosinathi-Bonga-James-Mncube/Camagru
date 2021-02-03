@@ -32,7 +32,6 @@ user_verf();
             <li><a href="about.php" class="page_links"><i class="fa fa-info-circle" aria-hidden="true"></i> About Creator</a></li>
             <li><a href="logout.php"class="page_links"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
         </ul>
-        <!-- <h2>Remember: Email first then re-direct to this page</h2> -->
         <div id="flex2"class="d-flex flex-column">
             <div class="t1">
                 <div class="d-none alert alert-success px-2 py-1" role="alert">
@@ -40,8 +39,8 @@ user_verf();
                 </div>
             </div>
             <div class="t1">
-                <div class="d-none alert alert-danger alert px-2 py-1" role="alert">
-                    Username is invalid! Please try again.
+                <div id="change-msg6" class="d-none de" role="alert">
+                    Username is has changed.
                 </div>
             </div>
             <div class="t1">
@@ -79,16 +78,10 @@ user_verf();
             </div>
         </div>
         <p>Please enter details to change</p>
-        <!-- <div id="upload-dialog" class="input-group mb-3 w-25 p-3">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile02">
-                <label class="custom-file-label" for="inputGroupFile02">Please add profile picture</label>
-            </div>
-            <div class="input-group-append">
-                <span class="input-group-text" id="">Upload</span>
-            </div>
-        </div> -->
         <form method="POST">
+        <div class="form-group">
+            Change user:<input name="user1" class="form-inline" placeholder="Please enter username">
+        </div>
         <div class="form-group">
             Email address:<input name="email1" class="form-inline" placeholder="Please enter email address">
         </div>
@@ -110,7 +103,6 @@ user_verf();
 </html>
 <?php 
     include "./validation/error_input_check.php";
-    // $new_pass_result=NULL;
     $new_pass_result=new_password();
 ?>
 <script type="text/javascript">var results;</script>

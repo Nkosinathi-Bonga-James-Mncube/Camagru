@@ -31,7 +31,6 @@ include ("./likes/likes.php");
     <div class="home_page">
         <div class="overlay">
             <h1 id="image-heading">Image details</h1>
-            <!-- <p id="date_output"></p> -->
             <ul id="nav">
                 <li><a href="home.php" class="page_links"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                 <li><a href="private_gallery.php" class="page_links"><i class="fa fa-camera" aria-hidden="true"></i>
@@ -47,10 +46,6 @@ include ("./likes/likes.php");
                 include "./pagenation/pagenation.php";
                 display_image();
             ?>
-            <!-- <img id="comment-image" src="
-            find_image_location($_GET['i'])
-            ">  -->
-            <!-- <img id="comment-image" src="../static/test1.jpg">     -->
             <button id="image-detail-button"class="btn btn-primary" onclick='location.href="private_gallery.php"'>Back</button>
 
 
@@ -62,7 +57,6 @@ include ("./likes/likes.php");
         <h2>Comments</h2>
         <form id="comment_div" method="POST" style="position: abolute;top: 800px;">
                     <div class="form-group">
-                    <!-- <label for="Textarea1">Please enter comment</label>    -->
                     <textarea   id="comment_div" name="text_value"></textarea>
                     </div>
                     <div class="form-group text-center">

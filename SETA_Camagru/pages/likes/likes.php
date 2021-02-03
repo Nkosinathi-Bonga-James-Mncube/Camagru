@@ -20,33 +20,19 @@
         $stmt1 = $pdo->prepare($sql2);
         $stmt1->execute(['name_img' => $_GET['i'],'verf_code'=>$_SESSION['verf_no']]);
     }
-        // // $sql2 ='UPDATE Likes SET flag = :flag,likes = :likes WHERE name_img = :name_img AND verf_code= :verf_code';
-        // // $stmt1 = $pdo->prepare($sql2);
-        // if ($like_value == '0')
-        // {
-        //     $sql2 ='UPDATE Likes SET flag = :flag,likes = :likes WHERE name_img = :name_img AND verf_code= :verf_code';
-        //     $stmt1 = $pdo->prepare($sql2);
-        //     $stmt1->execute(['flag'=>'1','likes' =>'1','name_img' => $_GET['i'],'verf_code'=>$_SESSION['verf_no']]);
-        // }
-
 }
-
-
 
 function unlikes()
 {
 
-        include ".././config/database.php";
-        include_once ".././config/connection.php";
+    include ".././config/database.php";
+    include_once ".././config/connection.php";
 
-        $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-        echo "in 2 place";
-        $sql2='DELETE FROM Likes WHERE verf_code = :verf_code AND name_img = :name_img';
-        // $sql2 ='UPDATE Likes SET flag = :flag,likes = :likes WHERE name_img = :name_img AND verf_code= :verf_code';
-        $stmt1 = $pdo->prepare($sql2);
-        $stmt1->execute(['name_img' => $_GET['i'],'verf_code'=>$_SESSION['verf_no']]);
-        // $stmt1->execute(['flag'=>'0','likes' =>'0','name_img' => $_GET['i'],'verf_code'=>$_SESSION['verf_no']]);
-
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    echo "in 2 place";
+    $sql2='DELETE FROM Likes WHERE verf_code = :verf_code AND name_img = :name_img';
+    $stmt1 = $pdo->prepare($sql2);
+    $stmt1->execute(['name_img' => $_GET['i'],'verf_code'=>$_SESSION['verf_no']]);
 }
 
 
@@ -65,7 +51,7 @@ function get_likes()
     $count=$stmt->rowCount();
     echo "<br><i class='fa fa-thumbs-o-up' aria-hidden='true'></i> Total likes: ".$count."<br>";
     $post= $stmt->fetchAll();
-    $n_l = NULL;//maybe its this??
+    $n_l = NULL;
     foreach($post as $post)
     {
         $n_l = $post['likes'];
@@ -77,7 +63,7 @@ function get_likes()
 
 function get_verf()//for likes!
 {
-    $value = isset($_GET['i']);//maybe its this?
+    $value = isset($_GET['i']);
     include ".././config/database.php";
     include_once ".././config/connection.php";
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
@@ -95,30 +81,14 @@ function get_verf()//for likes!
 
 function like_pressed()
 {
-    // $like_results =get_likes();
     if (isset($_POST['likes']))
     {
-        // $flag_results =  get_verf();
         get_update();
-        // sleep(4);
-        // get_update($like_results);
-        // echo "<script>window.location.href='./image_details.php?i='.{$_GET['i']}.'</script>";
-        // return (1);
     }
     if (isset($_POST['unlikes']))
     {
         unlikes();
-        // sleep(4);
-        // unlikes($like_results);
-        // echo "<script>window.location.href='./image_details.php?i='.{$_GET['i']}.'</script>";
-        // return (1);
         exit(header("Location: http://localhost:8080/Camagru/SETA_Camagru/pages/image_details.php?i={$_GET['i']}"));
         unset($_POST);
     }
-    
-
-    // echo '<script>window.location.href="./image_details.php?i='.$_GET['i'].';</script>';
-    // exit(header("Location: http://localhost:8080/Camagru/SETA_Camagru/pages/image_details.php?i={$_GET['i']}"));
-    // header("Location: http://localhost:8080/Camagru/SETA_Camagru/pages/image_details.php?");
-    
 }
