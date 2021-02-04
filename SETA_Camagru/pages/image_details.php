@@ -1,6 +1,6 @@
 <?php
 include ("./validation/login_verf.php");
-
+include "./validation/error_input_check.php";
 user_verf();
 include ("./likes/likes.php");
 ?>
@@ -44,11 +44,9 @@ include ("./likes/likes.php");
             </ul>
             <?php 
                 include "./pagenation/pagenation.php";
-                display_image();
-            ?>
-            <button id="image-detail-button"class="btn btn-primary" onclick='location.href="private_gallery.php"'>Back</button>
-
-
+                $re_name_img=display_image();
+                delete_button($re_name_img);
+            ?>  
 
         <div id="flex1" class="d-flex flex-column bd-highlight mb-3">
         <p>
@@ -71,10 +69,10 @@ include ("./likes/likes.php");
                 </form>
 
         <?php 
-            include "./validation/error_input_check.php";
+            
             comment_input();
-            get_edit();
             like_pressed();
+            // get_delete_image($_GET['i']);
             
             ?>
         </div>  

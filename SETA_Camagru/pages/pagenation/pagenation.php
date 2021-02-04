@@ -115,19 +115,70 @@ function display_image()
 
     $results=$_GET['i'];
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-    $stmt = $pdo->prepare('SELECT * FROM images WHERE verf_code = :verf_code');
-    $stmt->execute(['verf_code'=>$_SESSION['verf_no']]);
+    $stmt = $pdo->prepare('SELECT * FROM images');
+    $stmt->execute();
     $post = $stmt->fetchAll();
     $pic_name=NULL;
     
     foreach($post as $post)
     {
-        $results =pathinfo($post['pic_location']);
-        if ($results['basename'] == $post['re_name_img']);
+        $database_results=pathinfo($post['pic_location']);
+        if ($results == $database_results['filename'])
+        {
             $pic_name=$post['pic_location'];
+
+        }
     }
+
     echo'<img id="comment-image" src="'.$pic_name.'">';
+    return  $pic_name;
+}
+
+function delete_button($re_img_name)
+{
+    
+    if (hide_delete($re_img_name))
+    {
+        echo '
+    <form method="POST">
+    <button name="delete_img" type="submit" id="image-detail-button"class="btn btn-danger form-group text-center">Delete</button>
+    </form>';
     }
+
+    if(isset($_POST['delete_img']))
+    {
+        $results = pathinfo($re_img_name);
+        $base_results = $results['basename'];
+        include ".././config/database.php";
+        include_once ".././config/connection.php";
+        $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+        $sql = 'DELETE FROM images WHERE re_name_img = :re_name_img';
+        $stmt = $pdo->prepare($sql);
+        echo $base_results;
+        $stmt->execute(['re_name_img'=>$base_results]);
+        header("Location: http://localhost:8080/Camagru/SETA_Camagru/pages/private_gallery.php");
+    }
+}
+function hide_delete($re_img_name)
+{
+    include ".././config/database.php";
+    include_once ".././config/connection.php";
+
+    $results = pathinfo($re_img_name);
+    $base_results = $results['basename'];
+    // echo $base_results;
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    $stmt = $pdo->prepare('SELECT * FROM images WHERE re_name_img = :re_name_img');
+    $stmt->execute(['re_name_img'=>$base_results]);
+    $post = $stmt->fetchAll();
+    foreach ($post as $post)
+    {
+        if ($_SESSION['verf_no']==$post['verf_code'])
+        // echo "your pic";
+        return true;
+    }
+
+}
 
 
 ?>

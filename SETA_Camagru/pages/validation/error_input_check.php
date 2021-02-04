@@ -236,6 +236,7 @@ function upload_images()
                 $sql3 = $pdo->prepare("INSERT INTO images (verf_code,name_img,re_name_img,pic_location) VALUES (:verf_code,:name_img,:re_name_img,:pic_location)");
                 $sql3->execute(['verf_code'=>$_SESSION['verf_no'],'name_img'=>$upload_image_name['filename'],'re_name_img'=>$upload_rename,'pic_location'=> $upload_location]);
                 $upload_image= NULL;
+                // get_image_ID($upload_image_name['filename']);
                 return(-1);
             }
             else
@@ -247,6 +248,25 @@ function upload_images()
         return $result;
 
     }
+}
+function get_image_ID($img_name)
+{
+    include ".././config/database.php";
+    include_once ".././config/connection.php";
+    $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
+    $sql = 'SELECT * FROM images WHERE name_img = :name_img';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['name_img'=>$img_name]);
+    $post= $stmt->fetchAll();
+    foreach ($post as $post)
+    {
+        $result = $post['imageID'];
+    }
+    $sql2 ='UPDATE comments SET imageID = :imageID WHERE name_img = :name_img';
+    $stmt1 = $pdo->prepare($sql2);
+    $stmt1->execute(['imageID'=>$result,'name_img' => $img_name]);
+    return $result;
+
 }
 function image_validation($upload_image,$upload_file,$upload_location)
 {
@@ -301,11 +321,13 @@ function comment_input()
                 <p style="font-size: 15px;">Posted on :'.$post['created'].' </p>
                 <p id="date_output" style="font-size: 15px;"></p>
                 <div id="user-comment-buttons">
-                <form method="POST">
-                <button type="submit" id=' . $post['userID'] . ' class="btn btn-outline-danger form-group" name="comment_delete" onclick="'.get_delete($post['userID']).'">Delete post</button><br><br>
+                <form method="POST">';
+        if ( $post['verf_no']== $_SESSION['verf_no'])
+        {echo'
+                <button type="submit" id=' . $post['commentID'] . ' class="btn btn-outline-danger form-group" name="comment_delete" onclick="'.get_delete($post['commentID']).'">Delete post</button><br><br>
                 </form>
                 </div>
-                <hr style="background-color: white;">';
+                <hr style="background-color: white;">';}
     }
 }
 
@@ -316,7 +338,7 @@ function insert_comment($result)
 
     $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
     $msg = $result;
-    $sql3 = $pdo->prepare("INSERT INTO comments(comments,name_img,flag,verf_no) VALUES (:comments,:name_img,:flag,:verf_no)") ;
+    $sql3 = $pdo->prepare("INSERT INTO comments(comments,name_img,flag,verf_no) VALUES (:comments,:name_img,:flag,:verf_no) ") ;
     $sql3->execute(['comments'=>$msg,'flag'=>'1','name_img'=>$_GET['i'],'verf_no'=>$_SESSION['verf_no']]);
 }
 function get_delete($value)
@@ -327,23 +349,11 @@ function get_delete($value)
         include ".././config/database.php";
         include_once ".././config/connection.php";
         $pdo = DB_Connection( $DB_DSN, $DB_NAME, $DB_USER, $DB_PASSWORD);
-        $sql = 'DELETE FROM comments WHERE userID = :userID AND verf_no = :verf_no';
+        $sql = 'DELETE FROM comments WHERE commentID = :commentID AND verf_no = :verf_no';
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['userID'=>$value, 'verf_no'=>$_SESSION['verf_no']]);
+        $stmt->execute(['commentID'=>$value, 'verf_no'=>$_SESSION['verf_no']]);
         exit(header("Location: http://localhost:8080/Camagru/SETA_Camagru/pages/image_details.php?i={$_GET['i']}"));   
     }
 }
-function get_edit()
-{
-    if(isset($_POST['comment_edit']))
-    {
-        echo "Edit pressed";
-    }
-    else
-    {
-        return;
-    }
-}
-
 
 ?>  

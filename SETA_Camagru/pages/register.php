@@ -14,7 +14,7 @@
     <!-- google fonts + bootstrap + font-awesome -->
 
     <!-- my style sheet -->
-    <link rel="stylesheet" href="../css/home.css">
+    <!-- <link rel="stylesheet" href="../css/home.css"> -->
     <!-- my style sheet -->
 </head>
 <body>
